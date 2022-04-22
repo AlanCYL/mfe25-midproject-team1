@@ -30,18 +30,21 @@ if (!$row) {
 
 
 if (!isset($_GET["cate"])) {
-    $sqlGroup = "SELECT user_and_groups.*, groups.*, groups.groups_name AS shopName FROM user_and_groups
-    JOIN groups ON user_and_groups.groups_id = groups.groups_id
+    $sqlGroup = "SELECT user_and_groups.*, groups.*, shop.shop_name AS shopName FROM groups
+    JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id
+    JOIN shop ON groups.shop_id = shop.shop_id
     WHERE user_and_groups.user_id=$id
     ";
 } else if (isset($_GET["cate"]) && ($_GET["cate"]) == 1) {
-    $sqlGroup = "SELECT user_and_groups.*, groups.*, groups.groups_name AS shopName FROM user_and_groups
-    JOIN groups ON user_and_groups.groups_id = groups.groups_id
+    $sqlGroup = "SELECT user_and_groups.*, groups.*, shop.shop_name AS shopName FROM groups
+    JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id
+    JOIN shop ON groups.shop_id = shop.shop_id
     WHERE user_and_groups.user_id=$id AND groups.least_num <= groups.goal_num
     ";
 } else if (isset($_GET["cate"]) && ($_GET["cate"]) == 2) {
-    $sqlGroup = "SELECT user_and_groups.*, groups.*, groups.groups_name AS shopName FROM user_and_groups
-    JOIN groups ON user_and_groups.groups_id = groups.groups_id
+    $sqlGroup = "SELECT user_and_groups.*, groups.*, shop.shop_name AS shopName FROM groups
+    JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id
+    JOIN shop ON groups.shop_id = shop.shop_id
     WHERE user_and_groups.user_id=$id AND groups.least_num > groups.goal_num
     ";
 }
@@ -60,18 +63,21 @@ $start = ($p - 1) * $per_page;
 
 
 if (!isset($_GET["cate"])) {
-    $sqlGroup = "SELECT user_and_groups.*, groups.*, groups.groups_name AS shopName FROM user_and_groups
-    JOIN groups ON user_and_groups.groups_id = groups.groups_id
+    $sqlGroup = "SELECT user_and_groups.*, groups.*, shop.shop_name AS shopName FROM groups
+    JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id
+    JOIN shop ON groups.shop_id = shop.shop_id
     WHERE user_and_groups.user_id=$id LIMIT $start, $per_page
     ";
 } else if (isset($_GET["cate"]) && ($_GET["cate"]) == 1) {
-    $sqlGroup = "SELECT user_and_groups.*, groups.*, groups.groups_name AS shopName FROM user_and_groups
-    JOIN groups ON user_and_groups.groups_id = groups.groups_id
+    $sqlGroup = "SELECT user_and_groups.*, groups.*, shop.shop_name AS shopName FROM groups
+    JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id
+    JOIN shop ON groups.shop_id = shop.shop_id
     WHERE user_and_groups.user_id=$id AND groups.least_num <= groups.goal_num LIMIT $start, $per_page
     ";
 } else if (isset($_GET["cate"]) && ($_GET["cate"]) == 2) {
-    $sqlGroup = "SELECT user_and_groups.*, groups.*, groups.groups_name AS shopName FROM user_and_groups
-    JOIN groups ON user_and_groups.groups_id = groups.groups_id
+    $sqlGroup = "SELECT user_and_groups.*, groups.*, shop.shop_name AS shopName FROM groups
+    JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id
+    JOIN shop ON groups.shop_id = shop.shop_id
     WHERE user_and_groups.user_id=$id AND groups.least_num > groups.goal_num LIMIT $start, $per_page
     ";
 }
@@ -295,10 +301,7 @@ $users_count = $resultGroup->num_rows;
                                                 <tr class="">
                                                     <td><?= $rowGroup["groups_id"] ?></td>
                                                     <td><?= $rowGroup["shopName"] ?></td>
-                                                    <td><?php
-                                                        $date = $rowGroup["eating_time"];
-                                                        $dateM = explode(" ", $date);
-                                                        echo $dateM[0];
+                                                    <td><?= $rowGroup["eating_date"];
                                                         ?></td>
                                                     <td><?php
                                                         if ($rowGroup["least_num"] <= $rowGroup["goal_num"]) {

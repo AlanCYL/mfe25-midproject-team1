@@ -16,7 +16,10 @@ $row = $result->fetch_assoc();
 
 $g_id = $_GET["g_id"];
 
-$sqlGroup = "SELECT groups.*, user_and_groups.*, user_and_groups.compliment AS comment FROM groups JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id WHERE groups.groups_id = '$g_id' ";
+$sqlGroup = "SELECT groups.*, user_and_groups.*, shop.shop_name AS shopName, user_and_groups.compliment AS comment FROM groups 
+JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id 
+JOIN shop ON groups.shop_id = shop.shop_id
+WHERE groups.groups_id = '$g_id' ";
 
 $resultGroup = $conn->query($sqlGroup);
 $rowGroup = $resultGroup->fetch_assoc();
@@ -31,7 +34,7 @@ if (!$rowGroup) {
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>歷史團單</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -152,14 +155,12 @@ if (!$rowGroup) {
                             </tr>
                             <tr>
                                 <th>店家名稱</th>
-                                <td><?= $rowGroup["groups_name"] ?></td>
+                                <td><?= $rowGroup["shopName"] ?></td>
                             </tr>
                             <tr>
                                 <th>用餐日期</th>
-                                <td><?php
-                                    $date = $rowGroup["eating_time"];
-                                    $dateM = explode(" ", $date);
-                                    echo $dateM[0];
+                                <td><?=
+                                    $rowGroup["eating_date"];
                                     ?>
                                 </td>
                             </tr>
