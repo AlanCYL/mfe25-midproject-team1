@@ -54,18 +54,9 @@ if (!isset($_GET["id"])) {
 } else {
     //搜尋全部特定使用者byID
     $id = $_GET["id"];
-    $sql = "SELECT user.*, level_name.name AS levelName FROM user 
-    JOIN level_name ON user.user_level = level_name.id WHERE user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR user.identity_card LIKE '%$id%' AND valid=1";
-    $result = $conn->query($sql);
-    $total = $result->num_rows;
-
-    //特定使用者數量去做頁籤
-    $per_page = 4;
-    $start = ($p - 1) * $per_page;
-    $page_count = CEIL($total / $per_page);
 
     $sqlNew = "SELECT user.*, level_name.name AS levelName FROM user 
-    JOIN level_name ON user.user_level = level_name.id WHERE user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR user.identity_card LIKE '%$id%'AND valid=1 "
+    JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR user.identity_card LIKE '%$id%' OR level_name.name LIKE '%$id%') AND user.valid = 1 "
     ;
 
 }
@@ -189,7 +180,7 @@ $user_count = $resultNew->num_rows;
                             <div class="row">
                                 <div class="col-auto px-0  position-relative">
                                     <form class="d-inline-block" action="">
-                                        <input placeholder="請輸入相關資訊" name="id" type="text">
+                                        <input placeholder="搜尋相關會員" name="id" type="text">
                                         <button class="position-absolute  end-0 translate-middle-x btn text-info p-0 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                     </form>
                                 </div>
