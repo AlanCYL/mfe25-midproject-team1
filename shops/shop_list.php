@@ -6,6 +6,21 @@ if(!isset($_GET["p"])){
   $p=$_GET["p"];
 }
 
+if(!isset($_GET["type"])){
+  $type=1;
+}else{
+  $type=$_GET["type"];
+}
+
+switch($type){
+  case "1":
+      $order="ASC";
+      break;
+  case "2":
+      $order="DESC";
+      break;
+}
+
 //設定分頁 抓共幾筆資料
 $sql = "SELECT * FROM shop"; //抓到全部資料
 $result=$conn->query($sql); 
@@ -30,7 +45,7 @@ if(isset($_GET["date"])){
   $date=$_GET["date"];
   $sql = "SELECT * FROM shop 
   WHERE shop.shop_create_time ='$date'
-  ORDER BY shop.shop_id ASC
+  ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
   ";  
   
@@ -40,14 +55,14 @@ if(isset($_GET["date"])){
   $date2=$_GET["date2"];
   $sql = "SELECT * FROM shop 
   WHERE shop.shop_create_time BETWEEN '$date1' AND '$date2'
-  ORDER BY shop.shop_id ASC
+  ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
   ";
   
   }
   else{
   $sql = "SELECT * FROM shop 
-  ORDER BY shop.shop_id ASC
+  ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
   ";  
   }
@@ -113,8 +128,7 @@ if(isset($_GET["date"])){
                     </button>
                     <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">店家資訊</a></li>
-                            <li><a href="#" class="link-dark rounded">店家清單</a></li>
+                            <li><a href="shop_list.php" class="link-dark rounded">店家清單</a></li>
                             <li><a href="#" class="link-dark rounded">開團清單</a></li>
                         </ul>
                     </div>
@@ -208,15 +222,22 @@ if(isset($_GET["date"])){
                     <button type="submit" class="btn btn-info">查詢</button>                      
                   </div>
                   </div>
-              </div>
+                </div>
               </form>
           </div>
         </div>
-        <div class="d-flex justify-content-between ">
+        <div class="d-flex justify-content-end ">
           <ul class="nav nav-tabs">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="shop_list.php">全部店家</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link <?php if($type==2) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=1">依編號正序</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?php if($type==1) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=2">依編號反序</a>
+            </li>
+            
           </ul>
         </div>
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -254,13 +275,21 @@ if(isset($_GET["date"])){
         <!-- pagination -->
         <div>
         <div class="py-2 text-center">
+        <?php if(!isset($_GET["date1"])): ?>
             第<?=$p?>頁, 共<?=$page_count?>頁, 共<?=$total?>筆
+          <?php else:?>
+            第1頁, 共1頁
+          <?php endif;?>
           </div>
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
+            <?php if(!isset($_GET["date1"])): ?>
               <?php for($i=1; $i<=$page_count;$i++):?>
                 <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_list.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
+            <?php else:?>
+              <li class="page-item">1</a></li>
+            <?php endif;?>
             </ul>
           </nav>
           

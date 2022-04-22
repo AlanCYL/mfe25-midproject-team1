@@ -9,8 +9,8 @@ $shop_phone=$_POST["shop_phone"];
 $shop_address=$_POST["shop_address"];
 $shop_description=$_POST["shop_description"];
 $service=$_POST["service_id"];
-$type=$_POST["type"];
-$types=join(",",$type);
+// $type=$_POST["type"];
+// $types=join(",",$type);
 
 // var_dump($types) ;
 // exit;
@@ -23,8 +23,8 @@ shop_account='$shop_account',
 shop_phone='$shop_phone', 
 shop_address='$shop_address', 
 shop_description='$shop_description', 
-service_id='$service', 
-type_id='$types' 
+service_id='$service'
+ 
 WHERE shop_id='$shop_id'";
 
 // echo $sql;
