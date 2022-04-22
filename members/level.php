@@ -2,7 +2,7 @@
 
 $id=$row["user_id"];
 
-$sqlGoal = "SELECT user_and_groups.*, groups.*, groups.groups_name AS shopName FROM user_and_groups
+$sqlGoal = "SELECT user_and_groups.*, groups.* FROM user_and_groups
 JOIN groups ON user_and_groups.groups_id = groups.groups_id
 WHERE user_and_groups.user_id=$id AND groups.least_num <= groups.goal_num
 ";
