@@ -206,13 +206,13 @@ $user_count = $resultNew->num_rows;
                                         </form>
                                     </div>
                             </div>
-                        <? else : ?>
+                        <?php else : ?>
                             <div class="row my-3">
                                 <div class="col-auto">
                                     <a href="user-list-coupon.php" class="btn btn-info text-white text-nowrap ">回到所有會員</a>
                                 </div>
                             </div>
-                        <? endif; ?>
+                        <?php endif; ?>
                         </div>
                     </div>
                     <form action="doCreateCoupon.php" method="post">
