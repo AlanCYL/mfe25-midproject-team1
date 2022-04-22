@@ -139,7 +139,7 @@ $user_count = $resultNew->num_rows;
                     </button>
                     <div class="collapse show" id="dashboard-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">會員清單</a></li>
+                            <li><a href="user-list.php" class="link-dark rounded">會員清單</a></li>
                             <li><a href="#" class="link-dark rounded">優惠制度</a></li>
                         </ul>
                     </div>
@@ -209,8 +209,8 @@ $user_count = $resultNew->num_rows;
                                 <tr>
                                     <th>會員編號</th>
                                     <th>會員姓名</th>
-                                    <th>會員電話</th>
                                     <th>身分證字號</th>
+                                    <th>會員電話</th>
                                     <th>會員生日</th>
                                     <th>會員等級</th>
                                     <th>詳細資料</th>
@@ -223,8 +223,8 @@ $user_count = $resultNew->num_rows;
                                     <tr>
                                         <td><?= $row["user_id"] ?></td>
                                         <td><?= $row["user_name"] ?></td>
-                                        <td><?= $row["user_phone"] ?></td>
                                         <td><?= $row["identity_card"] ?></td>
+                                        <td><?= $row["user_phone"] ?></td>
                                         <td><?= $row["user_bir"] ?></td>
                                         <td class="text-end"><?= $row["levelName"] ?></td>
                                         <td><a class="btn btn-info text-white" href="user.php?id=<?= $row["user_id"] ?>">檢視</a></td>

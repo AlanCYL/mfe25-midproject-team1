@@ -118,7 +118,7 @@ if (!$rowGroup) {
 
                     <div class="row">
                     <div class="py-2 justify-content-center ">
-                            <a href="user.php?id=<?= $id ?>" class="btn text-Secondary  "><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                            <a href="javascript:history.go(-1)" class="btn text-Secondary  "><i class="fa-solid fa-arrow-rotate-left"></i></a>
 
                         </div>
                         <div class="py-2">

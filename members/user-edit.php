@@ -76,7 +76,7 @@ if (!$row) {
                     </button>
                     <div class="collapse show" id="dashboard-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">會員清單</a></li>
+                            <li><a href="user-list.php" class="link-dark rounded">會員清單</a></li>
                             <li><a href="#" class="link-dark rounded">優惠制度</a></li>
                         </ul>
                     </div>

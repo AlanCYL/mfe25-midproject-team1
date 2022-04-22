@@ -323,6 +323,7 @@ $users_count = $resultGroup->num_rows;
                                         </tbody>
                                 </table>
                             </div>
+                            <?php if( $page_count > 1 ):?>
                             <div class="py-2 ">
                                 <ul class="pagination justify-content-center">
                                     <?php if ($p != 1) : ?>
@@ -342,6 +343,7 @@ $users_count = $resultGroup->num_rows;
                                     <?php endif; ?>
                                 </ul>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
