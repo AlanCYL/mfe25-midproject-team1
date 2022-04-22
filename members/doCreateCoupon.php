@@ -17,7 +17,7 @@ $now=date('Y-m-d H:i:s');
 
 $sqlIn="INSERT INTO coupon (reason, price, create_time)
 VALUES ('$reason', '$price', '$now')";
-$resultIn = $conn -> query($sqlIn);
+// $resultIn = $conn -> query($sqlIn);
 
 
 if ($conn->query($sqlIn) === TRUE) {
