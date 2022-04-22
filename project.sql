@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-04-22 16:40:02
+-- 產生時間： 2022-04-22 20:49:49
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.4
 
@@ -18,9 +18,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `coupon`
+--
+-- 建立時間： 2022-04-22 12:35:16
+--
+
+DROP TABLE IF EXISTS `coupon`;
+CREATE TABLE `coupon` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `reason` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(5) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `dish`
 --
--- 建立時間： 2022-04-22 07:35:10
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `dish`;
@@ -47,7 +62,7 @@ INSERT INTO `dish` (`dish_id`, `dish_name`, `dish_image`, `dish_description`, `s
 --
 -- 資料表結構 `established`
 --
--- 建立時間： 2022-04-22 07:11:09
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `established`;
@@ -61,8 +76,7 @@ CREATE TABLE `established` (
 --
 -- 資料表結構 `groups`
 --
--- 建立時間： 2022-04-22 08:29:18
--- 最後更新： 2022-04-22 08:29:18
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `groups`;
@@ -96,7 +110,7 @@ INSERT INTO `groups` (`groups_id`, `groups_start_time`, `groups_end_time`, `eati
 --
 -- 資料表結構 `groups_and_dish`
 --
--- 建立時間： 2022-04-22 07:41:45
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `groups_and_dish`;
@@ -121,7 +135,7 @@ INSERT INTO `groups_and_dish` (`GD_combined_id`, `groups_id`, `dish_id`) VALUES
 --
 -- 資料表結構 `level_name`
 --
--- 建立時間： 2022-04-22 07:11:09
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `level_name`;
@@ -145,7 +159,7 @@ INSERT INTO `level_name` (`id`, `name`) VALUES
 --
 -- 資料表結構 `project_users`
 --
--- 建立時間： 2022-04-22 07:42:48
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `project_users`;
@@ -171,7 +185,7 @@ INSERT INTO `project_users` (`id`, `name`, `account`, `password`, `phone`, `crea
 --
 -- 資料表結構 `shop`
 --
--- 建立時間： 2022-04-22 07:47:22
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `shop`;
@@ -216,7 +230,7 @@ INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_email`, `shop_account`, `shop_
 --
 -- 資料表結構 `shop_service`
 --
--- 建立時間： 2022-04-22 07:48:36
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `shop_service`;
@@ -238,7 +252,7 @@ INSERT INTO `shop_service` (`service_id`, `service_name`) VALUES
 --
 -- 資料表結構 `shop_type`
 --
--- 建立時間： 2022-04-22 07:49:53
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `shop_type`;
@@ -268,7 +282,7 @@ INSERT INTO `shop_type` (`type_id`, `type_name`) VALUES
 --
 -- 資料表結構 `test`
 --
--- 建立時間： 2022-04-22 07:11:09
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `test`;
@@ -291,8 +305,8 @@ INSERT INTO `test` (`id`, `name`) VALUES
 --
 -- 資料表結構 `user`
 --
--- 建立時間： 2022-04-22 07:11:09
--- 最後更新： 2022-04-22 08:39:24
+-- 建立時間： 2022-04-22 10:22:17
+-- 最後更新： 2022-04-22 12:48:01
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -315,27 +329,27 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `identity_card`, `user_password`, `nick_name`, `user_phone`, `user_bir`, `user_mail`, `user_level`, `user_create_time`, `valid`) VALUES
-(1, '野比大雄', 'F124596125', '827ccb0eea8a706c4c34a16891f84e', '大雄', '0975136088', '1998-04-14', 'nobita1@doraemon.com', 4, '2022-04-18 20:50:51', 1),
+(1, '野比大雄', 'F124596125', '827ccb0eea8a706c4c34a16891f84e', '大雄', '0975136088', '1998-04-14', 'nobita1@doraemon.com', 3, '2022-04-18 20:50:51', 1),
 (2, '野原新之助', 'H142578953', '827ccb0eea8a706c4c34a16891f84e', '小新', '0978153644', '1978-07-08', 'shin@shin-chan.com', 1, '2022-04-19 09:01:05', 1),
 (3, '野原美冴', 'A221047856', '827ccb0eea8a706c4c34a16891f84e', '大屁股麻馬', '0932156744', '1980-05-15', 'misae@shin-chan.com', 4, '2022-04-19 13:41:39', 1),
-(4, '哆啦A夢', 'H154789356', '827ccb0eea8a706c4c34a16891f84e', '小叮噹', '0936157428', '1995-10-23', 'doraemon@doraemon.com', 3, '2022-04-19 13:43:32', 1),
-(5, '野原廣志', 'Y154769853', '827ccb0eea8a706c4c34a16891f84e', '臭腳丫把拔', '0914758963', '1986-12-25', 'hiroshi@shin-chan.com', 3, '2022-04-19 13:44:42', 1),
-(6, '源靜香', 'N221698743', '827ccb0eea8a706c4c34a16891f84e', '靜香', '0963258419', '1996-02-18', 'shizuka@doraemon.com', 4, '2022-04-19 13:47:04', 1),
-(7, '剛田武', 'L126957413', '827ccb0eea8a706c4c34a16891f84e', '胖虎', '0985136489', '1995-06-15', 'takeshi@doraemon.com', 3, '2022-04-19 13:49:06', 1),
+(4, '哆啦A夢', 'H154789356', '827ccb0eea8a706c4c34a16891f84e', '小叮噹', '0936157428', '1995-10-23', 'doraemon@doraemon.com', 2, '2022-04-19 13:43:32', 1),
+(5, '野原廣志', 'Y154769853', '827ccb0eea8a706c4c34a16891f84e', '臭腳丫把拔', '0914758963', '1986-12-25', 'hiroshi@shin-chan.com', 2, '2022-04-19 13:44:42', 1),
+(6, '源靜香', 'N221698743', '827ccb0eea8a706c4c34a16891f84e', '靜香', '0963258419', '1996-02-18', 'shizuka@doraemon.com', 3, '2022-04-19 13:47:04', 1),
+(7, '剛田武', 'L126957413', '827ccb0eea8a706c4c34a16891f84e', '胖虎', '0985136489', '1995-06-15', 'takeshi@doraemon.com', 2, '2022-04-19 13:49:06', 1),
 (8, 'MiuPig', 'H126357489', '827ccb0eea8a706c4c34a16891f84e', '11111', '097514645', '1954-12-31', 'miu@pig.com', 2, '2022-04-19 16:43:36', 0),
 (9, 'MiuPig', 'F125984653', '827ccb0eea8a706c4c34a16891f84e', '1111111', '097514855', '1985-05-27', 'miu@pig.com', 2, '2022-04-19 16:46:08', 0),
 (10, 'magggie', 'F125846951', '827ccb0eea8a706c4c34a16891f84e', 'maggie', '0974156388', '1998-06-14', 'miu@pig.com', 2, '2022-04-19 16:50:58', 0),
 (11, '12345', 'H147523698', '827ccb0eea8a706c4c34a16891f84e', '123', '091456789', '1995-08-08', 'akosakposkapo@gmail.com', 2, '2022-04-20 12:47:25', 0),
 (12, '12345', 'H124596315', '827ccb0eea8a706c4c34a16891f84e', '12345', '097513544', '1999-01-01', 'miu', 2, '2022-04-20 13:31:08', 0),
 (13, '陶1S', 'H224591756', '827ccb0eea8a706c4c34a16891f84e', '陶樂比', '0975148566', '1993-09-07', 'taolebe@dreamland.com', 1, '2022-04-21 17:36:12', 1),
-(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 2, '2022-04-21 17:56:36', 1);
+(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 1, '2022-04-21 17:56:36', 1);
 
 -- --------------------------------------------------------
 
 --
 -- 資料表結構 `user_and_coupon`
 --
--- 建立時間： 2022-04-22 07:11:09
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `user_and_coupon`;
@@ -343,7 +357,7 @@ CREATE TABLE `user_and_coupon` (
   `user_and_coupon_id` int(30) NOT NULL,
   `coupon_id` int(30) NOT NULL,
   `user_id` int(30) NOT NULL,
-  `valid` tinyint(2) NOT NULL
+  `valid` tinyint(2) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -351,8 +365,7 @@ CREATE TABLE `user_and_coupon` (
 --
 -- 資料表結構 `user_and_groups`
 --
--- 建立時間： 2022-04-22 07:11:09
--- 最後更新： 2022-04-22 08:33:47
+-- 建立時間： 2022-04-22 10:22:17
 --
 
 DROP TABLE IF EXISTS `user_and_groups`;
@@ -403,6 +416,12 @@ INSERT INTO `user_and_groups` (`user_and_groups_id`, `groups_id`, `user_id`, `co
 --
 -- 已傾印資料表的索引
 --
+
+--
+-- 資料表索引 `coupon`
+--
+ALTER TABLE `coupon`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `dish`
@@ -493,6 +512,12 @@ ALTER TABLE `user_and_groups`
 --
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `coupon`
+--
+ALTER TABLE `coupon`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `dish`
