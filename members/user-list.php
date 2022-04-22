@@ -200,13 +200,13 @@ $user_count = $resultNew->num_rows;
                                     </ul>
                                 </nav>
                             </div>
-                        <? else : ?>
+                        <?php else : ?>
                             <div class="row mb-3">
                                 <div class="col-auto">
                                     <a href="user-list.php" class="btn btn-info text-white">回到所有會員</a>
                                 </div>
                             </div>
-                        <? endif; ?>
+                        <?php endif; ?>
                         <?php if ($user_count > 0) : ?>
                             <thead>
                                 <tr>
@@ -242,7 +242,7 @@ $user_count = $resultNew->num_rows;
                         <div class="py-2 text-center">
                             第 <?= $p ?> 頁, 共 <?= $page_count ?> 頁,共 <?= $total ?> 筆
                         </div>
-                    <? endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
