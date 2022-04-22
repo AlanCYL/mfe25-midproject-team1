@@ -159,7 +159,7 @@ $user_count = $resultNew->num_rows;
                 <!-- 可以放content -->
                 <div class="container py-2 ">
                     <div class="text-end py-2">
-                        第 <?= $p ?> 頁, 共 <?php if($page_count == 0): echo 1; else: echo $page_count; endif; ?> 頁,共 <?= $total ?> 筆
+                        第 <?= $p ?> 頁, 共 <?php if($page_count == 0): echo 1; else: echo $page_count; endif; ?> 頁, 共 <?= $total ?> 筆
                     </div>
                     <div class="row">
                         <div class="col-auto mx-auto py-3">
@@ -234,7 +234,7 @@ $user_count = $resultNew->num_rows;
                                             foreach ($rows as $row) : ?>
                                                 <?php require("level.php"); ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="userId[]" value="<?=$row["user_id"]?>" ></td>
+                                                    <td><input type="checkbox" name="userId[]" value="<?=$row["user_id"]?>"></td>
                                                     <td><?= $row["user_id"] ?></td>
                                                     <td><?= $row["user_name"] ?></td>
                                                     <td><?= $row["user_bir"] ?></td>
