@@ -143,6 +143,7 @@ $shop_id=$_GET["dish"];
             })
             .done(function( response ) {
                 alert(response.message);
+                window.location.href = "dish-list.php?shop=<?=$shopID?>";
             }).fail(function( jqXHR, textStatus ) {
                 console.log( "Request failed: " + textStatus );
             });
