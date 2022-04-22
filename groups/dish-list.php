@@ -20,9 +20,9 @@ $shop_id=$_GET["shop"];
   <!-- Bootstrap CSS v5.0.2 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/template/style.css">
-  <link rel="stylesheet" href="/template/sidebars.css">
-  <link rel="stylesheet" href="/template/sidebars.js">
+    <link rel="stylesheet" href="../template/style.css">
+  <link rel="stylesheet" href="../template/sidebars.css">
+  <link rel="stylesheet" href="../template/sidebars.js">
 
   <style>
     .btn-check:focus+.btn,
