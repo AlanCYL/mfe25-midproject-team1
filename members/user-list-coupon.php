@@ -31,7 +31,7 @@ if (!isset($_GET["id"])) {
     $id = $_GET["id"];
 
     $sql = "SELECT user.*, level_name.name AS levelName FROM user 
-    JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR level_name.name LIKE '%$id%' OR user.user_bir LIKE '$$id%' ) AND user.valid = 1 ";
+    JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR level_name.name LIKE '%$id%' OR user.user_bir LIKE '%-$id%' ) AND user.valid = 1 ";
     $result = $conn->query($sql);
     $total = $result->num_rows;
 
@@ -41,7 +41,7 @@ if (!isset($_GET["id"])) {
     $page_count = CEIL($total / $per_page);
 
     $sqlNew = "SELECT user.*, level_name.name AS levelName FROM user 
-    JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR level_name.name LIKE '%$id%' OR user.user_bir LIKE '%$id%' ) AND user.valid = 1 LIMIT $start, $per_page ";
+    JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR level_name.name LIKE '%$id%' OR user.user_bir LIKE '%-$id%' ) AND user.valid = 1 LIMIT $start, $per_page ";
 }
 
 
@@ -126,7 +126,7 @@ $user_count = $resultNew->num_rows;
                     <div class="collapse show" id="dashboard-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="user-list.php" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="#" class="link-dark rounded">優惠制度</a></li>
+                            <li><a href="user-list-coupon.php" class="link-dark rounded">優惠制度</a></li>
                         </ul>
                     </div>
                 </li>
@@ -159,7 +159,7 @@ $user_count = $resultNew->num_rows;
                 <!-- 可以放content -->
                 <div class="container py-2 ">
                     <div class="text-end py-2">
-                        第 <?= $p ?> 頁, 共 <?= $page_count ?> 頁,共 <?= $total ?> 筆
+                        第 <?= $p ?> 頁, 共 <?php if($page_count == 0): echo 1; else: echo $page_count; endif; ?> 頁,共 <?= $total ?> 筆
                     </div>
                     <div class="row">
                         <div class="col-auto mx-auto py-3">
@@ -189,18 +189,18 @@ $user_count = $resultNew->num_rows;
                                         <form class="d-flex" action="">
                                             <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="id">
                                                 <option selected>依會員生日月份選擇</option>
-                                                <option value="-01-">一月</option>
-                                                <option value="-02-">二月</option>
-                                                <option value="-03-">三月</option>
-                                                <option value="-04-">四月</option>
-                                                <option value="-05-">五月</option>
-                                                <option value="-06-">六月</option>
-                                                <option value="-07-">七月</option>
-                                                <option value="-08-">八月</option>
-                                                <option value="-09-">九月</option>
-                                                <option value="-10-">十月</option>
-                                                <option value="-11-">十一月</option>
-                                                <option value="-12-">十二月</option>
+                                                <option value="01-">一月</option>
+                                                <option value="02-">二月</option>
+                                                <option value="03-">三月</option>
+                                                <option value="04-">四月</option>
+                                                <option value="05-">五月</option>
+                                                <option value="06-">六月</option>
+                                                <option value="07-">七月</option>
+                                                <option value="08-">八月</option>
+                                                <option value="09-">九月</option>
+                                                <option value="10-">十月</option>
+                                                <option value="11-">十一月</option>
+                                                <option value="12-">十二月</option>
                                             </select>
                                             <button class="btn p-0 mx-1 text-info d-inline " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                         </form>
@@ -254,7 +254,7 @@ $user_count = $resultNew->num_rows;
                                     <div class="col-auto py-2 mx-auto">
                                         <input type="text" class="form-control" placeholder="發送優惠券原因" name="reason">
                                     </div>
-                                    <div class="col-3 py-2 mx-auto">
+                                    <div class="col-4 py-2 mx-auto">
                                         <input type="number" class="form-control" min="0" placeholder="金額(TWD)" name="price" >
                                     </div>
                                     <div class="col-auto py-2 mx-auto">
