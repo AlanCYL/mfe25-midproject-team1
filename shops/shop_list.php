@@ -106,6 +106,23 @@ if(isset($_GET["date"])){
             border: 1px solid #ddd ;
             background-color: #f8f9fa;
         }
+        .nav-tabs .nav-link{
+            font-weight: 500;
+            color: #495057;
+            background-color: #fff;
+            border-color: #dee2e6 #dee2e6 #fff;
+            
+        }
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+            margin-bottom: -1px;
+            background: 0 0;
+            border: 1px solid transparent;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+            font-weight: 900;
+            color:maroon;
+        }
+ 
     </style>
 
 
@@ -229,13 +246,13 @@ if(isset($_GET["date"])){
         <div class="d-flex justify-content-end ">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="shop_list.php">全部店家</a>
+              <a class="nav-link" aria-current="page" href="shop_list.php">全部店家</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type==2) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=1">依編號正序</a>
+              <a class="nav-link <?php if($type==1) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=1">依編號正序</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type==1) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=2">依編號反序</a>
+              <a class="nav-link <?php if($type==2) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=2">依編號反序</a>
             </li>
             
           </ul>
