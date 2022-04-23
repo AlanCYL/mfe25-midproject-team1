@@ -1,79 +1,39 @@
 <?php
 require_once("../db-connect.php");
+
+//設定頁數 變數p
 if(!isset($_GET["p"])){
   $p="1";
 }else{
   $p=$_GET["p"];
 }
 
-if(!isset($_GET["type"])){
-  $type=1;
-}else{
-  $type=$_GET["type"];
-}
 
-switch($type){
-  case "1":
-      $order="ASC";
-      break;
-  case "2":
-      $order="DESC";
-      break;
-}
 
-//設定分頁 抓共幾筆資料
-$sql = "SELECT * FROM shop"; //抓到全部資料
+$sql ="SELECT groups.*FROM groups";
 $result=$conn->query($sql); 
-$total=$result->num_rows;  //用num_rows的方式知道有幾筆資料
-//-----------------------------------------------------------------
-
-$per_page=6;  //一頁幾筆帶入變數
-$page_count=CEIL($total/$per_page); //(總共幾筆資料) 除 (一頁要得頁數) 用CEIL去無條件進位(只要有資料就要跳下一頁)
-
-$start=($p-1)*$per_page; 
+$total=$result->num_rows; 
 
 
-// $sql = "SELECT * FROM shop 
-// ORDER BY shop.shop_id ASC
-// LIMIT $start,$per_page ";
+$per_page=6;  //一頁幾筆
+$page_count=CEIL($total/$per_page); // 頁數
+$start=($p-1)*$per_page; //起始
 
 
-$user_count=$result->num_rows;
-
-
-if(isset($_GET["date"])){
-  $date=$_GET["date"];
-  $sql = "SELECT * FROM shop 
-  WHERE shop.shop_create_time ='$date'
-  ORDER BY shop.shop_id $order
-  LIMIT $start,$per_page
-  ";  
-  
-  }
-  else if(isset($_GET["date1"]) && isset($_GET["date2"])){
-  $date1=$_GET["date1"];
-  $date2=$_GET["date2"];
-  $sql = "SELECT * FROM shop 
-  WHERE shop.shop_create_time BETWEEN '$date1' AND '$date2'
-  ORDER BY shop.shop_id $order
+  $sql="SELECT groups.*, shop.shop_name
+  FROM groups
+  JOIN shop on shop.shop_id=groups.shop_id
   LIMIT $start,$per_page
   ";
-  
-  }
-  else{
-  $sql = "SELECT * FROM shop 
-  ORDER BY shop.shop_id $order
-  LIMIT $start,$per_page
-  ";  
-  }
 
-  $result = $conn->query($sql);
-  $rows = $result->fetch_all(MYSQLI_ASSOC);
-  $total2=$result->num_rows;
-  $per_page=6;  //一頁幾筆帶入變數
-  $page_count1=CEIL($total2/$per_page); //(總共幾筆資料) 除 (一頁要得頁數) 用CEIL去無條件進位(只要有資料就要跳下一頁)
-  
-  $start=($p-1)*$per_page; 
+
+
+
+
+$result = $conn->query($sql);
+$rows = $result->fetch_all(MYSQLI_ASSOC);
+$groups_count=$result->num_rows; //groups資料庫共幾筆資料
+
 
 ?>
 
@@ -82,7 +42,7 @@ if(isset($_GET["date"])){
 <html lang="en">
 
 <head>
-    <title>店家清單</title>
+    <title>開團清單</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -199,7 +159,7 @@ if(isset($_GET["date"])){
 
         <div class="d-flex justify-content-between mb-4">
           <div>
-            <h2 class="mb-4">所有店家清單</h2>
+            <h2 class="mb-4">所有開團清單</h2>
            <!-- search -->
            <div class="input-group">
               <div class="form-outline">
@@ -236,7 +196,7 @@ if(isset($_GET["date"])){
                     >
                   </div>
                   <div class="col-auto">
-                    <button type="submit" class="btn btn-info">查詢</button>                      
+                  <button type="submit" class="btn btn-info">查詢</button>                      
                   </div>
                   </div>
                 </div>
@@ -246,13 +206,13 @@ if(isset($_GET["date"])){
         <div class="d-flex justify-content-end ">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="shop_list.php">全部店家</a>
+            <a class="nav-link " href="shop_groups_list.php">全部開團</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type==1) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=1">依編號正序</a>
+              <a class="nav-link" href="">開團中</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type==2) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=2">依編號反序</a>
+              <a class="nav-link" href="">未成團</a>
             </li>
             
           </ul>
@@ -261,26 +221,36 @@ if(isset($_GET["date"])){
           <table class="table table-hover border border-1">
             <thead class=" p-3 mb-2 ">
               <tr>
-                <th>商家編號</th>
-                <th>商家店名</th>
-                <th>商家帳號</th>
-                <th>商家電話</th>
-                <th>開團數量</th>
-                <th>開店時間</th>
+                <th>開團編號</th>
+                <th>商家名稱</th>
+                <th>開團時間</th>
+                <th>截止時間</th>
+                <th>用餐時間</th>
+                <th>目前人數</th>
+                <th>成團與否</th>
                 <th>檢視</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-              <?php if($user_count>0):?>
+              <?php if($groups_count>0):?>
                 <?php foreach($rows as $row): ?>
-                <td><?=$row["shop_id"]?></td>
+                <td><?=$row["groups_id"]?></td>
                 <td><?=$row["shop_name"]?></td>
-                <td><?=$row["shop_account"]?></td>
-                <td><?=$row["shop_phone"]?></td> 
-                <td>3</td>
-                <td><?=$row["shop_create_time"]?></td>
-                <td><a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info text-white">檢視</a></td>
+                <td><?=$row["groups_start_time"]?></td> 
+                <td><?=$row["groups_end_time"]?></td>
+                <td><?=$row["eating_date"]?></td>
+                <td><?=$row["goal_num"]?></td>
+                <td>
+                    <?php
+                    if ($row["least_num"] <= $row["goal_num"]) {
+                        echo "是";
+                        } else {
+                        echo "否";
+                        }
+                    ?>
+                </td>
+                <td><a href="" class="btn btn-info text-white">檢視</a></td>
               </tr>
               <?php endforeach; ?>
               <?php else:?>
@@ -289,24 +259,22 @@ if(isset($_GET["date"])){
             </tbody>
           </table>
         </div>
-        <!-- pagination -->
-        <div>
+       <!-- pagination -->
+       <div>
         <div class="py-2 text-center">
         <?php if(!isset($_GET["date1"])): ?>
             第<?=$p?>頁, 共<?=$page_count?>頁, 共<?=$total?>筆
           <?php else:?>
             第1頁, 共1頁
           <?php endif;?>
+          
           </div>
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-            <?php if(!isset($_GET["date1"])): ?>
-              <?php for($i=1; $i<=$page_count;$i++):?>
-                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_list.php?p=<?=$i?>"><?=$i?></a></li>
+            <?php for($i=1; $i<=$page_count;$i++):?>
+                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_groups_list.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
-            <?php else:?>
-              <li class="page-item">1</a></li>
-            <?php endif;?>
+
             </ul>
           </nav>
           
