@@ -69,10 +69,10 @@
                     </div>
                 </li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="true">
                         會員管理
                     </button>
-                    <div class="collapse" id="orders-collapse">
+                    <div class="collapse show" id="orders-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="user-list.php" class="link-dark rounded">會員清單</a></li>
                             <li><a href="user-list-coupon.php" class="link-dark rounded">優惠券發送</a></li>

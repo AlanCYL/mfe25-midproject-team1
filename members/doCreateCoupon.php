@@ -36,11 +36,11 @@ if ($conn->query($sqlIn) === TRUE) {
         
     }
 
-    echo "<script> alert('新增資料完成'); location.href='user-list-coupon.php';</script>";
+    echo "<script> alert('優惠券發送成功'); location.href='user-list-coupon.php';</script>";
 
     $conn -> close();
 
 } else {
-    echo "新增資料錯誤 : ". $conn->error;
+    echo "優惠券發送失敗 : ". $conn->error;
     exit;
 }

@@ -125,24 +125,29 @@ $user_count = $resultNew->num_rows;
                                 <th>會員姓名</th>
                                 <th>會員生日</th>
                                 <th>會員等級</th>
+                                <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            foreach ($rows as $row) : ?>
-                                <?php require("level.php"); ?>
-                                <tr>
-                                    <td><input type="checkbox" name="userId[]" value="<?= $row["user_id"] ?>"></td>
-                                    <td><?= $row["user_id"] ?></td>
-                                    <td><?= $row["user_name"] ?></td>
-                                    <td><?= $row["user_bir"] ?></td>
-                                    <td class="text-end"><?= $row["levelName"] ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <?= "沒有相符資料" ?>
-                        <?php endif; ?>
-                        </tbody>
+                        <form action="">
+                            <tbody>
+                                <?php
+                                foreach ($rows as $row) : ?>
+                                    <?php require("level.php"); ?>
+                                    <tr>
+                                        <td><input type="checkbox" class="checkbox-class" name="userId[]" value="<?= $row["user_id"] ?>"></td>
+                                        <td><?= $row["user_id"] ?></td>
+                                        <td><?= $row["user_name"] ?></td>
+                                        <td><?= $row["user_bir"] ?></td>
+                                        <td class="text-end"><?= $row["levelName"] ?></td>
+                                        <td class="text-center" ><a class="btn btn-info text-white" href="userCouponHistory.php?id=<?= $row["user_id"]?>">檢視</a></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <?= "沒有相符資料" ?>
+                            <?php endif; ?>
+                            </tbody>
+                            <button type="button" class="check-all btn btn-info text-white my-2">選擇全部</button>
+                        </form>
                 </table>
             </div>
         </div>
@@ -197,7 +202,7 @@ $user_count = $resultNew->num_rows;
                         <input type="number" class="form-control" min="0" placeholder="金額(TWD)" name="price">
                     </div>
                     <div class="col-auto py-2 mx-auto">
-                        <button class="btn btn-info" type="submit">送出</button>
+                        <button class="btn btn-info text-white" type="submit">送出</button>
                     </div>
                 </div>
             </div>

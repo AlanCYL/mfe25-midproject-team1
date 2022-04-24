@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>會員資料編輯</title>
+    <title>歷史團單</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,6 +43,15 @@
             color: #fff;
             background-color: #51A8DD;
             border-color: #51A8DD;
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            background-color: #51A8DD;
+        }
+
+        .nav-link {
+            color: #51A8DD;
         }
     </style>
 
@@ -94,7 +103,7 @@
             </div>
             <div>
                 <!-- 可以放content -->
-                <?php require("_user-edit.php") ?>
+                <?php require("_userCouponHistory.php") ?>
 
 
 
