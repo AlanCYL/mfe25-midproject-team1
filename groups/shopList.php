@@ -21,8 +21,8 @@ $row = $result->fetch_assoc();
 // var_dump($row);
 // exit;
 
-$sql2 = "SELECT * FROM shop_type"; 
-$result2=$conn->query($sql2); 
+$sql2 = "SELECT * FROM shop_type";
+$result2=$conn->query($sql2);
 $rows2=$result2->fetch_all(MYSQLI_ASSOC);
 
 //var_dump($rows2);
@@ -162,7 +162,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                       <div class="row">
                           <div class="col-4">
                               <div class="logo">
-                                <img class="object-cover" src="logo/<?=$row["img"];?>"  alt="">
+                                <img class="object-cover" src="image/<?=$row["img"];?>"  alt="">
                               </div>
                           </div>
                           <div class="col-6 d-flex align-items-center">
@@ -170,7 +170,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                                 <tr>
                                     <th>商家編號</th>
                                     <td><?=$row["shop_id"];?></td>
-                                </tr>   
+                                </tr>
                                 <tr>
                                     <th>商家名稱</th>
                                     <td><?=$row["shop_name"];?></td>
