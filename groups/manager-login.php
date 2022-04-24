@@ -24,20 +24,19 @@
     <div class="row justify-content-center m-5">
       <div class="col-lg-4 border rounded border-warning ">
         <h1 class="text-center m-3">後台管理</h1>
-
+        <!-- form -->
+        <form action="doMangerLogin.php" method="post">
         <div class="row-3 d-flex justify-content-around m-3">
-          <div>
-            <input type="radio" id="shopLogin" name="shopLogin" value="shopLogin" checked>
-            <label for="shopLogin">店家登入</label>
-          </div>
+        <input type="radio" id="shopLogin"
+       name="contact" value="shopLogin">
+      <label for="shopLogin">店家登入</label>
 
-          <div>
-            <input type="radio" id="managerLogin" name="managerLogin" value="managerLogin">
-            <label for="managerLogin">管理者登入</label>
-          </div>
+      <input type="radio" id="managerLogin"
+       name="contact" value="managerLogin">
+      <label for="managerLogin">管理者登入</label>
 
         </div>
-        <form action="doSignUp.php" method="post">
+
           <div class="form-group m-3">
             <label for="">帳號：</label>
             <input type="text" id="" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" name="account">
@@ -59,7 +58,7 @@
             </small>
           </div>
           <button class="btn btn-warning  mb-3" type="submit">登入 ➠</button>
-        </form>
+          </form>
       </div>
     </div>
   </div>
