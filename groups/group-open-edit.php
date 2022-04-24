@@ -19,7 +19,7 @@ $row = $result->fetch_assoc();
 <html lang="en">
 
 <head>
-  <title>Title</title>
+  <title>團單編輯</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
