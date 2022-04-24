@@ -29,7 +29,9 @@ $row = $result->fetch_assoc();
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../template/style.css">
   <link rel="stylesheet" href="../template/sidebars.css">
-  <link rel="stylesheet" href="../template/sidebars.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     .btn-check:focus+.btn,
     .btn:focus {
@@ -203,6 +205,7 @@ $row = $result->fetch_assoc();
 
         }
     </script>
+    <script src="../template/sidebars.js"></script>
 </body>
 
 </html>

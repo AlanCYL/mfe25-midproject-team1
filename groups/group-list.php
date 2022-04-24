@@ -104,8 +104,9 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="../template/style.css">
   <link rel="stylesheet" href="../template/sidebars.css">
-  <link rel="stylesheet" href="../template/sidebars.js">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     .btn-check:focus+.btn,
     .btn:focus {
@@ -169,7 +170,9 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
         </li>
       </ul>
     </nav>
-
+    <div>
+        <i class="btn btn-light btn-cute fa-solid fa-arrows-left-right border-start-none" id="toggle"></i>
+        </div>
       <!-- Page Content  -->
 
       <div id="content">
@@ -287,6 +290,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
+    <script src="../template/sidebars.js"></script>
 
 </body>
 
