@@ -248,6 +248,47 @@ $user_count = $resultNew->num_rows;
                                 </table>
                             </div>
                         </div>
+                        <div class="col-lg-8 mx-auto py-2 d-flex justify-content-center">
+                            <nav aria-label="Page navigation example  ">
+                                <ul class="pagination">
+                                    <?php if (!isset($_GET["id"])) : ?>
+                                        <?php if ($p > 1) : ?>
+                                            <li class="page-item ">
+                                                <a class="page-link" href="user-list-coupon.php?p=<?= $p - 1 ?>" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                        <?php endif ?>
+                                        <li class="page-item"><a class="page-link" href="user-list-coupon.php?p=<?= $p ?> "><?= $p ?></a></li>
+                                        <?php if ($page_count > $p) : ?>
+                                            <li class="page-item">
+                                                <a class="page-link" href="user-list-coupon.php?p=<?= $p + 1 ?>" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        <?php endif ?>
+                                    <?php else : ?>
+                                        <?php if ($p > 1) : ?>
+                                            <li class="page-item ">
+                                                <a class="page-link" href="user-list-coupon.php?p=<?= $p - 1 ?>&id=<?= $_GET["id"] ?>" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                        <?php endif ?>
+                                        <?php if ($p != 1 ) : ?>
+                                            <li class="page-item "><a class="page-link" href="user-list-coupon.php?p=<?= $p ?>&id=<?= $_GET["id"] ?> "><?= $p ?></a></li>
+                                        <?php endif ?>
+                                        <?php if ($page_count > $p) : ?>
+                                            <li class="page-item">
+                                                <a class="page-link" href="user-list-coupon.php?p=<?= $p + 1 ?>&id=<?= $_GET["id"] ?>" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        <?php endif ?>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
+                        </div>
                         <div class="row py-2">
                             <div class="col-auto mx-auto py-3">
                                 <div class="row">
@@ -264,47 +305,6 @@ $user_count = $resultNew->num_rows;
                             </div>
                         </div>
                     </form>
-                    <div class="col-lg-8 mx-auto py-2 d-flex justify-content-center">
-                        <nav aria-label="Page navigation example  ">
-                            <ul class="pagination">
-                                <?php if (!isset($_GET["id"])) : ?>
-                                    <?php if ($p > 1) : ?>
-                                        <li class="page-item ">
-                                            <a class="page-link" href="user-list-coupon.php?p=<?= $p - 1 ?>" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                    <li class="page-item"><a class="page-link" href="user-list-coupon.php?p=<?= $p ?> "><?= $p ?></a></li>
-                                    <?php if ($page_count > $p) : ?>
-                                        <li class="page-item">
-                                            <a class="page-link" href="user-list-coupon.php?p=<?= $p + 1 ?>" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                <?php else : ?>
-                                    <?php if ($p > 1) : ?>
-                                        <li class="page-item ">
-                                            <a class="page-link" href="user-list-coupon.php?p=<?= $p - 1 ?>&id=<?= $_GET["id"] ?>" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                    <?php if ($page_count != 1) : ?>
-                                        <li class="page-item "><a class="page-link" href="user-list-coupon.php?p=<?= $p ?>&id=<?= $_GET["id"] ?> "><?= $p ?></a></li>
-                                    <?php endif ?>
-                                    <?php if ($page_count > $p) : ?>
-                                        <li class="page-item">
-                                            <a class="page-link" href="user-list-coupon.php?p=<?= $p + 1 ?>&id=<?= $_GET["id"] ?>" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    <?php endif ?>
-                                <?php endif; ?>
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div>
         </div>
