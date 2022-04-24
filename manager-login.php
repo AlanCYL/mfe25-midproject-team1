@@ -59,6 +59,7 @@
           </div>
           <button class="btn btn-warning  mb-3" type="submit">登入 ➠</button>
           </form>
+          <a class="btn btn-warning  mb-3" href="./shops/shop_create.php">店家註冊 ➠</a>
       </div>
     </div>
   </div>
