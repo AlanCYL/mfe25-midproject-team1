@@ -64,19 +64,7 @@
                     <div class="collapse" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="#" class="link-dark rounded">店家清單</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                        開團管理
-                    </button>
-                    <div class="collapse" id="dashboard-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="#" class="link-dark rounded">開團清單</a></li>
-                            <li><a href="#" class="link-dark rounded">上架開團</a></li>
-                            <li><a href="#" class="link-dark rounded">菜式清單</a></li>
-                            <li><a href="#" class="link-dark rounded">上架菜式</a></li>
                         </ul>
                     </div>
                 </li>
