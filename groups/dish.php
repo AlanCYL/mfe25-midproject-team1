@@ -71,7 +71,9 @@ $shop_id=$_GET["dish"];
         </li>
       </ul>
     </nav>
-
+    <div>
+        <i class="btn btn-light btn-cute fa-solid fa-arrows-left-right border-start-none" id="toggle"></i>
+        </div>
         <!-- Page Content  -->
 
         <div id="content">
