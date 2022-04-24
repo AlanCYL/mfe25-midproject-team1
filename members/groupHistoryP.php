@@ -1,35 +1,5 @@
-<?php
-require_once("../db-connect.php");
+<?php require_once("../db-connect.php") ?>
 
-
-$id = $_GET["id"];
-
-$sql = "SELECT user.*, level_name.name AS levelName FROM user 
-JOIN level_name ON user.user_level = level_name.id WHERE user_id='$id' AND valid=1 ";
-
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-
-// if (!$row) {
-//     header("location: 404.php");
-// }
-
-$g_id = $_GET["g_id"];
-
-$sqlGroup = "SELECT groups.*, user_and_groups.*, shop.shop_name AS shopName, user_and_groups.compliment AS comment FROM groups 
-JOIN user_and_groups ON groups.groups_id = user_and_groups.groups_id 
-JOIN shop ON groups.shop_id = shop.shop_id
-WHERE groups.groups_id = '$g_id' ";
-
-$resultGroup = $conn->query($sqlGroup);
-$rowGroup = $resultGroup->fetch_assoc();
-
-
-if (!$rowGroup) {
-    header("location: 404.php");
-}
-
-?>
 <!doctype html>
 <html lang="en">
 
@@ -56,18 +26,35 @@ if (!$rowGroup) {
             border: 1px solid #ddd;
             background-color: #f8f9fa;
         }
+
+        .btn-check:active+.btn-info,
+        .btn-check:checked+.btn-info,
+        .btn-info.active,
+        .btn-info:active,
+        .show>.btn-info.dropdown-toggle {
+            color: white;
+            background-color: gray;
+            border-color: gray;
+        }
+
+        .page-item.active .page-link,
+        .btn-info {
+            z-index: 3;
+            color: #fff;
+            background-color: #51A8DD;
+            border-color: #51A8DD;
+        }
     </style>
-
-
 
 </head>
 
 <body>
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-                <h4>後台管理</h4>
+                <h4>後台管理系統</h4>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
@@ -76,32 +63,19 @@ if (!$rowGroup) {
                     </button>
                     <div class="collapse" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">店家資訊</a></li>
                             <li><a href="#" class="link-dark rounded">店家清單</a></li>
                             <li><a href="#" class="link-dark rounded">開團清單</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
-                        會員管理
-                    </button>
-                    <div class="collapse show" id="dashboard-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="user-list.php" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="#" class="link-dark rounded">優惠制度</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                        客服管理
+                        會員管理
                     </button>
                     <div class="collapse" id="orders-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
-                            <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
-
+                            <li><a href="user-list.php" class="link-dark rounded">會員清單</a></li>
+                            <li><a href="user-list-coupon.php" class="link-dark rounded">優惠券發送</a></li>
                         </ul>
                     </div>
                 </li>
@@ -112,114 +86,23 @@ if (!$rowGroup) {
         </div>
         <!-- Page Content  -->
         <div id="content">
-            <div class="d-flex justify-content-between mb-4">
+            <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
                 <!-- 可以放header -->
+                <br>
+                <h4>Admin</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+
             </div>
             <div>
-                <!-- content -->
-                <div class="container">
+                <!-- 可以放content -->
+                <?php require("_groupHistoryP.php") ?>
 
-                    <div class="row">
-                    <div class="py-2 justify-content-center ">
-                            <a href="javascript:history.go(-1)" class="btn text-Secondary  "><i class="fa-solid fa-arrow-rotate-left"></i></a>
 
-                        </div>
-                        <div class="py-2">
-                            <table class="table table-bordered text-nowrap">
-                                <nav aria-label="Page navigation example">
-                                </nav>
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>會員編號</th>
-                                        <th>會員姓名</th>
-                                        <th>身分證字號</th>
-                                        <th>會員等級</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-center">
-                                        <td><?= $row["user_id"] ?></td>
-                                        <td><?= $row["user_name"] ?></td>
-                                        <td><?= $row["identity_card"] ?></td>
-                                        <td><?= $row["levelName"] ?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <table class="table table-bordered nowrap">
-                            <tr>
-                                <th>參團編號</th>
-                                <td><?= $rowGroup["groups_id"] ?></td>
-                            </tr>
-                            <tr>
-                                <th>店家名稱</th>
-                                <td><?= $rowGroup["shopName"] ?></td>
-                            </tr>
-                            <tr>
-                                <th>用餐日期</th>
-                                <td><?=
-                                    $rowGroup["eating_date"];
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>截團日期</th>
-                                <td>
-                                    <?php
-                                    $date = $rowGroup["groups_end_time"];
-                                    $dateM = explode(" ", $date);
-                                    echo $dateM[0];
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>成團與否</th>
-                                <td>
-                                    <?php
-                                    if ($rowGroup["least_num"] <= $rowGroup["goal_num"]) {
-                                        echo "是";
-                                    } else {
-                                        echo "否";
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>成團最低人數</th>
-                                <td><?= $rowGroup["least_num"] ?></td>
-                            </tr>
-                            <tr>
-                                <th>目前參團人數</th>
-                                <td><?= $rowGroup["goal_num"] ?></td>
-                            </tr>
-                            <tr>
-                                <th>付款與否</th>
-                                <td>
-                                    <?php
-                                    if ($rowGroup["least_num"] <= $rowGroup["goal_num"]) {
-                                        echo "是";
-                                    } else {
-                                        echo "否";
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <?php if ($rowGroup["least_num"] <= $rowGroup["goal_num"]) : ?>
-                                <tr>
-                                    <th>用戶評論</th>
-                                    <td>
-                                        <?= $rowGroup["comment"] ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
-                        </table>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
+
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>Sample</title>
+    <title>後台管理系統(平台)</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -95,6 +95,7 @@
             <div>
                 <!-- 可以放content -->
                 <h2>歡迎使用後台管理系統（平台）</h2>
+                <?php //require("") ?>
 
 
 
