@@ -21,7 +21,7 @@ if($contact=='shopLogin'){
     if($result->num_rows>0){
         $conn->close();
         header("location: group-list.php?shop=".$row["user_id"]);
-    }else{
+    } else {
         echo "尚未註冊";
     }
 }
