@@ -8,6 +8,12 @@ if(!isset($_GET["p"])){
   $p=$_GET["p"];
 }
 
+if(!isset($_GET["type"])){
+  $type=0;
+}else{
+  $type=$_GET["type"];
+}
+
 
 
 $sql ="SELECT groups.*FROM groups";
@@ -20,14 +26,39 @@ $page_count=CEIL($total/$per_page); // 頁數
 $start=($p-1)*$per_page; //起始
 
 
-  $sql="SELECT groups.*, shop.shop_name
-  FROM groups
-  JOIN shop on shop.shop_id=groups.shop_id
-  LIMIT $start,$per_page
-  ";
+  // $sql="SELECT groups.*, shop.shop_name
+  // FROM groups
+  // JOIN shop on shop.shop_id=groups.shop_id
+  // LIMIT $start,$per_page
+  // ";
 
-
-
+switch($type){
+  case "0":
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM groups
+    JOIN shop on shop.shop_id=groups.shop_id
+    LIMIT $start,$per_page
+    ";
+      break;
+  //type1 開團
+  case "1":
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM groups
+    JOIN shop on shop.shop_id=groups.shop_id
+    WHERE now() > groups_start_time and  now() < groups_end_time
+    LIMIT $start,$per_page
+    ";
+      break;
+  case "2":
+      //type2 未開
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM groups
+    JOIN shop on shop.shop_id=groups.shop_id
+    WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
+    LIMIT $start,$per_page
+    ";
+      break;
+}
 
 
 $result = $conn->query($sql);
@@ -196,7 +227,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
                     >
                   </div>
                   <div class="col-auto">
-                  <button type="submit" class="btn btn-info">查詢</button>                      
+                    <button type="submit" class="btn btn-info">查詢</button>                      
                   </div>
                   </div>
                 </div>
@@ -206,13 +237,13 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
         <div class="d-flex justify-content-end ">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-            <a class="nav-link " href="shop_groups_list.php">全部開團</a>
+            <a class="nav-link <?php if($type==0) echo"active"?>" href="shop_groups_list.php?p=<?=$p?>&type=0">全部開團</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">開團中</a>
+              <a class="nav-link <?php if($type==1) echo"active"?>" href="shop_groups_list.php?p=<?=$p?>&type=1">開團中</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">未成團</a>
+              <a class="nav-link <?php if($type==2) echo"active"?>" href="shop_groups_list.php?p=<?=$p?>&type=2">未成團</a>
             </li>
             
           </ul>
@@ -250,7 +281,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
                         }
                     ?>
                 </td>
-                <td><a href="" class="btn btn-info text-white">檢視</a></td>
+                <td><a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info text-white">檢視</a></td>
               </tr>
               <?php endforeach; ?>
               <?php else:?>
@@ -271,10 +302,13 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
           </div>
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-            <?php for($i=1; $i<=$page_count;$i++):?>
-                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_groups_list.php?p=<?=$i?>"><?=$i?></a></li>
+            <?php if(!isset($_GET["type1"])): ?>
+              <?php for($i=1; $i<=$page_count;$i++):?>
+                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_list_group.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
-
+            <?php else:?>
+              <li class="page-item"> </a></li>
+            <?php endif;?>
             </ul>
           </nav>
           
