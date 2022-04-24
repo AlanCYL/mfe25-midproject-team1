@@ -66,7 +66,7 @@ $user_count = $resultNew->num_rows;
                     <div class="col-auto mx-1 py-2 position-relative text-start ">
                         <form class=" d-inline-block position-relative" action="">
                             <div class="input-group input-group-sm">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="搜尋相關會員" name="id">
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="搜尋會員相關資訊" name="id">
                                 <button class="position-absolute  end-0 translate-middle-x btn text-info p-0 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </form>

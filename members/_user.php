@@ -3,7 +3,7 @@
         <div class="py-2 justify-content-center ">
             <a href="user-list.php" class="btn text-Secondary  "><i class="fa-solid fa-arrow-rotate-left"></i></a>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <h3 class="text-nowrap"><?= $row["user_name"] ?>的會員資料</h3>
             <table class="table table-bordered nowrap">
                 <tr>
