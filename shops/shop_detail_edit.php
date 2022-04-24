@@ -131,14 +131,12 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
         <div>
         <i class="btn btn-light btn-cute fa-solid fa-arrows-left-right border-start-none" id="toggle"></i>
         </div>
-        <!-- Page Content  -->
-        <div id="content">
-            <div class="d-flex justify-content-between mb-4">
-
+       <!-- Page Content  -->
+       <div id="content">
+            <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
                 <!-- 可以放header -->
-
-
-
+                <br>
+                <h4>Admin</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
             </div>
             <div>
