@@ -24,7 +24,7 @@ if(!isset($_GET["p"])){
         $order="id ASC";
   }
 
-$shopID=1;
+$shopID=$_GET["login"];
 $type= (isset($_GET['type']) && !empty($_GET['type']))?$_GET["type"]:"all";
 if($type=='all') {
     $sql="SELECT * FROM groups JOIN shop ON groups.shop_id=shop.shop_id WHERE shop.shop_id='$shopID'";
@@ -148,7 +148,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
           </button>
           <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="group-list.php" class="link-dark rounded">開團清單</a></li>
+              <li><a href="group-list.php?login=<?=$shopID?>" class="link-dark rounded">開團清單</a></li>
               <li><a href="group-open.php?open=<?=$shopID?>" class="link-dark rounded">上架開團</a></li>
               <li><a href="dish-list.php?shop=<?=$shopID?>" class="link-dark rounded">菜式清單</a></li>
               <li><a href="dish.php?dish=<?=$shopID?>" class="link-dark rounded">上架菜式</a></li>
@@ -195,8 +195,8 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
               </div>
 
               <date_interval_create_from_date_string>
-              <a class="btn btn-outline-info " href="group-list.php?p=<?=$p?>&types=1"><img src="./bootstrap-icons-1.8.1/sort-down-alt.svg" alt=""></a>
-        <a class="btn btn-outline-info" href="group-list.php?p=<?=$p?>&types=2"><img src="./bootstrap-icons-1.8.1/sort-up.svg" alt=""></a>
+              <a class="btn btn-outline-info " href="group-list.php?login=<?=$shopID?>&p=<?=$p?>&types=1"><img src="./bootstrap-icons-1.8.1/sort-down-alt.svg" alt=""></a>
+        <a class="btn btn-outline-info" href="group-list.php?login=<?=$shopID?>&p=<?=$p?>&types=2"><img src="./bootstrap-icons-1.8.1/sort-up.svg" alt=""></a>
 
 
               </ㄎ>
@@ -206,22 +206,22 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
         <div class="d-flex justify-content-between ">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link <?php if($type=='all') echo "active"?>" aria-current="page" href="group-list.php?type=all">全部開團</a>
+              <a class="nav-link <?php if($type=='all') echo "active"?>" aria-current="page" href="group-list.php?login=<?=$shopID?>&type=all">全部開團</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type=='start') echo "active"?>" href="group-list.php?type=start">開團中</a>
+              <a class="nav-link <?php if($type=='start') echo "active"?>" href="group-list.php?login=<?=$shopID?>&type=start">開團中</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type=='ungroup') echo "active"?>" href="group-list.php?type=ungroup">未成團</a>
+              <a class="nav-link <?php if($type=='ungroup') echo "active"?>" href="group-list.php?login=<?=$shopID?>&type=ungroup">未成團</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type=='group') echo "active"?>"href="group-list.php?type=group">已成團</a>
+              <a class="nav-link <?php if($type=='group') echo "active"?>"href="group-list.php?login=<?=$shopID?>&type=group">已成團</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type=='history') echo "active"?>" href="group-list.php?type=history">歷史訂單</a>
+              <a class="nav-link <?php if($type=='history') echo "active"?>" href="group-list.php?login=<?=$shopID?>&type=history">歷史訂單</a>
             </li>
           </ul>
-          <a class="btn  btn-outline-secondary" href="group-open.php?open=<?=$shopID?>">上架開團</a>
+          <a class="btn  btn-outline-secondary" href="group-open.php?login=<?=$shopID?>&open=<?=$shopID?>">上架開團</a>
         </div>
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <table class="table table-hover border border-1">
@@ -248,8 +248,8 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <td><?=$row["eating_date"]?> &nbsp; <?=$row["eating_time"]?></td>
                 <td><?=$row["least_num"]?></td>
                 <td><?=$row["price"]?></td>
-                <td><a href="group-open-list.php?list=<?=$row["groups_id"]?>" class="btn-link"> 檢視</a></td>
-                <td><a href="doDelete.php?list=<?=$row["groups_id"]?>" class="btn-link"> 刪除</a></td>
+                <td><a href="group-open-list.php?login=<?=$shopID?>&list=<?=$row["groups_id"]?>" class="btn-link"> 檢視</a></td>
+                <td><a href="doDelete.php?login=<?=$shopID?>&list=<?=$row["groups_id"]?>" class="btn-link"> 刪除</a></td>
 
             </tr>
 
