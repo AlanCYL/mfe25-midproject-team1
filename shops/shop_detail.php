@@ -109,9 +109,8 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                     </button>
                     <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">店家資訊</a></li>
-                            <li><a href="#" class="link-dark rounded">店家清單</a></li>
-                            <li><a href="#" class="link-dark rounded">開團清單</a></li>
+                            <li><a href="shop_list.php" class="link-dark rounded">店家清單</a></li>
+                            <li><a href="shop_groups_list.php" class="link-dark rounded">開團清單</a></li>
                         </ul>
                     </div>
                 </li>

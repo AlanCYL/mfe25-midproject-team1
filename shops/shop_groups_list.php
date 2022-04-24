@@ -281,7 +281,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
                         }
                     ?>
                 </td>
-                <td><a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info text-white">檢視</a></td>
+                <td><a href="" class="btn btn-info text-white">檢視</a></td>
               </tr>
               <?php endforeach; ?>
               <?php else:?>
