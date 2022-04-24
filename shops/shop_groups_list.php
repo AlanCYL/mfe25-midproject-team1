@@ -277,7 +277,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
        <!-- pagination -->
        <div>
         <div class="py-2 text-center">
-        <?php if(!isset($_GET["date1"])): ?>
+        <?php if($type==0): ?>
             第<?=$p?>頁, 共<?=$page_count?>頁, 共<?=$total?>筆
           <?php else:?>
             第1頁, 共1頁
@@ -286,9 +286,9 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
           </div>
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-            <?php if(!isset($_GET["type1"])): ?>
+            <?php if($type==0): ?>
               <?php for($i=1; $i<=$page_count;$i++):?>
-                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_list_group.php?p=<?=$i?>"><?=$i?></a></li>
+                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_groups_list.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
             <?php else:?>
               <li class="page-item"> </a></li>
