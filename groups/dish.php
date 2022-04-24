@@ -1,5 +1,5 @@
 <?php
-$shopID=1;
+$shopID=$_GET["login"];
 $shop_id=$_GET["dish"];
 
 ?>
@@ -143,7 +143,7 @@ $shop_id=$_GET["dish"];
             })
             .done(function( response ) {
                 alert(response.message);
-                window.location.href = "dish-list.php?shop=<?=$shopID?>";
+                window.location.href = "dish-list.php?login=<?=$shop_id?>&shop=<?=$shop_id?>";
             }).fail(function( jqXHR, textStatus ) {
                 console.log( "Request failed: " + textStatus );
             });

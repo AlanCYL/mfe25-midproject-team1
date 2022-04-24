@@ -31,6 +31,7 @@ $sql="INSERT INTO groups (groups_start_time, groups_end_time, eating_date, eatin
 
 
 if ($conn->query($sql) === TRUE) {
+
     $data=[
         "status"=>"ok",
         "message"=> "新增資料完成"

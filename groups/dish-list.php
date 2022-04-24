@@ -1,6 +1,6 @@
 <?php
  require_once("../db-connect.php");
- $shopID=1;
+ $shopID=$_GET["login"];
 $shop_id=$_GET["shop"];
 
  $sql="SELECT * FROM dish WHERE shop_id='$shop_id'";

@@ -108,7 +108,7 @@ $row = $result->fetch_assoc();
 
 
                 <div class="container w-50">
-                    <!-- form -->
+
 
                     <div class="mb-3">
                         <label for="groups_start_time" class="form-label">店家名稱</label>
@@ -176,7 +176,7 @@ $row = $result->fetch_assoc();
             })
             .done(function( response ) {
                 alert(response.message);
-                window.location.href = "group-list.php&login=".$shopID;
+                window.location.href = "group-list.php?login=<?=$shop_id?>";
             }).fail(function( jqXHR, textStatus ) {
                 console.log( "Request failed: " + textStatus );
             });
