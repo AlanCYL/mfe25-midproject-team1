@@ -138,7 +138,6 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                             <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
 
                         </ul>
-                    </div>
                 </li>
             </ul>
         </nav>
@@ -157,8 +156,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
             </div>
             <div>
                 <!-- 可以放content -->
-                 <a href="shop_list.php" class="btn btn-info text-white mb-4">返回店家清單</a>
-                 <a href="" class="btn btn-info text-white mb-4">店家開團紀錄</a>
+
                 <div class="container">
                       <div class="row">
                           <div class="col-4">
@@ -252,7 +250,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/mid-project/template/sidebars.js">
+        <script src="../template/sidebars.js"></script>
 </body>
 
 </html>
