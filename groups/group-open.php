@@ -176,7 +176,7 @@ $row = $result->fetch_assoc();
             })
             .done(function( response ) {
                 alert(response.message);
-                window.location.href = "group-list.php&login=<?=$shopID?>";
+                window.location.href = "group-list.php&login=".$shopID;
             }).fail(function( jqXHR, textStatus ) {
                 console.log( "Request failed: " + textStatus );
             });
