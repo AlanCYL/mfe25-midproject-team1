@@ -126,7 +126,7 @@ $shop_id=$_GET["shop"];
 
       </div>
       <div class="" style="margin-top:100px;margin-left: 800px;margin-bottom: 30px">
-        <a class="btn btn-secondary" style="width:100px;" href="dish.php?dish=<?=$shopID?>">返回上架</a>
+        <a class="btn btn-secondary" style="width:100px;" href="dish.php?login=<?=$shopID?>&dish=<?=$shopID?>">返回上架</a>
       </div>
 
 
