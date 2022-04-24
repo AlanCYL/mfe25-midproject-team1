@@ -94,6 +94,7 @@ $coupon_count = $resultCoupon->num_rows;
                     <th>優惠券原因</th>
                     <th>價值(TWD)</th>
                     <th>是否有效</th>
+                    <th>發放日期</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,9 +103,10 @@ $coupon_count = $resultCoupon->num_rows;
                         <td><?= $rowCoupon["coupon_id"] ?></td>
                         <td><?= $rowCoupon["reason"] ?></td>
                         <td><?= $rowCoupon["price"] ?></td>
-                        <td><?php if ($rowCoupon["valid"] = 1) : echo "是";
-                            else : echo "否";
+                        <td><?php if ($rowCoupon["valid"] == 1) : echo "是";
+                            elseif ($rowCoupon["valid"] == 0): echo "否";
                             endif; ?></td>
+                        <td><?= $rowCoupon["create_time"] ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
