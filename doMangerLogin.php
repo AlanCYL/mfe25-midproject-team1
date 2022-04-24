@@ -10,17 +10,17 @@ if($contact=='shopLogin'){
     $row=$result->fetch_assoc();
     if($result->num_rows>0){
         $conn->close();
-        header("location: group-list.php?login=".$row["shop_id"]);
+        header("location: groups/group-list.php?login=".$row["shop_id"]);
     }else{
         echo "尚未註冊";
     }
 }else{
-    $sql="SELECT * FROM user WHERE user_account='$account' AND is_manager=1";
+    $sql="SELECT * FROM manager WHERE manager_account='$account'";
     $result=$conn->query($sql);
     $row=$result->fetch_assoc();
     if($result->num_rows>0){
         $conn->close();
-        header("location: group-list.php?login=".$row["user_id"]);
+        header("location: shops/shop_list.php?manager=".$row["manager_id"]);
     } else {
         echo "尚未註冊";
     }
