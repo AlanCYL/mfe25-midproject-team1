@@ -26,7 +26,7 @@ $shop_id=$_GET["dish"];
 
     <div class="wrapper">
         <!-- Sidebar  -->
-    <nav id="sidebar">
+        <nav id="sidebar">
       <div class="sidebar-header text-center border border-bottom-1">
         <h4>後台管理</h4>
       </div>
@@ -38,8 +38,8 @@ $shop_id=$_GET["dish"];
           </button>
           <div class="collapse show" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-dark rounded">店家資訊</a></li>
-              <li><a href="#" class="link-dark rounded">店家清單</a></li>
+              <li><a href="shopList.php?login=<?=$shopID?>" class="link-dark rounded">店家資訊</a></li>
+
             </ul>
           </div>
         </li>
