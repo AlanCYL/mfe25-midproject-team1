@@ -142,27 +142,13 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
                     </div>
                 </li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#dashboard-collapse" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
                         會員管理
-                    </button>
-                    <div class="collapse" id="dashboard-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="#" class="link-dark rounded">優惠制度</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#orders-collapse" aria-expanded="false">
-                        客服管理
                     </button>
                     <div class="collapse" id="orders-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
-                            <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
-
+                            <li><a href="../members/user-list.php" class="link-dark rounded">會員清單</a></li>
+                            <li><a href="../members/user-list-coupon.php" class="link-dark rounded">優惠券發送</a></li>
                         </ul>
                     </div>
                 </li>
