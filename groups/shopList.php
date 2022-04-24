@@ -2,7 +2,7 @@
 // if(!isset($_GET["shop_id"])){
 //     header("location: 404.php");
 // }
-$shop_id=$_GET["shop_id"];
+$shopID=$_GET["login"];
 
 require_once("../db-connect.php");
 
@@ -10,7 +10,7 @@ $sql ="SELECT *
 FROM shop ,shop_type, shop_service
 WHERE shop.type_id = shop_type.type_id AND
 shop.service_id = shop_service.service_id AND
-shop.shop_id=$shop_id
+shop.shop_id=$shopID
 ";
 
 $result = $conn->query($sql);
@@ -109,23 +109,24 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                     </button>
                     <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="shop_list.php" class="link-dark rounded">店家清單</a></li>
-                            <li><a href="shop_groups_list.php" class="link-dark rounded">開團清單</a></li>
+                            <li><a href="shopList.php?login=<?=$shopID?>" class="link-dark rounded">店家清單</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#dashboard-collapse" aria-expanded="false">
-                        會員管理
-                    </button>
-                    <div class="collapse" id="dashboard-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="#" class="link-dark rounded">優惠制度</a></li>
-                        </ul>
-                    </div>
-                </li>
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#dashboard-collapse" aria-expanded="false">
+            開團管理
+          </button>
+          <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="group-list.php?login=<?=$shopID?>" class="link-dark rounded">開團清單</a></li>
+              <li><a href="group-open.php?login=<?=$shopID?>&open=<?=$shopID?>" class="link-dark rounded">上架開團</a></li>
+              <li><a href="dish-list.php?login=<?=$shopID?>&shop=<?=$shopID?>" class="link-dark rounded">菜式清單</a></li>
+              <li><a href="dish.php?login=<?=$shopID?>&dish=<?=$shopID?>" class="link-dark rounded">上架菜式</a></li>
+            </ul>
+          </div>
+        </li>
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                         data-bs-target="#orders-collapse" aria-expanded="false">
