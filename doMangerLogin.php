@@ -20,7 +20,7 @@ if($contact=='shopLogin'){
     $row=$result->fetch_assoc();
     if($result->num_rows>0){
         $conn->close();
-        header("location: shops/shop_list.php?login=".$row["manager_id"]);
+        header("location: shops/shop_list.php?manager=".$row["manager_id"]);
     } else {
         echo "尚未註冊";
     }
