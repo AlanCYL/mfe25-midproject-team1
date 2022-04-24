@@ -1,6 +1,6 @@
 <?php
 require_once("../db-connect.php");
-$shopID=1;
+$shopID=$_GET["login"];
 $shop_id=$_GET["open"];
 
 
@@ -176,7 +176,7 @@ $row = $result->fetch_assoc();
             })
             .done(function( response ) {
                 alert(response.message);
-                window.location.href = "group-list.php";
+                window.location.href = "group-list.php&login=<?=$shopID?>";
             }).fail(function( jqXHR, textStatus ) {
                 console.log( "Request failed: " + textStatus );
             });

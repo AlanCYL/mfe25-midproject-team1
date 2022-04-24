@@ -5,6 +5,7 @@ require_once("../db-connect.php");
 //     echo "您不是透過正常管道到此頁";
 //     exit;
 // }
+$shopID=$_GET["login"];
 $groups_start_time=$_POST["groups_start_time"];
 $groups_end_time=$_POST["groups_end_time"];
 $eating_time=$_POST["eating_time"];

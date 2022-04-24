@@ -5,6 +5,7 @@ require_once("../db-connect.php");
 //   echo "沒有連線";
 
 // }
+$shopID=$_GET["login"];
 $groups_id=$_GET["edit"];
 
 
@@ -149,7 +150,7 @@ $row = $result->fetch_assoc();
 
                 <div class="py-2 text-end">
                   <button type="submit" class="btn btn-info text-white" >儲存</button>
-                  <a class="btn btn-info text-white" href="group-open-list.php?list=<?=$row["groups_id"]?>">取消</a>
+                  <a class="btn btn-info text-white" href="group-open-list.php?login=<?=$shopID?>&list=<?=$row["groups_id"]?>">取消</a>
 
               </div>
             </div>

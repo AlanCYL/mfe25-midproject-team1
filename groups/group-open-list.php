@@ -5,6 +5,7 @@ require_once("../db-connect.php");
 //   echo "沒有連線";
 
 // }
+$shopID=$_GET["login"];
 $groups_id=$_GET["list"];
 
 
@@ -147,8 +148,8 @@ $row = $result->fetch_assoc();
                 </table>
 
                 <div class="py-2 text-end">
-                  <a class="btn btn-info text-white" href="group-open-edit.php?edit=<?=$row["groups_id"]?>">編輯</a>
-                  <a class="btn btn-info text-white" href="group-list.php?list=<?=$row["groups_id"]?>">返回</a>
+                  <a class="btn btn-info text-white" href="group-open-edit.php?login=<?=$shopID?>&edit=<?=$row["groups_id"]?>">編輯</a>
+                  <a class="btn btn-info text-white" href="group-list.php?login=<?=$shopID?>">返回</a>
                 </div>
 
               </div>

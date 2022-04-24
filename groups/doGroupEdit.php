@@ -5,6 +5,7 @@ require_once("../db-connect.php");
 //     echo "您不是透過正常管道到此頁";
 //     exit;
 // }
+$shopID=$_GET["login"];
 $groups_id=$_POST["groups_id"];
 $groups_start_time=$_POST["groups_start_time"];
 $groups_end_time=$_POST["groups_end_time"];
@@ -28,7 +29,7 @@ $sql="UPDATE groups SET groups_start_time='$groups_start_time', groups_end_time=
 if ($conn->query($sql) === TRUE) {
     echo "更新成功";
     $conn->close();
-    $url = "group-open-list.php?list=".$groups_id;
+    $url = "group-open-list.php?login=".$shopID."&list=".$groups_id;
     header("location: ".$url);
 } else {
     echo "更新資料錯誤: " . $conn->error;
