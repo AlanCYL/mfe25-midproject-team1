@@ -99,49 +99,50 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
-            <div class="sidebar-header text-center border border-bottom-1">
-                <h4>後台管理</h4>
-            </div>
-            <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#home-collapse" aria-expanded="true">
-                        商家管理
-                    </button>
-                    <div class="collapse show" id="home-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="shop_list.php" class="link-dark rounded">店家清單</a></li>
-                            <li><a href="shop_groups_list.php" class="link-dark rounded">開團清單</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#dashboard-collapse" aria-expanded="false">
-                        會員管理
-                    </button>
-                    <div class="collapse" id="dashboard-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="#" class="link-dark rounded">優惠制度</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#orders-collapse" aria-expanded="false">
-                        客服管理
-                    </button>
-                    <div class="collapse" id="orders-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
-                            <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
+      <div class="sidebar-header text-center border border-bottom-1">
+        <h4>後台管理</h4>
+      </div>
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#home-collapse" aria-expanded="true">
+            商家管理
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="shopList.php?login=<?=$shopID?>" class="link-dark rounded">店家資訊</a></li>
 
-                        </ul>
-                    </div>
-                </li>
             </ul>
-        </nav>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#dashboard-collapse" aria-expanded="false">
+            開團管理
+          </button>
+          <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="group-list.php?login=<?=$shopID?>" class="link-dark rounded">開團清單</a></li>
+              <li><a href="group-open.php?login=<?=$shopID?>&open=<?=$shopID?>" class="link-dark rounded">上架開團</a></li>
+              <li><a href="dish-list.php?login=<?=$shopID?>&shop=<?=$shopID?>" class="link-dark rounded">菜式清單</a></li>
+              <li><a href="dish.php?login=<?=$shopID?>&dish=<?=$shopID?>" class="link-dark rounded">上架菜式</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#orders-collapse" aria-expanded="false">
+            客服管理
+          </button>
+          <div class="collapse" id="orders-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
+
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
         <div>
         <i class="btn btn-light btn-cute fa-solid fa-arrows-left-right border-start-none" id="toggle"></i>
         </div>
@@ -180,7 +181,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                                 </tr>
                                 <tr>
                                     <th>商家帳號</th>
-                                    <td><input type="text" name="shop_account" class="form-control" value="<?=$row["shop_account"];?>"></td>
+                                    <td><input type="email" name="shop_account" class="form-control" value="<?=$row["shop_account"];?>"></td>
                                 </tr>
                                 <tr>
                                     <th>商家電話</th>
