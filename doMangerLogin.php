@@ -10,7 +10,7 @@ if($contact=='shopLogin'){
     $row=$result->fetch_assoc();
     if($result->num_rows>0){
         $conn->close();
-        header("location: group-list.php?login=".$row["shop_id"]);
+        header("location: groups/group-list.php?login=".$row["shop_id"]);
     }else{
         echo "尚未註冊";
     }
@@ -20,7 +20,7 @@ if($contact=='shopLogin'){
     $row=$result->fetch_assoc();
     if($result->num_rows>0){
         $conn->close();
-        header("location: shop_list.php?login=".$row["manager_id"]);
+        header("location: shops/shop_list.php?login=".$row["manager_id"]);
     } else {
         echo "尚未註冊";
     }
