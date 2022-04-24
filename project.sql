@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2022 年 04 月 24 日 20:10
+-- 產生時間： 2022 年 04 月 24 日 20:17
 -- 伺服器版本： 5.7.34
 -- PHP 版本： 8.0.8
 
@@ -163,7 +163,10 @@ CREATE TABLE `manager` (
 
 INSERT INTO `manager` (`manager_id`, `manager_name`, `manager_account`, `manager_password`) VALUES
 (1, 'yj', '123', '123'),
-(2, 'alan', '345', '345');
+(2, 'alan', '345', '345'),
+(3, 'yirong', '456', '456'),
+(4, 'kai', '567', '567'),
+(5, 'how', '678', '678');
 
 -- --------------------------------------------------------
 
@@ -588,7 +591,7 @@ ALTER TABLE `level_name`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `manager_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `manager_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `project_users`
