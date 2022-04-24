@@ -149,9 +149,9 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
           <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><a href="group-list.php?login=<?=$shopID?>" class="link-dark rounded">開團清單</a></li>
-              <li><a href="group-open.php?open=<?=$shopID?>" class="link-dark rounded">上架開團</a></li>
-              <li><a href="dish-list.php?shop=<?=$shopID?>" class="link-dark rounded">菜式清單</a></li>
-              <li><a href="dish.php?dish=<?=$shopID?>" class="link-dark rounded">上架菜式</a></li>
+              <li><a href="group-open.php?login=<?=$shopID?>&open=<?=$shopID?>" class="link-dark rounded">上架開團</a></li>
+              <li><a href="dish-list.php?login=<?=$shopID?>&shop=<?=$shopID?>" class="link-dark rounded">菜式清單</a></li>
+              <li><a href="dish.php?login=<?=$shopID?>&dish=<?=$shopID?>" class="link-dark rounded">上架菜式</a></li>
             </ul>
           </div>
         </li>
@@ -269,12 +269,10 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
              <ul class="pagination">
                <!-- 動態產生頁碼數字 -->
                <?php for ($i=1;$i<=$page_count;$i++): ?>
-                  <li class="page-item <?php if($i==$p)echo "active"; ?>"><a class="page-link" href="group-list.php?p=<?=$i?>"><?=$i?></a></li>
+                  <li class="page-item <?php if($i==$p)echo "active"; ?>"><a class="page-link" href="group-list.php?login=<?=$shopID?>&p=<?=$i?>"><?=$i?></a></li>
                <?php endfor; ?>
 
-                <!-- <li class="page-item <?php if($p==1)echo "active"; ?>"><a class="page-link" href="user-list1.php?p=1">1</a></li>
-                <li class="page-item <?php if($p==2)echo "active"; ?>"><a class="page-link" href="user-list1.php?p=2">2</a></li>
-                <li class="page-item <?php if($p==3)echo "active"; ?>"><a class="page-link" href="user-list1.php?p=3">3</a></li> -->
+
               </ul>
             </nav>
             </div>

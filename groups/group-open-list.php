@@ -71,11 +71,11 @@ $row = $result->fetch_assoc();
             開團管理
           </button>
           <div class="collapse" id="dashboard-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="group-list.php" class="link-dark rounded">開團清單</a></li>
-              <li><a href="group-open.php" class="link-dark rounded">上架開團</a></li>
-              <li><a href="dish-list.php" class="link-dark rounded">菜式清單</a></li>
-              <li><a href="dish.php" class="link-dark rounded">上架菜式</a></li>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="group-list.php?login=<?=$shopID?>" class="link-dark rounded">開團清單</a></li>
+              <li><a href="group-open.php?login=<?=$shopID?>&open=<?=$shopID?>" class="link-dark rounded">上架開團</a></li>
+              <li><a href="dish-list.php?login=<?=$shopID?>&shop=<?=$shopID?>" class="link-dark rounded">菜式清單</a></li>
+              <li><a href="dish.php?login=<?=$shopID?>&dish=<?=$shopID?>" class="link-dark rounded">上架菜式</a></li>
             </ul>
           </div>
         </li>
