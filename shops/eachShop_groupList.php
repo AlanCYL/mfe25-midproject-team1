@@ -261,6 +261,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <th>截止時間</th>
                 <th>用餐時間</th>
                 <th>最少成團人數</th>
+                <th>目前人數</th>
                 <th>價格</th>
                 <!-- <th>是否成團</th> -->
                 <th>檢視</th>
@@ -276,6 +277,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <td><?=$row["groups_end_time"]?></td>
                 <td><?=$row["eating_date"]?> &nbsp; <?=$row["eating_time"]?></td>
                 <td><?=$row["least_num"]?></td>
+                <td><?=$row["goal_num"]?></td>
                 <td><?=$row["price"]?></td>
                 <td><a href="shop_groupsList_check.php?groups_id=<?=$row["groups_id"]?>" class="btn btn-info text-white"> 檢視</a></td>
               
