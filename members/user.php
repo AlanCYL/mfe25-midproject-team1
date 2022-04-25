@@ -193,7 +193,7 @@ $users_count = $resultGroup->num_rows;
         <div id="content">
             <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
                 <!-- 可以放header -->
-                <br>
+                <i class="fa-solid fa-user mx-2 py-1"></i>
                 <h4>Admin</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
             </div>
