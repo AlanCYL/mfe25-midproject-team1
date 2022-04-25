@@ -82,7 +82,7 @@ if(isset($_GET["date"])){
 <html lang="en">
 
 <head>
-    <title>店家清單</title>
+    <title>店家清單總覽</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -183,7 +183,7 @@ if(isset($_GET["date"])){
 
         <div class="d-flex justify-content-between mb-4">
           <div>
-            <h2 class="mb-4">所有店家清單</h2>
+            <h2 class="mb-4">店家清單總覽</h2>
            <!-- search -->
            <div class="input-group">
               <div class="form-outline">

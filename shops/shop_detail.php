@@ -34,7 +34,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
 <html lang="en">
 
 <head>
-    <title>店家明細</title>
+    <title><?=$row["shop_name"]?>店家明細</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -140,7 +140,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
             </div>
             <div>
                 <!-- 可以放content -->
-                 <a href="shop_list.php" class="btn btn-info text-white mb-4">返回店家清單</a>
+                 <a href="shop_list.php" class="btn btn-info text-white mb-4">返回店家清單總覽</a>
                  <a href="eachShop_groupList.php?shop_id=<?=$row["shop_id"];?>" class="btn btn-info text-white mb-4">店家開團紀錄</a>
                 <div class="container">
                       <div class="row">

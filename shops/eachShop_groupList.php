@@ -287,6 +287,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
             </tbody>
           </table>
         </div>
+        <a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info text-white mb-4">返回店家主頁</a>
 
 
 
