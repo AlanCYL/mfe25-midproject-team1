@@ -99,23 +99,23 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
-            <div class="sidebar-header text-center border border-bottom-1">
-                <h4>後台管理</h4>
-            </div>
-            <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#home-collapse" aria-expanded="true">
-                        商家管理
-                    </button>
-                    <div class="collapse show" id="home-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="shop_list.php" class="link-dark rounded">店家清單</a></li>
-                            <li><a href="shop_groups_list.php" class="link-dark rounded">開團清單</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
+      <div class="sidebar-header text-center border border-bottom-1">
+        <h4>後台管理</h4>
+      </div>
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#home-collapse" aria-expanded="true">
+            商家管理
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="shopList.php?login=<?=$shopID?>" class="link-dark rounded">店家資訊</a></li>
+
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
           <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
             data-bs-target="#dashboard-collapse" aria-expanded="false">
             開團管理
@@ -129,21 +129,20 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
             </ul>
           </div>
         </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#orders-collapse" aria-expanded="false">
-                        客服管理
-                    </button>
-                    <div class="collapse" id="orders-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
-                            <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#orders-collapse" aria-expanded="false">
+            客服管理
+          </button>
+          <div class="collapse" id="orders-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
 
-                        </ul>
-                    </div>
-                </li>
             </ul>
-        </nav>
+          </div>
+        </li>
+      </ul>
+    </nav>
         <div>
         <i class="btn btn-light btn-cute fa-solid fa-arrows-left-right border-start-none" id="toggle"></i>
         </div>
