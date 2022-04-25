@@ -2,6 +2,8 @@
 
 unset($_SESSION['page']);
 unset($_SESSION['typePage']);
+unset($_SESSION['searchId']);
+
 
 if (!isset($_GET["p"])) {
     $p = 1;
@@ -54,6 +56,7 @@ if (!isset($_GET["id"]) || empty($_GET["id"])) {
 } else {
     //搜尋全部特定使用者byID
     $id = $_GET["id"];
+    $_SESSION["searchId"] = $id;
 
     $sqlNew = "SELECT user.*, level_name.name AS levelName FROM user 
     JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR user.identity_card LIKE '%$id%' OR level_name.name LIKE '%$id%') AND user.valid = 1 ";
