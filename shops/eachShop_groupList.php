@@ -69,7 +69,9 @@ if($type=='all') {
 }
 // 開團中
 else if($type=='start'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN shop ON groups.shop_id=shop.shop_id
+    $sql="SELECT groups.* , shop.shop_name
+FROM groups 
+JOIN shop ON groups.shop_id=shop.shop_id
     WHERE now() >= `groups_start_time` AND  now() <=`groups_end_time` AND groups.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 }
 // 已用餐，歷史訂單
@@ -275,7 +277,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <td><?=$row["eating_date"]?> &nbsp; <?=$row["eating_time"]?></td>
                 <td><?=$row["least_num"]?></td>
                 <td><?=$row["price"]?></td>
-                <td><a href="shop_groupsList_check.php?groups_id=<?=$row["groups_id"]?>" class="btn-link"> 檢視</a></td>
+                <td><a href="shop_groupsList_check.php?groups_id=<?=$row["groups_id"]?>" class="btn btn-info text-white"> 檢視</a></td>
               
 
             </tr>
