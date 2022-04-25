@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-04-25 12:11:58
+-- 產生時間： 2022-04-25 12:20:32
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.4
 
@@ -311,14 +311,14 @@ INSERT INTO `qa_reply` (`id`, `QA_content_id`, `QA_reply`, `QA_reply_time`) VALU
 --
 -- 資料表結構 `shop`
 --
--- 建立時間： 2022-04-22 10:22:17
+-- 建立時間： 2022-04-25 04:16:52
 --
 
 DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
   `shop_id` int(3) NOT NULL,
   `shop_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shop_email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shop_account` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_phone` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -334,7 +334,7 @@ CREATE TABLE `shop` (
 -- 傾印資料表的資料 `shop`
 --
 
-INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_email`, `shop_password`, `shop_phone`, `shop_address`, `shop_description`, `img`, `type_id`, `service_id`, `shop_create_time`, `valid`) VALUES
+INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_account`, `shop_password`, `shop_phone`, `shop_address`, `shop_description`, `img`, `type_id`, `service_id`, `shop_create_time`, `valid`) VALUES
 (1, '村民食堂', 'villager@test.com', '111', '03-339-868', '桃園市桃園區中正路1078號', '無距離享受與自然和諧共處，讓每個人在繁忙之餘，也能擁有輕鬆的步調，與家人朋友相聚用餐，共享歡樂！', 'Villager.jpg', '2', '1', '2022-04-22', 1),
 (2, 'NINI 尼尼義大利餐廳', 'NINI@test.com', '222', '03-222-3272', '桃園市蘆竹區南崁路一段112號', 'NINI《NATURAL自然、INITIAL獨創、NEAT純淨、IMPRESSIVE感動》我們相信用好的食材與料理方式，就能對自我和環境產生正向的改變；透過好的用餐環境，讓顧客們和我們一樣愛上這樣的生活方式。', 'NINI.jpg', '3', '1', '2022-04-21', 0),
 (3, '梳子．Salud', 'Salud@test.com', '333', '02-2711-8832', '330桃園市桃園區新埔六街89', '由川門子團隊帶來，西班牙式的Tapas碰上川式料理蹦出！精緻美味小餐點！搭配無毒生菜、德國有機農莊，希望提供給您一個全新體驗的蔬食。自然的用餐環境，讓您留下美好的身影：）', 'Salud.jpg', '1', '1', '2022-04-23', 1),
@@ -431,7 +431,7 @@ INSERT INTO `test` (`id`, `name`) VALUES
 -- 資料表結構 `user`
 --
 -- 建立時間： 2022-04-25 01:55:18
--- 最後更新： 2022-04-25 04:11:12
+-- 最後更新： 2022-04-25 04:19:42
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -460,14 +460,14 @@ INSERT INTO `user` (`user_id`, `user_name`, `identity_card`, `user_password`, `n
 (4, '哆啦A夢', 'H154789356', '827ccb0eea8a706c4c34a16891f84e', '小叮噹', '0936157428', '1995-10-23', 'doraemon@doraemon.com', 2, '2022-04-19 13:43:32', 1),
 (5, '野原廣志', 'Y154769853', '827ccb0eea8a706c4c34a16891f84e', '臭腳丫把拔', '0914758963', '1986-12-25', 'hiroshi@shin-chan.com', 2, '2022-04-19 13:44:42', 1),
 (6, '源靜香', 'N221698743', '827ccb0eea8a706c4c34a16891f84e', '靜香', '0963258419', '1996-02-18', 'shizuka@doraemon.com', 3, '2022-04-19 13:47:04', 1),
-(7, '剛田武', 'L126957413', '827ccb0eea8a706c4c34a16891f84e', '胖虎', '0985136489', '1995-06-15', 'takeshi@doraemon.com', 3, '2022-04-19 13:49:06', 1),
+(7, '剛田武', 'L126957413', '827ccb0eea8a706c4c34a16891f84e', '胖虎', '0985136489', '1995-06-15', 'takeshi@doraemon.com', 2, '2022-04-19 13:49:06', 1),
 (8, 'MiuPig', 'H126357489', '827ccb0eea8a706c4c34a16891f84e', '11111', '097514645', '1954-12-31', 'miu@pig.com', 2, '2022-04-19 16:43:36', 0),
 (9, 'MiuPig', 'F125984653', '827ccb0eea8a706c4c34a16891f84e', '1111111', '097514855', '1985-05-27', 'miu@pig.com', 2, '2022-04-19 16:46:08', 0),
 (10, 'magggie', 'F125846951', '827ccb0eea8a706c4c34a16891f84e', 'maggie', '0974156388', '1998-06-14', 'miu@pig.com', 2, '2022-04-19 16:50:58', 0),
 (11, '12345', 'H147523698', '827ccb0eea8a706c4c34a16891f84e', '123', '091456789', '1995-08-08', 'akosakposkapo@gmail.com', 2, '2022-04-20 12:47:25', 0),
 (12, '12345', 'H124596315', '827ccb0eea8a706c4c34a16891f84e', '12345', '097513544', '1999-01-01', 'miu', 2, '2022-04-20 13:31:08', 0),
 (13, '陶1S', 'H224591756', '827ccb0eea8a706c4c34a16891f84e', '陶樂比', '0975148566', '1993-09-07', 'taolebe@dreamland.com', 1, '2022-04-21 17:36:12', 1),
-(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 2, '2022-04-21 17:56:36', 1);
+(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 1, '2022-04-21 17:56:36', 1);
 
 -- --------------------------------------------------------
 
