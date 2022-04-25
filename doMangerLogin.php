@@ -1,5 +1,5 @@
 <?php
-require_once("../db-connect.php");
+require_once("./db-connect.php");
 $contact=$_POST["contact"];
 $account=$_POST["account"];
 $password=$_POST["password"];

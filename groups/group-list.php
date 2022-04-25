@@ -177,10 +177,17 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
       <!-- Page Content  -->
 
       <div id="content">
-
+      <div class="d-flex justify-content-between mb-4 border-bottom border-secondary container-fluid ">
+                <div>
+                <h1>商家所有開團清單</h1>
+                </div>
+                <div class="d-flex" style="margin-top: 10px;">
+                <h4><?=$row["shop_name"]?></h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
+            </div>
         <div class="d-flex justify-content-between mb-4">
           <div>
-            <h2 class="mb-4">商家所有開團清單</h2>
+            <h2 class="mb-4"></h2>
             <!-- search -->
             <div class="input-group">
               <div class="form-outline">

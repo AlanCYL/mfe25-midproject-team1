@@ -79,8 +79,11 @@ $shop_id=$_GET["dish"];
 
         <div id="content">
 
-            <div class="mb-4 border-bottom border-dark">
-                <h1 class="">新增菜式 :</h1>
+        <div class="d-flex justify-content-between mb-4 border-bottom border-secondary container-fluid ">
+                <div>
+                <h1>上架開團 :</h1>
+                </div>
+                
             </div>
                 <div >
                 <div class="my-3 w-50 mx-auto">
