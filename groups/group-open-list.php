@@ -5,6 +5,7 @@ require_once("../db-connect.php");
 //   echo "沒有連線";
 
 // }
+$type=$_GET["type"];
 $shopID=$_GET["login"];
 $groups_id=$_GET["list"];
 $type=$_GET["type"];
@@ -113,9 +114,9 @@ $row = $result->fetch_assoc();
       <div id="content">
       <div class="d-flex justify-content-between mb-4 border-bottom border-secondary container-fluid ">
                 <div>
-                <h1>上架開團 :</h1>
+                <h1>開團詳情 :</h1>
                 </div>
-                
+
             </div>
 
 
@@ -194,11 +195,13 @@ $row = $result->fetch_assoc();
         </table>
         </div>
         </div>
+
         <?php endif; ?>
 
-
-
-
+        <div class="py-2 text-end">
+                  <a class="btn btn-info text-white" href="group-open-edit.php?login=<?=$shopID?>&type=<?=$type?>&edit=<?=$row["groups_id"]?>">編輯</a>
+                  <a class="btn btn-info text-white" href="group-list.php?login=<?=$shopID?>&type=<?=$type?>">返回</a>
+                </div>
 
 
       </div>

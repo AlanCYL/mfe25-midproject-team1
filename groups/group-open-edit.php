@@ -6,6 +6,7 @@ require_once("../db-connect.php");
 
 // }
 $shopID=$_GET["login"];
+$type=$_GET["type"];
 $groups_id=$_GET["edit"];
 
 
@@ -114,7 +115,7 @@ $row = $result->fetch_assoc();
           </div>
         </div>
 
-        <form action="doGroupEdit.php?login=<?=$shopID?>" method="post">
+        <form action="doGroupEdit.php?login=<?=$shopID?>&type=<?=$type?>" method="post">
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-9">
@@ -155,7 +156,7 @@ $row = $result->fetch_assoc();
 
                 <div class="py-2 text-end">
                   <button type="submit" class="btn btn-info text-white" >儲存</button>
-                  <a class="btn btn-info text-white" href="group-open-list.php?login=<?=$shopID?>&list=<?=$row["groups_id"]?>">取消</a>
+                  <a class="btn btn-info text-white" href="group-open-list.php?login=<?=$shopID?>&type=<?=$type?>&list=<?=$row["groups_id"]?>">取消</a>
 
               </div>
             </div>

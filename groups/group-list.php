@@ -182,7 +182,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <h1>商家所有開團清單</h1>
                 </div>
                 <div class="d-flex" style="margin-top: 10px;">
-                <h4><?=$row["shop_name"]?></h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+                <i class="fa-solid fa-circle-user mx-2 py-1"></i><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </div>
             </div>
         <div class="d-flex justify-content-between mb-4">
