@@ -100,7 +100,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
         <!-- Sidebar  -->
         <nav id="sidebar">
       <div class="sidebar-header text-center border border-bottom-1">
-        <h4>後台管理</h4>
+      <h4><a href="sample_shop.php?login=<?=$shopID?>">後台管理</a></h4>
       </div>
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
