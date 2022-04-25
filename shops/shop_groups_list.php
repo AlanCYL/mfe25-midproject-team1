@@ -1,7 +1,7 @@
 <?php
 require_once("../db-connect.php");
 
-//設定頁數 變數p
+// 設定頁數 變數p
 if(!isset($_GET["p"])){
   $p="1";
 }else{
@@ -9,61 +9,80 @@ if(!isset($_GET["p"])){
 }
 
 if(!isset($_GET["type"])){
-  $type=0;
+  $type=1;
 }else{
   $type=$_GET["type"];
 }
 
+if(!isset($_GET["type"])){
+  //如果沒有type篩選  就是=>全部開團
+  $sql ="SELECT groups.*, shop.shop_name
+  FROM shop
+  JOIN groups on groups.shop_id=shop.shop_id";
 
-
-$sql ="SELECT groups.*FROM groups";
-$result=$conn->query($sql); 
-$total=$result->num_rows; 
-
-
-$per_page=6;  //一頁幾筆
-$page_count=CEIL($total/$per_page); // 頁數
-$start=($p-1)*$per_page; //起始
-
-
-  // $sql="SELECT groups.*, shop.shop_name
-  // FROM groups
-  // JOIN shop on shop.shop_id=groups.shop_id
-  // LIMIT $start,$per_page
-  // ";
-
-switch($type){
-  case "0":
-    $sql ="SELECT groups.*, shop.shop_name
-    FROM groups
-    JOIN shop on shop.shop_id=groups.shop_id
-    LIMIT $start,$per_page
-    ";
-      break;
-  //type1 開團
-  case "1":
-    $sql ="SELECT groups.*, shop.shop_name
-    FROM groups
-    JOIN shop on shop.shop_id=groups.shop_id
-    WHERE now() > groups_start_time and  now() < groups_end_time
-    LIMIT $start,$per_page
-    ";
-      break;
-  case "2":
-      //type2 未開
-    $sql ="SELECT groups.*, shop.shop_name
-    FROM groups
-    JOIN shop on shop.shop_id=groups.shop_id
-    WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
-    LIMIT $start,$per_page
-    ";
-      break;
+}elseif($type=='start'){
+  //篩選-開團
+  $sql ="SELECT * 
+  FROM groups 
+  JOIN shop ON groups.shop_id=shop.shop_id
+  WHERE now() > groups_start_time and  now() < groups_end_time";
+}elseif($type=='ungroup'){
+  //篩選-未開團
+  $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  FROM groups 
+  JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  JOIN shop ON groups.shop_id=shop.shop_id
+  WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  FROM user_and_groups 
+  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date";
 }
+  
+
+//--------------------------------------------------
+//抓到整個groups資料庫的筆數
+$result=$conn->query($sql);
+$row=$result->fetch_assoc();
+
+$groups_count=$result->num_rows;
+
+$per_page=5;
+$page_count=CEIL($groups_count/$per_page);
+
+$start=($p-1)*$per_page;
+//---------------------------------------------------
+
+
+
+if(!isset($_GET["type"])){
+  //如果沒有type篩選  就是=>全部開團
+  $sql ="SELECT groups.*, shop.shop_name
+  FROM shop
+  JOIN groups on groups.shop_id=shop.shop_id
+  LIMIT $start, $per_page";
+
+}elseif($type=='start'){
+  //篩選-開團
+  $sql ="SELECT * 
+  FROM groups 
+  JOIN shop ON groups.shop_id=shop.shop_id
+  WHERE now() > groups_start_time and  now() < groups_end_time
+  LIMIT $start, $per_page";
+}elseif($type=='ungroup'){
+  //篩選-未開團
+  $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  FROM groups 
+  JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  JOIN shop ON groups.shop_id=shop.shop_id
+  WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  FROM user_and_groups 
+  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
+  LIMIT $start, $per_page";
+}
+
 
 
 $result = $conn->query($sql);
 $rows = $result->fetch_all(MYSQLI_ASSOC);
-$groups_count=$result->num_rows; //groups資料庫共幾筆資料
 
 
 ?>
@@ -126,11 +145,12 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-            <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
+                <h4>後台管理</h4>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#home-collapse" aria-expanded="true">
                         商家管理
                     </button>
                     <div class="collapse show" id="home-collapse">
@@ -151,16 +171,6 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
                         </ul>
                     </div>
                 </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cs-collapse" aria-expanded="false">
-                        客服管理
-                    </button>
-                    <div class="collapse" id="cs-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="../QA/QA-list-user.php" class="link-dark rounded">意見反應</a></li>
-                        </ul>
-                    </div>
-                </li>
             </ul>
         </nav>
         <div>
@@ -170,7 +180,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
        <div id="content">
             <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
                 <!-- 可以放header -->
-                <i class="fa-solid fa-user mx-2 py-1"></i>
+                <br>
                 <h4>Admin</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
             </div>
@@ -199,25 +209,16 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
               <form action="">
               <div class="row justify-content-end">
                   <div class="col-auto">
-                    <h5 for="" class="form-control-label">開店時間:</h5>
+                    <h5 for="" class="form-control-label">開團時間:</h5>
                   </div>
                   <div class="col-auto">
-                    <input type="date" name="date1" class="form-control" 
-                    <?php if(isset($_GET["date1"])):?>
-                      value="<?=$_GET["date1"]?>"
-
-                      <?php endif;?>
-                    >
+                    <input type="date" name="date1" class="form-control" >
                   </div>
                   <div class="col-auto">
                     <label for="" class="form-control-label">~</label>
                   </div>
                   <div class="col-auto">
-                    <input type="date" name="date2" class="form-control"
-                    <?php if(isset($_GET["date2"])):?>
-                      value="<?=$_GET["date2"]?>"
-                    <?php endif;?>
-                    >
+                    <input type="date" name="date1" class="form-control" >
                   </div>
                   <div class="col-auto">
                     <button type="submit" class="btn btn-info">查詢</button>                      
@@ -230,13 +231,13 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
         <div class="d-flex justify-content-end ">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-            <a class="nav-link <?php if($type==0) echo"active"?>" href="shop_groups_list.php?p=<?=$p?>&type=0">全部開團</a>
+            <a class="nav-link" href="shop_groups_list.php">全部開團</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type==1) echo"active"?>" href="shop_groups_list.php?p=<?=$p?>&type=1">開團中</a>
+              <a class="nav-link <?php if($type=='start') echo "active"?>" href="shop_groups_list.php?type=start">開團中</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($type==2) echo"active"?>" href="shop_groups_list.php?p=<?=$p?>&type=2">未成團</a>
+              <a class="nav-link <?php if($type=='ungroup') echo "active"?>" href="shop_groups_list.php?type=ungroup">未成團</a>
             </li>
             
           </ul>
@@ -257,7 +258,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
             </thead>
             <tbody>
               <tr>
-              <?php if($groups_count>0):?>
+            
                 <?php foreach($rows as $row): ?>
                 <td><?=$row["groups_id"]?></td>
                 <td><?=$row["shop_name"]?></td>
@@ -277,31 +278,21 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
                 <td><a href="shop_groups_check.php?groups_id=<?=$row["groups_id"]?>" class="btn btn-info text-white">檢視</a></td>
               </tr>
               <?php endforeach; ?>
-              <?php else:?>
-                <?="no data."?>
-              <?php endif;?>
+
             </tbody>
           </table>
         </div>
        <!-- pagination -->
        <div>
         <div class="py-2 text-center">
-        <?php if($type==0): ?>
-            第<?=$p?>頁, 共<?=$page_count?>頁, 共<?=$total?>筆
-          <?php else:?>
-            第1頁, 共1頁
-          <?php endif;?>
+
           
           </div>
           <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-            <?php if($type==0): ?>
-              <?php for($i=1; $i<=$page_count;$i++):?>
+            <ul class="pagination">
+            <?php for($i=1; $i<=$page_count;$i++):?>
                 <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_groups_list.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
-            <?php else:?>
-              <li class="page-item"> </a></li>
-            <?php endif;?>
             </ul>
           </nav>
           
@@ -309,7 +300,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
       </div>
     </div>
 
-
+             
 
             </div>
         </div>
