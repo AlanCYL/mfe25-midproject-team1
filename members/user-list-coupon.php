@@ -44,6 +44,10 @@
             background-color: #51A8DD;
             border-color: #51A8DD;
         }
+
+        .text-info {
+            color: #51A8DD !important;
+        }
     </style>
 
 </head>
@@ -54,7 +58,9 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-            <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
+                <a href="../template/sample_admin.php">
+                    <h4>後台管理系統</h4>
+                </a>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
@@ -119,16 +125,16 @@
     <script src="../template/sidebars.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    (function() {
-        let checked = false;
-        $('button.check-all').click(function() {
-            checked = !checked;
-            $('.checkbox-class').prop('checked', checked); 
-            if (checked) $(this).text('全部不選');
-            else $(this).text('選擇全部');
-        });
-    })();
-            </script>
+        (function() {
+            let checked = false;
+            $('button.check-all').click(function() {
+                checked = !checked;
+                $('.checkbox-class').prop('checked', checked);
+                if (checked) $(this).text('全部不選');
+                else $(this).text('選擇全部');
+            });
+        })();
+    </script>
 </body>
 
 </html>

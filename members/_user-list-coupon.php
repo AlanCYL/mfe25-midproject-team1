@@ -67,11 +67,11 @@ $user_count = $resultNew->num_rows;
             <div class="row">
                 <?php if (!isset($_GET["id"]) || empty($_GET["id"])) : ?>
                     <div class="col-auto mx-1 py-2 position-relative text-start ">
-                        <form class=" d-inline-block position-relative" action="">
+                        <form class="d-flex " action="">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="搜尋會員相關資訊" name="id">
-                                <button class="position-absolute  end-0 translate-middle-x btn text-info p-0 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
+                            <button class="btn text-info d-inline p-0 mx-1 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
                     <div class="col-auto py-2 ">
@@ -83,7 +83,7 @@ $user_count = $resultNew->num_rows;
                                 <option value="紅寶石">紅寶石</option>
                                 <option value="鑽石">鑽石</option>
                             </select>
-                            <button class="btn p-0 mx-1  text-info d-inline" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="btn p-0 mx-1 text-info d-inline" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
                     <div class="col-auto py-2 ">
