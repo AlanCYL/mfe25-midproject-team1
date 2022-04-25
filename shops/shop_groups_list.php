@@ -13,21 +13,136 @@ if(!isset($_GET["type"])){
 }else{
   $type=$_GET["type"];
 }
+//全部篩選date
+// if(isset($_GET["date"])){
+//   $date=$_GET["date"];
+//   $sql ="SELECT groups.*, shop.shop_name
+//   FROM shop
+//   JOIN groups on groups.shop_id=shop.shop_id
+//   WHERE groups.groups_start_time ='$date'";
+  
+// }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+//   $date1=$_GET["date1"];
+//   $date2=$_GET["date2"];
+//   $sql ="SELECT groups.*, shop.shop_name
+//   FROM shop
+//   JOIN groups on groups.shop_id=shop.shop_id
+//   WHERE valid=1 AND shop.shop_create_time BETWEEN '$date1' AND '$date2'";
+// }else{
+//   $sql ="SELECT groups.*, shop.shop_name
+//   FROM shop
+//   JOIN groups on groups.shop_id=shop.shop_id";
+// }
+
+//開團專篩選date
+  // if(isset($_GET["date"])){
+  //   $date=$_GET["date"];
+  //   $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  //   FROM groups 
+  //   JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  //   JOIN shop ON groups.shop_id=shop.shop_id
+  //   WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  //   FROM user_and_groups 
+  //   WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date AND groups.groups_start_time ='$date'";
+    
+  // }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+  //   $date1=$_GET["date1"];
+  //   $date2=$_GET["date2"];
+  //   $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  //   FROM groups 
+  //   JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  //   JOIN shop ON groups.shop_id=shop.shop_id
+  //   WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  //   FROM user_and_groups 
+  //   WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date AND groups.groups_start_time BETWEEN '$date1' AND '$date2'";
+  // }else{
+  //   $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  //   FROM groups 
+  //   JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  //   JOIN shop ON groups.shop_id=shop.shop_id
+  //   WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  //   FROM user_and_groups 
+  //   WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date";
+  // }
+
+  
+
 
 if(!isset($_GET["type"])){
   //如果沒有type篩選  就是=>全部開團
-  $sql ="SELECT groups.*, shop.shop_name
-  FROM shop
-  JOIN groups on groups.shop_id=shop.shop_id";
+  if(isset($_GET["date"])){
+    $date=$_GET["date"];
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM shop
+    JOIN groups on groups.shop_id=shop.shop_id
+    WHERE groups.groups_start_time ='$date'";
+    
+  }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+    $date1=$_GET["date1"];
+    $date2=$_GET["date2"];
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM shop
+    JOIN groups on groups.shop_id=shop.shop_id
+    WHERE groups.groups_start_time BETWEEN '$date1' AND '$date2'";
+  }else{
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM shop
+    JOIN groups on groups.shop_id=shop.shop_id";
+  }
 
 }elseif($type=='start'){
   //篩選-開團
-  $sql ="SELECT * 
-  FROM groups 
-  JOIN shop ON groups.shop_id=shop.shop_id
-  WHERE now() > groups_start_time and  now() < groups_end_time";
+  if(isset($_GET["date"])){
+    $date=$_GET["date"];
+    $sql ="SELECT * 
+    FROM groups 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time ='$date'";
+    
+  }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+    $date1=$_GET["date1"];
+    $date2=$_GET["date2"];
+    $sql ="SELECT * 
+    FROM groups 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time BETWEEN '$date1' AND '$date2'";
+  }else{
+    $sql ="SELECT * 
+    FROM groups 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE now() > groups_start_time and  now() < groups_end_time";
+  }
 }elseif($type=='ungroup'){
   //篩選-未開團
+  // $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  // FROM groups 
+  // JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  // JOIN shop ON groups.shop_id=shop.shop_id
+  // WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  // FROM user_and_groups 
+  // WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date";
+  if(isset($_GET["date"])){
+  $date=$_GET["date"];
+  $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  FROM groups 
+  JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  JOIN shop ON groups.shop_id=shop.shop_id
+  WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  FROM user_and_groups 
+  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
+  AND groups.groups_start_time ='$date'";
+  
+}else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+  $date1=$_GET["date1"];
+  $date2=$_GET["date2"];
+  $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  FROM groups 
+  JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  JOIN shop ON groups.shop_id=shop.shop_id
+  WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  FROM user_and_groups 
+  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date BETWEEN '$date1' AND '$date2'";
+}else{
   $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
   FROM groups 
   JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
@@ -35,6 +150,7 @@ if(!isset($_GET["type"])){
   WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
   FROM user_and_groups 
   WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date";
+}
 }
   
 
@@ -55,28 +171,103 @@ $start=($p-1)*$per_page;
 
 if(!isset($_GET["type"])){
   //如果沒有type篩選  就是=>全部開團
-  $sql ="SELECT groups.*, shop.shop_name
-  FROM shop
-  JOIN groups on groups.shop_id=shop.shop_id
-  LIMIT $start, $per_page";
+  if(isset($_GET["date"])){
+    $date=$_GET["date"];
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM shop
+    JOIN groups on groups.shop_id=shop.shop_id
+    WHERE groups.groups_start_time ='$date'
+    LIMIT $start, $per_page";
+    
+  }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+    $date1=$_GET["date1"];
+    $date2=$_GET["date2"];
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM shop
+    JOIN groups on groups.shop_id=shop.shop_id
+    WHERE groups.groups_start_time BETWEEN '$date1' AND '$date2'
+    LIMIT $start, $per_page";
+  }else{
+    $sql ="SELECT groups.*, shop.shop_name
+    FROM shop
+    JOIN groups on groups.shop_id=shop.shop_id
+    LIMIT $start, $per_page";
+  }
+  // $sql ="SELECT groups.*, shop.shop_name
+  // FROM shop
+  // JOIN groups on groups.shop_id=shop.shop_id
+  // LIMIT $start, $per_page";
 
 }elseif($type=='start'){
   //篩選-開團
-  $sql ="SELECT * 
-  FROM groups 
-  JOIN shop ON groups.shop_id=shop.shop_id
-  WHERE now() > groups_start_time and  now() < groups_end_time
-  LIMIT $start, $per_page";
+  if(isset($_GET["date"])){
+    $date=$_GET["date"];
+    $sql ="SELECT * 
+    FROM groups 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time ='$date'
+    LIMIT $start, $per_page";
+    
+  }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+    $date1=$_GET["date1"];
+    $date2=$_GET["date2"];
+    $sql ="SELECT * 
+    FROM groups 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time BETWEEN '$date1' AND '$date2'
+    LIMIT $start, $per_page";
+  }else{
+    $sql ="SELECT * 
+    FROM groups 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE now() > groups_start_time and  now() < groups_end_time
+    LIMIT $start, $per_page";
+  }
+  // $sql ="SELECT * 
+  // FROM groups 
+  // JOIN shop ON groups.shop_id=shop.shop_id
+  // WHERE now() > groups_start_time and  now() < groups_end_time
+  // LIMIT $start, $per_page";
 }elseif($type=='ungroup'){
   //篩選-未開團
-  $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
-  FROM groups 
-  JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
-  JOIN shop ON groups.shop_id=shop.shop_id
-  WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
-  FROM user_and_groups 
-  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
-  LIMIT $start, $per_page";
+  // $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+  // FROM groups 
+  // JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+  // JOIN shop ON groups.shop_id=shop.shop_id
+  // WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+  // FROM user_and_groups 
+  // WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
+  // LIMIT $start, $per_page";
+  if(isset($_GET["date"])){
+    $date=$_GET["date"];
+    $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+    FROM groups 
+    JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+    FROM user_and_groups 
+    WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
+    AND groups.groups_start_time ='$date'";
+    
+  }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
+    $date1=$_GET["date1"];
+    $date2=$_GET["date2"];
+    $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+    FROM groups 
+    JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+    FROM user_and_groups 
+    WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date BETWEEN '$date1' AND '$date2'";
+  }else{
+    $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
+    FROM groups 
+    JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id 
+    JOIN shop ON groups.shop_id=shop.shop_id
+    WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) 
+    FROM user_and_groups 
+    WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date";
+  }
 }
 
 
@@ -214,20 +405,29 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
             </div> -->
           </div>
           <div>
-            <div class="input-group">
+           <div class="input-group">
               <form action="">
               <div class="row justify-content-end">
                   <div class="col-auto">
                     <h5 for="" class="form-control-label">開團時間:</h5>
                   </div>
                   <div class="col-auto">
-                    <input type="date" name="date1" class="form-control" >
+                    <input type="date" name="date1" class="form-control" 
+                    <?php if(isset($_GET["date1"])):?>
+                      value="<?=$_GET["date1"]?>"
+
+                      <?php endif;?>
+                    >
                   </div>
                   <div class="col-auto">
                     <label for="" class="form-control-label">~</label>
                   </div>
                   <div class="col-auto">
-                    <input type="date" name="date1" class="form-control" >
+                    <input type="date" name="date2" class="form-control"
+                    <?php if(isset($_GET["date2"])):?>
+                      value="<?=$_GET["date2"]?>"
+                    <?php endif;?>
+                    >
                   </div>
                   <div class="col-auto">
                     <button type="submit" class="btn btn-info">查詢</button>                      
