@@ -7,11 +7,20 @@ require_once("../db-connect.php");
 // }
 $shopID=$_GET["login"];
 $groups_id=$_GET["list"];
+$type=$_GET["type"];
 
+if($type=='group'||$type=='history'){
+    $group_sql="SELECT * FROM groups JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id JOIN user ON user_and_groups.user_id=user.user_id WHERE user_and_groups.groups_id='$groups_id'";
+    $group_result=$conn->query($group_sql);
+    $user_count=$group_result->num_rows;
+    $group_rows= $group_result->fetch_all(MYSQLI_ASSOC);
+
+}
 
 $sql="SELECT * FROM groups WHERE groups_id='$groups_id'";
 $result=$conn->query($sql);
 $row = $result->fetch_assoc();
+
 
 
 ?>
@@ -151,18 +160,43 @@ $row = $result->fetch_assoc();
                   </tr>
                 </table>
 
-                <div class="py-2 text-end">
-                  <a class="btn btn-info text-white" href="group-open-edit.php?login=<?=$shopID?>&edit=<?=$row["groups_id"]?>">編輯</a>
-                  <a class="btn btn-info text-white" href="group-list.php?login=<?=$shopID?>">返回</a>
-                </div>
 
               </div>
             </div>
           </div>
 
+          <div class="mx-auto" style="width:700px; margin-top: 26px;">
+           <h4>會員資料：</h4>
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <table class="table table-hover border border-1">
+          <thead class=" p-3 mb-2 ">
+              <tr>
+                <th>會員編號</th>
+                <th>會員名稱</th>
+                <th>會員電話</th>
+                <th>會員mail</th>
 
+              </tr>
+            </thead>
+            <tbody>
+            <?php if($type=='group'||$type=='history'&$user_count>0): ?>
+                <?php foreach($group_rows as $group_row): ?>
+              <tr>
+                <td><?=$group_row["user_id"]?></a></td>
+                <td><?=$group_row["user_name"]?></td>
+                <td><?=$group_row["user_phone"]?></td>
+                <td><?=$group_row["user_mail"]?></td>
 
+            </tr>
 
+              <?php endforeach; ?>
+                  <?php else: ?>
+                    <?="no data."?>
+                    <?php endif; ?>
+                  </tbody>
+        </table>
+        </div>
+        </div>
 
 
 

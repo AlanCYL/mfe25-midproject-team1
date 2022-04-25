@@ -251,7 +251,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <td><?=$row["eating_date"]?> &nbsp; <?=$row["eating_time"]?></td>
                 <td><?=$row["least_num"]?></td>
                 <td><?=$row["price"]?></td>
-                <td><a href="group-open-list.php?login=<?=$shopID?>&list=<?=$row["groups_id"]?>" class="btn-link"> 檢視</a></td>
+                <td><a href="group-open-list.php?login=<?=$shopID?>&type=<?=$type?>&list=<?=$row["groups_id"]?>" class="btn-link"> 檢視</a></td>
                 <td><a href="doDelete.php?login=<?=$shopID?>&list=<?=$row["groups_id"]?>" class="btn-link"> 刪除</a></td>
 
             </tr>
