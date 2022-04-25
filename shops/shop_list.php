@@ -69,6 +69,12 @@ if(isset($_GET["date"])){
 
   $result = $conn->query($sql);
   $rows = $result->fetch_all(MYSQLI_ASSOC);
+  $total2=$result->num_rows;
+  $per_page=6;  //一頁幾筆帶入變數
+  $page_count1=CEIL($total2/$per_page); //(總共幾筆資料) 除 (一頁要得頁數) 用CEIL去無條件進位(只要有資料就要跳下一頁)
+  
+  $start=($p-1)*$per_page; 
+
 ?>
 
 
@@ -145,27 +151,13 @@ if(isset($_GET["date"])){
                     </div>
                 </li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#dashboard-collapse" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
                         會員管理
-                    </button>
-                    <div class="collapse" id="dashboard-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="#" class="link-dark rounded">優惠制度</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#orders-collapse" aria-expanded="false">
-                        客服管理
                     </button>
                     <div class="collapse" id="orders-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
-                            <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
-
+                            <li><a href="../members/user-list.php" class="link-dark rounded">會員清單</a></li>
+                            <li><a href="../members/user-list-coupon.php" class="link-dark rounded">優惠券發送</a></li>
                         </ul>
                     </div>
                 </li>
@@ -174,14 +166,12 @@ if(isset($_GET["date"])){
         <div>
         <i class="btn btn-light btn-cute fa-solid fa-arrows-left-right border-start-none" id="toggle"></i>
         </div>
-        <!-- Page Content  -->
-        <div id="content">
-            <div class="d-flex justify-content-between mb-4">
-
+       <!-- Page Content  -->
+       <div id="content">
+            <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
                 <!-- 可以放header -->
-
-
-
+                <br>
+                <h4>Admin</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
             </div>
             <div>
@@ -291,7 +281,6 @@ if(isset($_GET["date"])){
           <?php else:?>
             第1頁, 共1頁
           <?php endif;?>
-          
           </div>
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
@@ -300,7 +289,7 @@ if(isset($_GET["date"])){
                 <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_list.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
             <?php else:?>
-              <li class="page-item"> </a></li>
+              <li class="page-item">1</a></li>
             <?php endif;?>
             </ul>
           </nav>
@@ -323,7 +312,7 @@ if(isset($_GET["date"])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/mid-project/template/sidebars.js">
+        <script src="../template/sidebars.js"></script>
 </body>
 
 </html>

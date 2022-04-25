@@ -13,7 +13,7 @@
   <body>
       <div class="text-center">
           <h1 class="display-1">歡迎開店</h1>
-          <a href="" class="btn btn-info text-white ms-2">開始第一次開團</a>
+          <a href="shop.php" class="btn btn-info text-white ms-2">開始第一次開團</a>
       </div>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
