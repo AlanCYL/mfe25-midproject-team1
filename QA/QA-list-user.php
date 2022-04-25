@@ -104,7 +104,7 @@ $QA_count = $result->num_rows;
     <!-- Sidebar  -->
     <nav id="sidebar">
       <div class="sidebar-header text-center border border-bottom-1">
-        <h4><a href="sample_shop.php?login=<?= $shopID ?>">後台管理系統</a></h4>
+      <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
       </div>
       <ul class="list-unstyled ps-0">
         <li class="mb-1">

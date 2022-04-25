@@ -54,9 +54,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-                <a href="sample_admin.php">
-                    <h4>後台管理系統</h4>
-                </a>
+                <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
