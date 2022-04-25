@@ -56,7 +56,7 @@ $rowsGroup = $resultGroup->fetch_all(MYSQLI_ASSOC);
 $groups_count = $resultGroup->num_rows;
 
 
-$per_page = 2;
+$per_page = 3;
 $page_count = CEIL($groups_count / $per_page);
 
 $start = ($p - 1) * $per_page;
