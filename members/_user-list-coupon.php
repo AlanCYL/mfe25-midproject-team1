@@ -1,13 +1,16 @@
 <?php
 require_once("../db-connect.php");
 
+unset($_SESSION['page']);
+unset($_SESSION['searchId']);
+
 if (!isset($_GET["p"])) {
     $p = 1;
 } else {
     $p = $_GET["p"];
 }
 
-if (!isset($_GET["id"])) {
+if (!isset($_GET["id"]) || empty($_GET["id"])) {
     //全部使用者
     $sql = "SELECT user.*, level_name.name AS levelName FROM user 
     JOIN level_name ON user.user_level = level_name.id WHERE valid=1";
@@ -29,6 +32,7 @@ if (!isset($_GET["id"])) {
 } else {
     //搜尋全部特定使用者byID
     $id = $_GET["id"];
+    $_SESSION["searchId"] = $id;
 
     $sql = "SELECT user.*, level_name.name AS levelName FROM user 
     JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR level_name.name LIKE '%$id%' OR user.user_bir LIKE '%-$id%' ) AND user.valid = 1 ";
@@ -44,8 +48,6 @@ if (!isset($_GET["id"])) {
     JOIN level_name ON user.user_level = level_name.id WHERE  (user.user_id LIKE '%$id%' OR user.user_name LIKE '%$id%' OR level_name.name LIKE '%$id%' OR user.user_bir LIKE '%-$id%' ) AND user.valid = 1 LIMIT $start, $per_page ";
 }
 
-
-
 $resultNew = $conn->query($sqlNew);
 $rows = $resultNew->fetch_all(MYSQLI_ASSOC);
 $user_count = $resultNew->num_rows;
@@ -59,10 +61,11 @@ $user_count = $resultNew->num_rows;
                             else : echo $page_count;
                             endif; ?> 頁, 共 <?= $total ?> 筆
     </div>
+    <?php $_SESSION["page"]=$p ?>
     <div class="row">
         <div class="col-auto mx-auto py-3">
             <div class="row">
-                <?php if (!isset($_GET["id"])) : ?>
+                <?php if (!isset($_GET["id"]) || empty($_GET["id"])) : ?>
                     <div class="col-auto mx-1 py-2 position-relative text-start ">
                         <form class=" d-inline-block position-relative" action="">
                             <div class="input-group input-group-sm">
@@ -154,7 +157,7 @@ $user_count = $resultNew->num_rows;
         <div class="col-lg-8 mx-auto py-2 d-flex justify-content-center">
             <nav aria-label="Page navigation example  ">
                 <ul class="pagination">
-                    <?php if (!isset($_GET["id"])) : ?>
+                    <?php if (!isset($_GET["id"]) || empty($_GET["id"]))  : ?>
                         <?php if ($p > 1) : ?>
                             <li class="page-item ">
                                 <a class="page-link" href="user-list-coupon.php?p=<?= $p - 1 ?>" aria-label="Previous">

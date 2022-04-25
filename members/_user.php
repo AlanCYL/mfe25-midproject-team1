@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="py-2 justify-content-center ">
-            <a href="user-list.php" class="btn text-Secondary  "><i class="fa-solid fa-arrow-rotate-left"></i></a>
+            <a href=" user-list.php?<?php if(isset($_SESSION["typePage"])): echo "&type=".$_SESSION['typePage'];  endif;?><?php if(isset($_SESSION["page"])): echo "&p=".$_SESSION['page']; endif;?>" class="btn text-Secondary  "><i class="fa-solid fa-arrow-rotate-left"></i></a>
         </div>
         <div class="col-lg-5">
             <h3 class="text-nowrap"><?= $row["user_name"] ?>的會員資料</h3>

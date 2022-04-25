@@ -1,5 +1,8 @@
 <?php
 
+unset($_SESSION['page']);
+unset($_SESSION['typePage']);
+
 if (!isset($_GET["p"])) {
     $p = 1;
 } else {
@@ -30,7 +33,7 @@ switch ($type) {
         $order = "user_id ASC";
 }
 
-if (!isset($_GET["id"])) {
+if (!isset($_GET["id"]) || empty($_GET["id"])) {
     //全部使用者
     $sql = "SELECT user.*, level_name.name AS levelName FROM user 
     JOIN level_name ON user.user_level = level_name.id WHERE valid=1";
@@ -68,7 +71,7 @@ $user_count = $resultNew->num_rows;
 <!-- 可以放content -->
 <div class="container">
     <table class="table table-bordered">
-        <?php if (!isset($_GET["id"])) : ?>
+        <?php if (!isset($_GET["id"]) ||empty($_GET["id"]) ) : ?>
             <div class="row">
                 <div class="col-auto px-0  position-relative">
                     <form class="d-inline-block" action="">
@@ -82,6 +85,7 @@ $user_count = $resultNew->num_rows;
                 <a href="user-list.php?p=<?= $p ?>&type=2" class="btn btn-info text-white my-1 text-nowrap <?php if ($type == 2) echo "active"; ?>">依會員編號反序</a>
                 <a href="user-list.php?p=<?= $p ?>&type=3" class="btn btn-info text-white my-1 text-nowrap <?php if ($type == 3) echo "active"; ?>">依身分證字號正序</a>
                 <a href="user-list.php?p=<?= $p ?>&type=4" class="btn btn-info text-white my-1 text-nowrap <?php if ($type == 4) echo "active"; ?>">依身分證字號反序</a>
+                <?php $_SESSION["typePage"]=$type ?>
             </div>
             <div class="py-2 text-center">
                 <nav aria-label="page navigation ">
@@ -130,9 +134,10 @@ $user_count = $resultNew->num_rows;
             <?php endif; ?>
             </tbody>
     </table>
-    <?php if (!isset($_GET["id"])) : ?>
+    <?php if (!isset($_GET["id"])|| empty($_GET["id"])) : ?>
         <div class="py-2 text-center">
             第 <?= $p ?> 頁, 共 <?= $page_count ?> 頁,共 <?= $total ?> 筆
+            <?php $_SESSION["page"]=$p ?>
         </div>
     <?php endif; ?>
 </div>

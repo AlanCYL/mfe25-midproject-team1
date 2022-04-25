@@ -48,7 +48,7 @@ $coupon_count = $resultCoupon->num_rows;
 
 <div class="container">
     <div class="py-2 justify-content-center ">
-        <a href="user-list-coupon.php" class="btn text-Secondary  "><i class="fa-solid fa-arrow-rotate-left"></i></a>
+        <a href="user-list-coupon.php?<?php if(isset($_SESSION["page"])): echo "&p=".$_SESSION['page']; endif;?><?php if(isset($_SESSION["searchId"])): echo "&id=".$_SESSION['searchId']; endif;?>" class="btn text-Secondary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
     </div>
     <div class="row">
         <div class="py-2">
