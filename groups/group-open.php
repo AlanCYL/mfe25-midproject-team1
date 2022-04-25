@@ -98,18 +98,12 @@ $row = $result->fetch_assoc();
             <!-- Page Content  -->
 
             <div id="content">
-                <div class="border-bottom mb-3 d-flex justify-content-between">
-                    <div class="title">
-                        上架開團
-                    </div>
-                    <div style="margin-right:130px">
-
-                        <img src="./bootstrap-icons-1.8.1/person-circle.svg" alt=""> <span
-                            style="margin-right:50px"><?=$row["shop_name"]?></span>
-                        <a href="../manager-logout.php"><img src="./bootstrap-icons-1.8.1/box-arrow-right.svg" alt=""></a>
-
-                    </div>
+            <div class="d-flex justify-content-between mb-4 border-bottom border-secondary container-fluid ">
+                <div>
+                <h1>上架開團 :</h1>
                 </div>
+               
+            </div>
 
 
                 <div class="container w-50">

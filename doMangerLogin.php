@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once("db-connect.php");
+=======
+require_once("./db-connect.php");
+>>>>>>> e332d0533c571bf61b40da5c468358d3d0d94339
 $contact=$_POST["contact"];
 $account=$_POST["account"];
 $password=$_POST["password"];
