@@ -42,7 +42,7 @@ if(!isset($_GET["type"])){
 //抓到整個groups資料庫的筆數
 $result=$conn->query($sql);
 $row=$result->fetch_assoc();
-
+$total=$result->num_rows;
 $groups_count=$result->num_rows;
 
 $per_page=5;
@@ -294,11 +294,11 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
        <!-- pagination -->
        <div>
         <div class="py-2 text-center">
-
+        第<?=$p?>頁, 共<?=$page_count?>頁, 共<?=$total?>筆
           
           </div>
           <nav aria-label="Page navigation example">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center">
             <?php for($i=1; $i<=$page_count;$i++):?>
                 <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_groups_list.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
