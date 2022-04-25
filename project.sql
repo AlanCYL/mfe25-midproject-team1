@@ -1,24 +1,18 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- 主機： localhost:8889
--- 產生時間： 2022 年 04 月 25 日 03:18
--- 伺服器版本： 5.7.34
--- PHP 版本： 8.0.8
+-- 主機： 127.0.0.1
+-- 產生時間： 2022-04-25 10:00:56
+-- 伺服器版本： 10.4.24-MariaDB
+-- PHP 版本： 8.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- 資料庫： `project`
+-- 資料庫: `project`
 --
 
 -- --------------------------------------------------------
@@ -26,21 +20,38 @@ SET time_zone = "+00:00";
 --
 -- 資料表結構 `coupon`
 --
+-- 建立時間： 2022-04-25 01:28:38
+-- 最後更新： 2022-04-25 01:30:09
+--
 
+DROP TABLE IF EXISTS `coupon`;
 CREATE TABLE `coupon` (
-  `coupon_id` int(30) NOT NULL,
-  `reason` varchar(30) NOT NULL,
-  `coupon_price` int(11) NOT NULL,
-  `coupon_start_time` datetime NOT NULL,
-  `coupon_end_time` datetime NOT NULL
+  `id` int(30) UNSIGNED NOT NULL,
+  `reason` varchar(50) NOT NULL,
+  `price` int(5) NOT NULL,
+  `create_time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `coupon`
+--
+
+INSERT INTO `coupon` (`id`, `reason`, `price`, `create_time`) VALUES
+(1, '鑽石會員獨享優惠', 200, '2022-04-24'),
+(2, '綠寶石會員，新用戶好禮', 50, '2022-04-24'),
+(3, '四月壽星好禮', 300, '2022-04-24'),
+(4, '慶祝會員升級好禮', 500, '2022-04-24'),
+(5, '因為你偷懶大王', 150, '2022-04-25');
 
 -- --------------------------------------------------------
 
 --
 -- 資料表結構 `dish`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `dish`;
 CREATE TABLE `dish` (
   `dish_id` int(30) NOT NULL,
   `dish_name` varchar(100) NOT NULL,
@@ -64,7 +75,10 @@ INSERT INTO `dish` (`dish_id`, `dish_name`, `dish_image`, `dish_description`, `s
 --
 -- 資料表結構 `established`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `established`;
 CREATE TABLE `established` (
   `id` int(10) UNSIGNED NOT NULL,
   `established` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '否'
@@ -75,7 +89,10 @@ CREATE TABLE `established` (
 --
 -- 資料表結構 `groups`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `groups_id` int(5) UNSIGNED NOT NULL,
   `groups_start_time` date NOT NULL,
@@ -83,7 +100,7 @@ CREATE TABLE `groups` (
   `eating_date` date NOT NULL,
   `eating_time` time NOT NULL,
   `least_num` int(30) NOT NULL,
-  `goal_num` int(30) DEFAULT NULL,
+  `goal_num` int(30) NOT NULL,
   `price` int(6) UNSIGNED NOT NULL,
   `shop_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -94,20 +111,22 @@ CREATE TABLE `groups` (
 
 INSERT INTO `groups` (`groups_id`, `groups_start_time`, `groups_end_time`, `eating_date`, `eating_time`, `least_num`, `goal_num`, `price`, `shop_id`) VALUES
 (1, '2022-04-01', '2022-04-10', '2022-04-15', '20:00:00', 5, 0, 350, 1),
-(2, '2022-04-02', '2022-04-15', '2022-04-19', '09:22:40', 3, 6, 200, 1),
+(2, '2022-04-02', '2022-04-15', '2022-04-19', '09:22:40', 3, 6, 200, 2),
 (3, '2022-04-20', '2022-04-20', '2022-04-30', '09:25:03', 7, 6, 100, 3),
 (4, '2022-04-11', '2022-04-16', '2022-04-19', '09:27:47', 4, 10, 1500, 4),
 (5, '2022-04-01', '2022-04-11', '2022-05-12', '09:28:46', 4, 6, 600, 5),
 (6, '2022-04-04', '2022-04-08', '2022-05-23', '15:00:00', 4, 5, 50, 6),
-(7, '2022-03-30', '2022-04-05', '2022-05-21', '15:00:00', 2, 8, 400, 7),
-(8, '2022-04-21', '2022-04-23', '2022-04-26', '20:17:00', 2, NULL, 200, 2);
+(7, '2022-03-30', '2022-04-05', '2022-05-21', '15:00:00', 2, 8, 400, 7);
 
 -- --------------------------------------------------------
 
 --
 -- 資料表結構 `groups_and_dish`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `groups_and_dish`;
 CREATE TABLE `groups_and_dish` (
   `GD_combined_id` int(30) NOT NULL,
   `groups_id` int(30) NOT NULL,
@@ -129,7 +148,10 @@ INSERT INTO `groups_and_dish` (`GD_combined_id`, `groups_id`, `dish_id`) VALUES
 --
 -- 資料表結構 `level_name`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `level_name`;
 CREATE TABLE `level_name` (
   `id` int(2) UNSIGNED NOT NULL,
   `name` varchar(10) NOT NULL
@@ -150,7 +172,10 @@ INSERT INTO `level_name` (`id`, `name`) VALUES
 --
 -- 資料表結構 `manager`
 --
+-- 建立時間： 2022-04-25 01:23:02
+--
 
+DROP TABLE IF EXISTS `manager`;
 CREATE TABLE `manager` (
   `manager_id` int(3) NOT NULL,
   `manager_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -174,7 +199,10 @@ INSERT INTO `manager` (`manager_id`, `manager_name`, `manager_account`, `manager
 --
 -- 資料表結構 `project_users`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `project_users`;
 CREATE TABLE `project_users` (
   `id` int(4) UNSIGNED NOT NULL,
   `name` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -195,10 +223,13 @@ INSERT INTO `project_users` (`id`, `name`, `account`, `password`, `phone`, `crea
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `QA`
+-- 資料表結構 `qa`
+--
+-- 建立時間： 2022-04-25 01:23:02
 --
 
-CREATE TABLE `QA` (
+DROP TABLE IF EXISTS `qa`;
+CREATE TABLE `qa` (
   `QA_id` int(30) NOT NULL,
   `shop_id` int(30) NOT NULL,
   `user_id` int(30) NOT NULL,
@@ -208,10 +239,13 @@ CREATE TABLE `QA` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `QA_content`
+-- 資料表結構 `qa_content`
+--
+-- 建立時間： 2022-04-25 01:23:02
 --
 
-CREATE TABLE `QA_content` (
+DROP TABLE IF EXISTS `qa_content`;
+CREATE TABLE `qa_content` (
   `QA_content_id` int(30) NOT NULL,
   `QA_id` int(30) NOT NULL,
   `QA_content_text` text NOT NULL,
@@ -225,11 +259,14 @@ CREATE TABLE `QA_content` (
 --
 -- 資料表結構 `shop`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
   `shop_id` int(3) NOT NULL,
   `shop_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shop_email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shop_account` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_phone` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -245,7 +282,7 @@ CREATE TABLE `shop` (
 -- 傾印資料表的資料 `shop`
 --
 
-INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_email`, `shop_password`, `shop_phone`, `shop_address`, `shop_description`, `img`, `type_id`, `service_id`, `shop_create_time`, `valid`) VALUES
+INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_account`, `shop_password`, `shop_phone`, `shop_address`, `shop_description`, `img`, `type_id`, `service_id`, `shop_create_time`, `valid`) VALUES
 (1, '村民食堂', 'villager@test.com', '111', '03-339-868', '桃園市桃園區中正路1078號', '無距離享受與自然和諧共處，讓每個人在繁忙之餘，也能擁有輕鬆的步調，與家人朋友相聚用餐，共享歡樂！', 'Villager.jpg', '2', '1', '2022-04-22', 1),
 (2, 'NINI 尼尼義大利餐廳', 'NINI@test.com', '222', '03-222-3272', '桃園市蘆竹區南崁路一段112號', 'NINI《NATURAL自然、INITIAL獨創、NEAT純淨、IMPRESSIVE感動》我們相信用好的食材與料理方式，就能對自我和環境產生正向的改變；透過好的用餐環境，讓顧客們和我們一樣愛上這樣的生活方式。', 'NINI.jpg', '3', '1', '2022-04-21', 0),
 (3, '梳子．Salud', 'Salud@test.com', '333', '02-2711-8832', '330桃園市桃園區新埔六街89', '由川門子團隊帶來，西班牙式的Tapas碰上川式料理蹦出！精緻美味小餐點！搭配無毒生菜、德國有機農莊，希望提供給您一個全新體驗的蔬食。自然的用餐環境，讓您留下美好的身影：）', 'Salud.jpg', '1', '1', '2022-04-23', 1),
@@ -266,7 +303,10 @@ INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_email`, `shop_password`, `shop
 --
 -- 資料表結構 `shop_service`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `shop_service`;
 CREATE TABLE `shop_service` (
   `service_id` int(3) NOT NULL,
   `service_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -285,7 +325,10 @@ INSERT INTO `shop_service` (`service_id`, `service_name`) VALUES
 --
 -- 資料表結構 `shop_type`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `shop_type`;
 CREATE TABLE `shop_type` (
   `type_id` int(3) NOT NULL,
   `type_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -312,7 +355,10 @@ INSERT INTO `shop_type` (`type_id`, `type_name`) VALUES
 --
 -- 資料表結構 `test`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `test`;
 CREATE TABLE `test` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(20) NOT NULL
@@ -332,19 +378,23 @@ INSERT INTO `test` (`id`, `name`) VALUES
 --
 -- 資料表結構 `user`
 --
+-- 建立時間： 2022-04-25 01:55:18
+-- 最後更新： 2022-04-25 01:59:44
+--
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(30) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `identity_card` varchar(20) NOT NULL,
-  `user_password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `nick_name` varchar(100) NOT NULL,
   `user_phone` varchar(100) NOT NULL,
   `user_bir` date NOT NULL,
   `user_mail` varchar(30) NOT NULL,
-  `user_level` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `user_level` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `user_create_time` datetime NOT NULL,
-  `valid` int(1) UNSIGNED NOT NULL DEFAULT '1'
+  `valid` int(1) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -352,40 +402,61 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `identity_card`, `user_password`, `nick_name`, `user_phone`, `user_bir`, `user_mail`, `user_level`, `user_create_time`, `valid`) VALUES
-(1, '野比大雄', 'F124596125', '827ccb0eea8a706c4c34a16891f84e', '大雄', '0975136088', '1998-04-14', 'nobita1@doraemon.com', 4, '2022-04-18 20:50:51', 1),
+(1, '野比大雄', 'F124596125', '827ccb0eea8a706c4c34a16891f84e', '大雄', '0975136088', '1998-04-14', 'nobita1@doraemon.com', 3, '2022-04-18 20:50:51', 1),
 (2, '野原新之助', 'H142578953', '827ccb0eea8a706c4c34a16891f84e', '小新', '0978153644', '1978-07-08', 'shin@shin-chan.com', 1, '2022-04-19 09:01:05', 1),
 (3, '野原美冴', 'A221047856', '827ccb0eea8a706c4c34a16891f84e', '大屁股麻馬', '0932156744', '1980-05-15', 'misae@shin-chan.com', 4, '2022-04-19 13:41:39', 1),
-(4, '哆啦A夢', 'H154789356', '827ccb0eea8a706c4c34a16891f84e', '小叮噹', '0936157428', '1995-10-23', 'doraemon@doraemon.com', 3, '2022-04-19 13:43:32', 1),
-(5, '野原廣志', 'Y154769853', '827ccb0eea8a706c4c34a16891f84e', '臭腳丫把拔', '0914758963', '1986-12-25', 'hiroshi@shin-chan.com', 3, '2022-04-19 13:44:42', 1),
-(6, '源靜香', 'N221698743', '827ccb0eea8a706c4c34a16891f84e', '靜香', '0963258419', '1996-02-18', 'shizuka@doraemon.com', 4, '2022-04-19 13:47:04', 1),
-(7, '剛田武', 'L126957413', '827ccb0eea8a706c4c34a16891f84e', '胖虎', '0985136489', '1995-06-15', 'takeshi@doraemon.com', 3, '2022-04-19 13:49:06', 1),
+(4, '哆啦A夢', 'H154789356', '827ccb0eea8a706c4c34a16891f84e', '小叮噹', '0936157428', '1995-10-23', 'doraemon@doraemon.com', 2, '2022-04-19 13:43:32', 1),
+(5, '野原廣志', 'Y154769853', '827ccb0eea8a706c4c34a16891f84e', '臭腳丫把拔', '0914758963', '1986-12-25', 'hiroshi@shin-chan.com', 2, '2022-04-19 13:44:42', 1),
+(6, '源靜香', 'N221698743', '827ccb0eea8a706c4c34a16891f84e', '靜香', '0963258419', '1996-02-18', 'shizuka@doraemon.com', 3, '2022-04-19 13:47:04', 1),
+(7, '剛田武', 'L126957413', '827ccb0eea8a706c4c34a16891f84e', '胖虎', '0985136489', '1995-06-15', 'takeshi@doraemon.com', 2, '2022-04-19 13:49:06', 1),
 (8, 'MiuPig', 'H126357489', '827ccb0eea8a706c4c34a16891f84e', '11111', '097514645', '1954-12-31', 'miu@pig.com', 2, '2022-04-19 16:43:36', 0),
 (9, 'MiuPig', 'F125984653', '827ccb0eea8a706c4c34a16891f84e', '1111111', '097514855', '1985-05-27', 'miu@pig.com', 2, '2022-04-19 16:46:08', 0),
 (10, 'magggie', 'F125846951', '827ccb0eea8a706c4c34a16891f84e', 'maggie', '0974156388', '1998-06-14', 'miu@pig.com', 2, '2022-04-19 16:50:58', 0),
 (11, '12345', 'H147523698', '827ccb0eea8a706c4c34a16891f84e', '123', '091456789', '1995-08-08', 'akosakposkapo@gmail.com', 2, '2022-04-20 12:47:25', 0),
 (12, '12345', 'H124596315', '827ccb0eea8a706c4c34a16891f84e', '12345', '097513544', '1999-01-01', 'miu', 2, '2022-04-20 13:31:08', 0),
 (13, '陶1S', 'H224591756', '827ccb0eea8a706c4c34a16891f84e', '陶樂比', '0975148566', '1993-09-07', 'taolebe@dreamland.com', 1, '2022-04-21 17:36:12', 1),
-(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 2, '2022-04-21 17:56:36', 1);
+(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 1, '2022-04-21 17:56:36', 1),
+(15, ' 出木杉英才', 'A124896357', '827ccb0eea8a706c4c34a16891f84e7b', '小杉', '0975148156', '1994-04-14', 'oihoijoij@gmail.com', 1, '2022-04-25 09:57:48', 1);
 
 -- --------------------------------------------------------
 
 --
 -- 資料表結構 `user_and_coupon`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `user_and_coupon`;
 CREATE TABLE `user_and_coupon` (
   `user_and_coupon_id` int(30) NOT NULL,
   `coupon_id` int(30) NOT NULL,
   `user_id` int(30) NOT NULL,
-  `valid` tinyint(2) NOT NULL
+  `valid` tinyint(2) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `user_and_coupon`
+--
+
+INSERT INTO `user_and_coupon` (`user_and_coupon_id`, `coupon_id`, `user_id`, `valid`) VALUES
+(1, 1, 3, 1),
+(2, 2, 2, 1),
+(3, 2, 10, 1),
+(4, 2, 13, 1),
+(5, 2, 14, 1),
+(6, 2, 15, 1),
+(7, 3, 1, 1),
+(8, 4, 3, 0);
 
 -- --------------------------------------------------------
 
 --
 -- 資料表結構 `user_and_groups`
 --
+-- 建立時間： 2022-04-22 10:22:17
+--
 
+DROP TABLE IF EXISTS `user_and_groups`;
 CREATE TABLE `user_and_groups` (
   `user_and_groups_id` int(30) NOT NULL,
   `groups_id` int(30) NOT NULL,
@@ -438,7 +509,7 @@ INSERT INTO `user_and_groups` (`user_and_groups_id`, `groups_id`, `user_id`, `co
 -- 資料表索引 `coupon`
 --
 ALTER TABLE `coupon`
-  ADD PRIMARY KEY (`coupon_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `dish`
@@ -487,17 +558,17 @@ ALTER TABLE `project_users`
   ADD PRIMARY KEY (`id`);
 
 --
--- 資料表索引 `QA`
+-- 資料表索引 `qa`
 --
-ALTER TABLE `QA`
+ALTER TABLE `qa`
   ADD PRIMARY KEY (`QA_id`),
   ADD KEY `shop_id` (`shop_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- 資料表索引 `QA_content`
+-- 資料表索引 `qa_content`
 --
-ALTER TABLE `QA_content`
+ALTER TABLE `qa_content`
   ADD PRIMARY KEY (`QA_content_id`),
   ADD KEY `QA_id` (`QA_id`);
 
@@ -555,13 +626,13 @@ ALTER TABLE `user_and_groups`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `coupon_id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `dish`
 --
 ALTER TABLE `dish`
-  MODIFY `dish_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `dish_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `established`
@@ -573,7 +644,7 @@ ALTER TABLE `established`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groups_id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `groups_id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `groups_and_dish`
@@ -588,28 +659,10 @@ ALTER TABLE `level_name`
   MODIFY `id` int(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `manager`
---
-ALTER TABLE `manager`
-  MODIFY `manager_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- 使用資料表自動遞增(AUTO_INCREMENT) `project_users`
 --
 ALTER TABLE `project_users`
   MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `QA`
---
-ALTER TABLE `QA`
-  MODIFY `QA_id` int(30) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `QA_content`
---
-ALTER TABLE `QA_content`
-  MODIFY `QA_content_id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `shop`
@@ -639,13 +692,13 @@ ALTER TABLE `test`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_and_coupon`
 --
 ALTER TABLE `user_and_coupon`
-  MODIFY `user_and_coupon_id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_and_coupon_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_and_groups`
@@ -653,7 +706,3 @@ ALTER TABLE `user_and_coupon`
 ALTER TABLE `user_and_groups`
   MODIFY `user_and_groups_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
