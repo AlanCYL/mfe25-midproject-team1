@@ -145,12 +145,11 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-                <h4>後台管理</h4>
+            <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#home-collapse" aria-expanded="true">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                         商家管理
                     </button>
                     <div class="collapse show" id="home-collapse">
@@ -168,6 +167,16 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="../members/user-list.php" class="link-dark rounded">會員清單</a></li>
                             <li><a href="../members/user-list-coupon.php" class="link-dark rounded">優惠券發送</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cs-collapse" aria-expanded="false">
+                        客服管理
+                    </button>
+                    <div class="collapse" id="cs-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="../QA/QA-list-user.php" class="link-dark rounded">意見反應</a></li>
                         </ul>
                     </div>
                 </li>
