@@ -204,14 +204,14 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
           <div>
             <h2 class="mb-4">開團清單總覽</h2>
            <!-- search -->
-           <div class="input-group">
+           <!-- <div class="input-group">
               <div class="form-outline">
                 <input id="search-focus" type="search" id="form1" class="form-control" placeholder="Search" />
               </div>
               <a href="" class="btn btn-outline-secondary input-group-text">
               <i class="fa-solid fa-magnifying-glass"></i>
               </a>
-            </div>
+            </div> -->
           </div>
           <div>
             <div class="input-group">
