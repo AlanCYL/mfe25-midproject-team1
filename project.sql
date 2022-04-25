@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-04-25 12:20:32
+-- 產生時間： 2022-04-25 16:46:18
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.4
 
@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 -- 資料表結構 `coupon`
 --
 -- 建立時間： 2022-04-25 04:10:32
+-- 最後更新： 2022-04-25 08:29:01
 --
 
 DROP TABLE IF EXISTS `coupon`;
@@ -39,7 +40,11 @@ INSERT INTO `coupon` (`id`, `reason`, `price`, `create_time`) VALUES
 (1, '鑽石會員獨享優惠', 200, '2022-04-24'),
 (2, '綠寶石會員，新用戶好禮', 50, '2022-04-24'),
 (3, '四月壽星好禮', 300, '2022-04-24'),
-(4, '慶祝會員升級好禮', 500, '2022-04-24');
+(4, '慶祝會員升級好禮', 500, '2022-04-24'),
+(5, '五月壽星好禮讚', 100, '2022-04-25'),
+(6, '鑽石會員好裡放送', 500, '2022-04-25'),
+(7, '藍寶石會員送好禮', 200, '2022-04-25'),
+(8, '因為爽', 350, '2022-04-25');
 
 -- --------------------------------------------------------
 
@@ -87,7 +92,8 @@ CREATE TABLE `established` (
 --
 -- 資料表結構 `groups`
 --
--- 建立時間： 2022-04-22 10:22:17
+-- 建立時間： 2022-04-25 08:23:45
+-- 最後更新： 2022-04-25 08:23:55
 --
 
 DROP TABLE IF EXISTS `groups`;
@@ -98,7 +104,7 @@ CREATE TABLE `groups` (
   `eating_date` date NOT NULL,
   `eating_time` time NOT NULL,
   `least_num` int(30) NOT NULL,
-  `goal_num` int(30) DEFAULT NULL,
+  `goal_num` int(30) DEFAULT 0,
   `price` int(6) UNSIGNED NOT NULL,
   `shop_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -115,7 +121,7 @@ INSERT INTO `groups` (`groups_id`, `groups_start_time`, `groups_end_time`, `eati
 (5, '2022-04-01', '2022-04-11', '2022-05-12', '09:28:46', 4, 6, 600, 5),
 (6, '2022-04-04', '2022-04-08', '2022-05-23', '15:00:00', 4, 5, 50, 6),
 (7, '2022-03-30', '2022-04-05', '2022-05-21', '15:00:00', 2, 8, 400, 7),
-(8, '2022-04-21', '2022-04-23', '2022-04-26', '20:17:00', 2, NULL, 200, 2);
+(8, '2022-04-21', '2022-04-23', '2022-04-26', '20:17:00', 2, 0, 200, 2);
 
 -- --------------------------------------------------------
 
@@ -288,6 +294,7 @@ INSERT INTO `qa_content` (`QA_content_id`, `QA_id`, `QA_content_text`, `QA_conte
 -- 資料表結構 `qa_reply`
 --
 -- 建立時間： 2022-04-25 03:26:44
+-- 最後更新： 2022-04-25 08:30:14
 --
 
 DROP TABLE IF EXISTS `qa_reply`;
@@ -304,7 +311,11 @@ CREATE TABLE `qa_reply` (
 
 INSERT INTO `qa_reply` (`id`, `QA_content_id`, `QA_reply`, `QA_reply_time`) VALUES
 (1, 1, '付款逾期', '2022-04-22 15:41:37'),
-(4, 40, '000', '2022-04-25 09:52:20');
+(4, 40, '000', '2022-04-25 09:52:20'),
+(5, 68, '123', '2022-04-25 16:13:45'),
+(6, 68, '123', '2022-04-25 16:13:49'),
+(7, 1, '111\r\n', '2022-04-25 16:30:08'),
+(8, 1, '562', '2022-04-25 16:30:14');
 
 -- --------------------------------------------------------
 
@@ -431,7 +442,7 @@ INSERT INTO `test` (`id`, `name`) VALUES
 -- 資料表結構 `user`
 --
 -- 建立時間： 2022-04-25 01:55:18
--- 最後更新： 2022-04-25 04:19:42
+-- 最後更新： 2022-04-25 08:46:02
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -462,12 +473,13 @@ INSERT INTO `user` (`user_id`, `user_name`, `identity_card`, `user_password`, `n
 (6, '源靜香', 'N221698743', '827ccb0eea8a706c4c34a16891f84e', '靜香', '0963258419', '1996-02-18', 'shizuka@doraemon.com', 3, '2022-04-19 13:47:04', 1),
 (7, '剛田武', 'L126957413', '827ccb0eea8a706c4c34a16891f84e', '胖虎', '0985136489', '1995-06-15', 'takeshi@doraemon.com', 2, '2022-04-19 13:49:06', 1),
 (8, 'MiuPig', 'H126357489', '827ccb0eea8a706c4c34a16891f84e', '11111', '097514645', '1954-12-31', 'miu@pig.com', 2, '2022-04-19 16:43:36', 0),
-(9, 'MiuPig', 'F125984653', '827ccb0eea8a706c4c34a16891f84e', '1111111', '097514855', '1985-05-27', 'miu@pig.com', 2, '2022-04-19 16:46:08', 0),
-(10, 'magggie', 'F125846951', '827ccb0eea8a706c4c34a16891f84e', 'maggie', '0974156388', '1998-06-14', 'miu@pig.com', 2, '2022-04-19 16:50:58', 0),
+(9, 'MiuPig', 'F125984653', '827ccb0eea8a706c4c34a16891f84e', '1111111', '097514855', '1985-05-27', 'miu@pig.com', 1, '2022-04-19 16:46:08', 1),
+(10, 'magggie', 'F125846951', '827ccb0eea8a706c4c34a16891f84e', 'maggie', '0974156388', '1998-06-14', 'miu@pig.com', 1, '2022-04-19 16:50:58', 1),
 (11, '12345', 'H147523698', '827ccb0eea8a706c4c34a16891f84e', '123', '091456789', '1995-08-08', 'akosakposkapo@gmail.com', 2, '2022-04-20 12:47:25', 0),
 (12, '12345', 'H124596315', '827ccb0eea8a706c4c34a16891f84e', '12345', '097513544', '1999-01-01', 'miu', 2, '2022-04-20 13:31:08', 0),
 (13, '陶1S', 'H224591756', '827ccb0eea8a706c4c34a16891f84e', '陶樂比', '0975148566', '1993-09-07', 'taolebe@dreamland.com', 1, '2022-04-21 17:36:12', 1),
-(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 1, '2022-04-21 17:56:36', 1);
+(14, 'MiuMiu', 'H124695123', '827ccb0eea8a706c4c34a16891f84e', '12345', '0975148522', '1994-05-09', 'miu@pig.com', 1, '2022-04-21 17:56:36', 1),
+(15, '企鵝', 'U124759638', '827ccb0eea8a706c4c34a16891f84e', '企鵝', '09877887787', '1995-01-01', 'penguin@penguin.com', 1, '2022-04-25 16:34:51', 1);
 
 -- --------------------------------------------------------
 
@@ -475,6 +487,7 @@ INSERT INTO `user` (`user_id`, `user_name`, `identity_card`, `user_password`, `n
 -- 資料表結構 `user_and_coupon`
 --
 -- 建立時間： 2022-04-22 10:22:17
+-- 最後更新： 2022-04-25 08:29:01
 --
 
 DROP TABLE IF EXISTS `user_and_coupon`;
@@ -497,7 +510,15 @@ INSERT INTO `user_and_coupon` (`user_and_coupon_id`, `coupon_id`, `user_id`, `va
 (5, 2, 14, 1),
 (6, 2, 15, 1),
 (7, 3, 1, 1),
-(8, 4, 3, 0);
+(8, 4, 3, 0),
+(9, 5, 3, 1),
+(10, 5, 14, 1),
+(11, 6, 3, 1),
+(12, 7, 4, 1),
+(13, 7, 5, 1),
+(14, 7, 7, 1),
+(15, 8, 1, 1),
+(16, 8, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -682,7 +703,7 @@ ALTER TABLE `user_and_groups`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `dish`
@@ -742,7 +763,7 @@ ALTER TABLE `qa_content`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `qa_reply`
 --
 ALTER TABLE `qa_reply`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `shop`
@@ -772,13 +793,13 @@ ALTER TABLE `test`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_and_coupon`
 --
 ALTER TABLE `user_and_coupon`
-  MODIFY `user_and_coupon_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_and_coupon_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_and_groups`
