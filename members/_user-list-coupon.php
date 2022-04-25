@@ -142,11 +142,11 @@ $user_count = $resultNew->num_rows;
                                         <td class="text-center" ><a class="btn btn-info text-white" href="userCouponHistory.php?id=<?= $row["user_id"]?>">檢視</a></td>
                                     </tr>
                                 <?php endforeach; ?>
+                            </tbody>
+                            <button type="button" class="check-all btn btn-info text-white my-2">選擇全部</button>
                             <?php else : ?>
                                 <?= "沒有相符資料" ?>
                             <?php endif; ?>
-                            </tbody>
-                            <button type="button" class="check-all btn btn-info text-white my-2">選擇全部</button>
                         </form>
                 </table>
             </div>
@@ -192,6 +192,7 @@ $user_count = $resultNew->num_rows;
                 </ul>
             </nav>
         </div>
+        <?php if ($user_count > 0) : ?>
         <div class="row py-2">
             <div class="col-auto mx-auto py-3">
                 <div class="row">
@@ -207,5 +208,6 @@ $user_count = $resultNew->num_rows;
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </form>
 </div>
