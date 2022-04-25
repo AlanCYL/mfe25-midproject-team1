@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-04-25 10:33:43
+-- 產生時間： 2022-04-25 11:11:14
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.4
 
@@ -247,7 +247,8 @@ INSERT INTO `qa` (`id`, `shop_id`, `user_id`, `QA_type`, `QA_content_create_time
 --
 -- 資料表結構 `qa_content`
 --
--- 建立時間： 2022-04-25 02:27:24
+-- 建立時間： 2022-04-25 03:11:08
+-- 最後更新： 2022-04-25 03:11:08
 --
 
 DROP TABLE IF EXISTS `qa_content`;
@@ -256,23 +257,22 @@ CREATE TABLE `qa_content` (
   `QA_id` int(30) NOT NULL,
   `QA_content_text` varchar(100) NOT NULL,
   `QA_content_from_who` varchar(30) NOT NULL,
-  `QA_content_who_id` int(30) NOT NULL,
-  `QA_content_create_time` datetime NOT NULL
+  `QA_content_who_id` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `qa_content`
 --
 
-INSERT INTO `qa_content` (`QA_content_id`, `QA_id`, `QA_content_text`, `QA_content_from_who`, `QA_content_who_id`, `QA_content_create_time`) VALUES
-(1, 1, '信用卡無法付款', '000', 4, '2022-04-19 17:40:05'),
-(40, 2, '真難用', '000', 7, '2022-04-22 13:46:32'),
-(42, 3, '可以使用現金付款嗎?', '000', 10, '2022-04-22 13:49:12'),
-(49, 4, '可以使用現金付款嗎?', '000', 12, '2022-04-22 13:49:12'),
-(52, 7, '真難用', '000', 7, '2022-04-22 13:46:32'),
-(67, 5, '可以使用現金付款嗎?', '000', 3, '2022-04-22 13:49:12'),
-(68, 6, '信用卡無法付款', '000', 7, '2022-04-19 17:40:05'),
-(70, 8, '可以使用現金付款嗎?', '000', 10, '2022-04-22 13:49:12');
+INSERT INTO `qa_content` (`QA_content_id`, `QA_id`, `QA_content_text`, `QA_content_from_who`, `QA_content_who_id`) VALUES
+(1, 1, '信用卡無法付款', '000', 4),
+(40, 2, '真難用', '000', 7),
+(42, 3, '可以使用現金付款嗎?', '000', 10),
+(49, 4, '可以使用現金付款嗎?', '000', 12),
+(52, 7, '真難用', '000', 7),
+(67, 5, '可以使用現金付款嗎?', '000', 3),
+(68, 6, '信用卡無法付款', '000', 7),
+(70, 8, '可以使用現金付款嗎?', '000', 10);
 
 -- --------------------------------------------------------
 
@@ -763,6 +763,7 @@ ALTER TABLE `user_and_coupon`
 ALTER TABLE `user_and_groups`
   MODIFY `user_and_groups_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
