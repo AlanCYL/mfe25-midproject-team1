@@ -165,6 +165,7 @@ $row = $result->fetch_assoc();
             </div>
           </div>
 
+          <?php if($type=='group'||$type=='history'): ?>
           <div class="mx-auto" style="width:700px; margin-top: 26px;">
            <h4>會員資料：</h4>
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -197,7 +198,7 @@ $row = $result->fetch_assoc();
         </table>
         </div>
         </div>
-
+        <?php endif; ?>
 
 
 
