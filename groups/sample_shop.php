@@ -65,7 +65,8 @@ $row = $result->fetch_assoc();
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-                <h4>後台管理</h4>
+            <h4><a href="sample_shop.php?login=<?=$shopID?>">後台管理</a></h4>
+
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
@@ -115,7 +116,7 @@ $row = $result->fetch_assoc();
             <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
                 <!-- 可以放header -->
                 <br>
-                <h4>ShopName</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+                <h4><?=$row["shop_name"]?></h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
             </div>
             <div>
