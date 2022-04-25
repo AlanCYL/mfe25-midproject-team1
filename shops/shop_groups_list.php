@@ -174,7 +174,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
 
         <div class="d-flex justify-content-between mb-4">
           <div>
-            <h2 class="mb-4">所有開團清單</h2>
+            <h2 class="mb-4">開團清單總覽</h2>
            <!-- search -->
            <div class="input-group">
               <div class="form-outline">

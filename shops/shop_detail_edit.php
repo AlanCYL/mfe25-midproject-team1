@@ -35,7 +35,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
 <html lang="en">
 
 <head>
-    <title>店家明細修改</title>
+    <title><?=$row["shop_name"]?>店家明細修改</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
