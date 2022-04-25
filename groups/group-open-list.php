@@ -118,8 +118,7 @@ $row = $result->fetch_assoc();
           <div style="margin-right:130px">
 
             <img src="./bootstrap-icons-1.8.1/person-circle.svg" alt=""> <span style="margin-right:50px">store</span>
-            <img src="./bootstrap-icons-1.8.1/box-arrow-right.svg" alt="">
-
+            <a href="../manager-logout.php"><img src="./bootstrap-icons-1.8.1/box-arrow-right.svg" alt=""></a>
           </div>
         </div>
 
