@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2022 年 04 月 25 日 02:46
+-- 產生時間： 2022 年 04 月 25 日 03:18
 -- 伺服器版本： 5.7.34
 -- PHP 版本： 8.0.8
 
@@ -83,7 +83,7 @@ CREATE TABLE `groups` (
   `eating_date` date NOT NULL,
   `eating_time` time NOT NULL,
   `least_num` int(30) NOT NULL,
-  `goal_num` int(30) NOT NULL,
+  `goal_num` int(30) DEFAULT NULL,
   `price` int(6) UNSIGNED NOT NULL,
   `shop_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -94,12 +94,13 @@ CREATE TABLE `groups` (
 
 INSERT INTO `groups` (`groups_id`, `groups_start_time`, `groups_end_time`, `eating_date`, `eating_time`, `least_num`, `goal_num`, `price`, `shop_id`) VALUES
 (1, '2022-04-01', '2022-04-10', '2022-04-15', '20:00:00', 5, 0, 350, 1),
-(2, '2022-04-02', '2022-04-15', '2022-04-19', '09:22:40', 3, 6, 200, 2),
+(2, '2022-04-02', '2022-04-15', '2022-04-19', '09:22:40', 3, 6, 200, 1),
 (3, '2022-04-20', '2022-04-20', '2022-04-30', '09:25:03', 7, 6, 100, 3),
 (4, '2022-04-11', '2022-04-16', '2022-04-19', '09:27:47', 4, 10, 1500, 4),
 (5, '2022-04-01', '2022-04-11', '2022-05-12', '09:28:46', 4, 6, 600, 5),
 (6, '2022-04-04', '2022-04-08', '2022-05-23', '15:00:00', 4, 5, 50, 6),
-(7, '2022-03-30', '2022-04-05', '2022-05-21', '15:00:00', 2, 8, 400, 7);
+(7, '2022-03-30', '2022-04-05', '2022-05-21', '15:00:00', 2, 8, 400, 7),
+(8, '2022-04-21', '2022-04-23', '2022-04-26', '20:17:00', 2, NULL, 200, 2);
 
 -- --------------------------------------------------------
 
@@ -572,7 +573,7 @@ ALTER TABLE `established`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groups_id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `groups_id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `groups_and_dish`
