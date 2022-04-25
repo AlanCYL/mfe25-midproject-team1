@@ -7,6 +7,7 @@ $content_id=$_GET["qa_content_id"];
 require_once("../db-connect.php");
 $sql="SELECT * 
 FROM qa_content
+JOIN qa ON qa_content.QA_id = qa.id
 LEFT JOIN qa_reply on qa_content.QA_content_id = qa_reply.QA_content_id
 WHERE qa_content.QA_id = '$id'
 ORDER BY qa_content.QA_content_id DESC";
