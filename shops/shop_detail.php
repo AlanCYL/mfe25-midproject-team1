@@ -141,7 +141,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
             <div>
                 <!-- 可以放content -->
                  <a href="shop_list.php" class="btn btn-info text-white mb-4">返回店家清單</a>
-                 <a href="" class="btn btn-info text-white mb-4">店家開團紀錄</a>
+                 <a href="eachShop_groupList.php?shop_id=<?=$row["shop_id"];?>" class="btn btn-info text-white mb-4">店家開團紀錄</a>
                 <div class="container">
                       <div class="row">
                           <div class="col-4">
