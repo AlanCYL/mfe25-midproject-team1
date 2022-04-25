@@ -212,14 +212,14 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
           <div>
             <h2 class="mb-4">開團清單</h2>
             <!-- search -->
-            <div class="input-group">
+            <!-- <div class="input-group">
               <div class="form-outline">
                 <input id="search-focus" type="search" id="form1" class="form-control" placeholder="Search" />
               </div>
               <a href="" class="btn btn-outline-secondary input-group-text">
                 <img src="./bootstrap-icons-1.8.1/search.svg" class="" alt="">
               </a>
-            </div>
+            </div> -->
           </div>
           <div>
             <div class="input-group">
