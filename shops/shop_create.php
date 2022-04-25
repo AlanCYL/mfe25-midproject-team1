@@ -38,7 +38,7 @@
             <div id="content">
                 <div class="border-bottom mb-3 d-flex justify-content-between">
                     <div class="title">
-                        <h1>店家註冊</h1>
+                        店家註冊
                     </div>
                     <div style="margin-right:130px">
 

@@ -116,13 +116,27 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                     </div>
                 </li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#dashboard-collapse" aria-expanded="false">
                         會員管理
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">會員清單</a></li>
+                            <li><a href="#" class="link-dark rounded">優惠制度</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#orders-collapse" aria-expanded="false">
+                        客服管理
                     </button>
                     <div class="collapse" id="orders-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="../members/user-list.php" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="../members/user-list-coupon.php" class="link-dark rounded">優惠券發送</a></li>
+                            <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
+                            <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
+
                         </ul>
                     </div>
                 </li>
@@ -131,12 +145,14 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
         <div>
         <i class="btn btn-light btn-cute fa-solid fa-arrows-left-right border-start-none" id="toggle"></i>
         </div>
-       <!-- Page Content  -->
-       <div id="content">
-            <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="d-flex justify-content-between mb-4">
+
                 <!-- 可以放header -->
-                <br>
-                <h4>Admin</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+
+
+
 
             </div>
             <div>

@@ -237,8 +237,8 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
             <thead class=" p-3 mb-2 ">
               <tr>
                 <th>開團編號</th>
+                <th>商家名稱</th>
                 <th>開團店家</th>
-                <th>開團時間</th>
                 <th>截止時間</th>
                 <th>用餐時間</th>
                 <th>目前人數</th>

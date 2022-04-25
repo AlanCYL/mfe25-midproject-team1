@@ -116,6 +116,19 @@ $row = $result->fetch_assoc();
                         </ul>
                     </div>
                 </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#orders-collapse" aria-expanded="false">
+                        客服管理
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
+                            <li><a href="#" class="link-dark rounded">會員意見反應</a></li>
+
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div>
@@ -191,7 +204,7 @@ $row = $result->fetch_assoc();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../template/sidebars.js">
+        <link rel="stylesheet" href="/mid-project/template/sidebars.js">
 </body>
 
 </html>
