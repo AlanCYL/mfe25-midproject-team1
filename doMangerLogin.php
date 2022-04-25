@@ -5,7 +5,7 @@ $account=$_POST["account"];
 $password=$_POST["password"];
 $repassword=$_POST["repassword"];
 if($contact=='shopLogin'){
-    $sql="SELECT * FROM shop WHERE shop_account='$account'";
+    $sql="SELECT * FROM shop WHERE shop_email='$account'";
     $result=$conn->query($sql);
     $row=$result->fetch_assoc();
     if($result->num_rows>0){

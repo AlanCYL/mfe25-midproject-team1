@@ -176,7 +176,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                                 </tr>
                                 <tr>
                                     <th>email</th>
-                                    <td><?=$row["shop_account"];?></td>
+                                    <td><?=$row["shop_email"];?></td>
                                 </tr>
                                 <tr>
                                     <th>phone</th>

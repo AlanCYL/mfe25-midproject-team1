@@ -4,7 +4,7 @@ require_once("../db-connect.php");
 
 $shop_id=$_POST["shop_id"];
 $shop_name=$_POST["shop_name"];
-$shop_account=$_POST["shop_account"];
+$shop_email=$_POST["shop_email"];
 $shop_phone=$_POST["shop_phone"];
 $shop_address=$_POST["shop_address"];
 $shop_description=$_POST["shop_description"];
@@ -19,7 +19,7 @@ $service=$_POST["service_id"];
 $sql="UPDATE shop
 SET
 shop_name='$shop_name',
-shop_account='$shop_account',
+shop_email='$shop_email',
 shop_phone='$shop_phone',
 shop_address='$shop_address',
 shop_description='$shop_description',
