@@ -310,7 +310,7 @@ DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
   `shop_id` int(3) NOT NULL,
   `shop_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shop_email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shop_account` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_phone` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shop_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -326,7 +326,7 @@ CREATE TABLE `shop` (
 -- 傾印資料表的資料 `shop`
 --
 
-INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_email`, `shop_password`, `shop_phone`, `shop_address`, `shop_description`, `img`, `type_id`, `service_id`, `shop_create_time`, `valid`) VALUES
+INSERT INTO `shop` (`shop_id`, `shop_name`, `shop_account`, `shop_password`, `shop_phone`, `shop_address`, `shop_description`, `img`, `type_id`, `service_id`, `shop_create_time`, `valid`) VALUES
 (1, '村民食堂', 'villager@test.com', '111', '03-339-868', '桃園市桃園區中正路1078號', '無距離享受與自然和諧共處，讓每個人在繁忙之餘，也能擁有輕鬆的步調，與家人朋友相聚用餐，共享歡樂！', 'Villager.jpg', '2', '1', '2022-04-22', 1),
 (2, 'NINI 尼尼義大利餐廳', 'NINI@test.com', '222', '03-222-3272', '桃園市蘆竹區南崁路一段112號', 'NINI《NATURAL自然、INITIAL獨創、NEAT純淨、IMPRESSIVE感動》我們相信用好的食材與料理方式，就能對自我和環境產生正向的改變；透過好的用餐環境，讓顧客們和我們一樣愛上這樣的生活方式。', 'NINI.jpg', '3', '1', '2022-04-21', 0),
 (3, '梳子．Salud', 'Salud@test.com', '333', '02-2711-8832', '330桃園市桃園區新埔六街89', '由川門子團隊帶來，西班牙式的Tapas碰上川式料理蹦出！精緻美味小餐點！搭配無毒生菜、德國有機農莊，希望提供給您一個全新體驗的蔬食。自然的用餐環境，讓您留下美好的身影：）', 'Salud.jpg', '1', '1', '2022-04-23', 1),
