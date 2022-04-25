@@ -1,4 +1,9 @@
 <?php require_once("../db-connect.php") ?>
+<?php
+unset($_SESSION['searchId']); 
+unset($_SESSION['page']);
+unset($_SESSION['typePage']);
+?>
 
 <!doctype html>
 <html lang="en">
