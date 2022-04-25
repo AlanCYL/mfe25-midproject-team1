@@ -50,9 +50,10 @@ $coupon_count = $resultCoupon->num_rows;
     <div class="py-2 justify-content-center ">
         <a href="user-list-coupon.php?<?php if(isset($_SESSION["page"])): echo "&p=".$_SESSION['page']; endif;?><?php if(isset($_SESSION["searchId"])): echo "&id=".$_SESSION['searchId']; endif;?>" class="btn text-Secondary"><i class="fa-solid fa-arrow-rotate-left"></i></a>
     </div>
+    <h2><?= $row["user_name"] ?>擁有的優惠券</h2>
     <div class="row">
         <div class="py-2">
-            <table class="table table-bordered text-nowrap">
+            <table class="table table-bordered text-nowrap shadow-sm">
                 <thead>
                     <tr class="text-center">
                         <th>會員編號</th>
@@ -74,7 +75,7 @@ $coupon_count = $resultCoupon->num_rows;
     </div>
     <div class="row">
     <div class="py-2">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-pills ">
                     <li class="nav-item">
                         <a class="nav-link <?php if (!isset($_GET["cate"])) echo "active" ?>" aria-current="page" href="userCouponHistory.php?id=<?=$id?>">所有優惠券歷史</a>
                     </li>
@@ -87,7 +88,7 @@ $coupon_count = $resultCoupon->num_rows;
                 </ul>
             </div>
         <?php if($coupon_count > 0):?>
-        <table class="table table-bordered text-nowrap">
+        <table class="table table-bordered text-nowrap shadow-sm">
             <thead>
                 <tr class="text-center">
                     <th>優惠券編號</th>

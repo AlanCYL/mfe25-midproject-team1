@@ -5,7 +5,7 @@
         </div>
         <div class="col-lg-5">
             <h3 class="text-nowrap"><?= $row["user_name"] ?>的會員資料</h3>
-            <table class="table table-bordered nowrap">
+            <table class="table table-bordered nowrap shadow-sm">
                 <tr>
                     <th>會員編號</th>
                     <td><?= $row["user_id"] ?></td>
@@ -66,7 +66,7 @@
                 </ul>
             </div>
             <div class="py-2">
-                <table class="table table-bordered text-nowrap">
+                <table class="table table-bordered text-nowrap shadow-sm">
                     <nav aria-label="Page navigation example">
                     </nav>
                     <?php if ($users_count > 0) : ?>

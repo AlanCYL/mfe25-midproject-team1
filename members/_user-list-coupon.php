@@ -56,6 +56,7 @@ $user_count = $resultNew->num_rows;
 ?>
 
 <div class="container pb-1 ">
+    <h2>優惠券發送</h2>
     <div class="text-end py-2">
         第 <?= $p ?> 頁, 共 <?php if ($page_count == 0) : echo 1;
                             else : echo $page_count;
@@ -119,7 +120,7 @@ $user_count = $resultNew->num_rows;
     <form action="doCreateCoupon.php" method="post">
         <div class="row">
             <div class="col-lg-8 mx-auto ">
-                <table class="table table-bordered">
+                <table class="table table-bordered shadow-sm">
                     <?php if ($user_count > 0) : ?>
                         <thead>
                             <tr>
@@ -206,7 +207,7 @@ $user_count = $resultNew->num_rows;
                         <input type="number" class="form-control" min="0" placeholder="金額(TWD)" name="price">
                     </div>
                     <div class="col-auto py-2 mx-auto">
-                        <button class="btn btn-info text-white" type="submit">送出</button>
+                        <button class="btn btn-info text-white" type="submit"><i class="fa-solid fa-coins"></i> 送出</button>
                     </div>
                 </div>
             </div>

@@ -70,7 +70,8 @@ $user_count = $resultNew->num_rows;
 
 <!-- 可以放content -->
 <div class="container">
-    <table class="table table-bordered">
+    <h2 class="pb-2">會員清單</h2>
+    <table class="table table-bordered shadow-sm">
         <?php if (!isset($_GET["id"]) ||empty($_GET["id"]) ) : ?>
             <div class="row">
                 <div class="col-auto px-0  position-relative">

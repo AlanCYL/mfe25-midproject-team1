@@ -32,7 +32,7 @@ if (!$rowGroup) {
 <div class="container">
     <div class="row">
         <div class="py-2">
-            <table class="table table-bordered text-nowrap">
+            <table class="table table-bordered text-nowrap shadow-sm">
                 <nav aria-label="Page navigation example">
                 </nav>
                 <thead>
@@ -55,7 +55,7 @@ if (!$rowGroup) {
         </div>
     </div>
     <div class="row">
-        <table class="table table-bordered nowrap">
+        <table class="table table-bordered nowrap shadow-sm">
             <tr>
                 <th>參團編號</th>
                 <td><?= $rowGroup["groups_id"] ?></td>
