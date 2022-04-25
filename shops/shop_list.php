@@ -22,7 +22,7 @@ switch($type){
 }
 
 //設定分頁 抓共幾筆資料
-$sql = "SELECT * FROM shop"; //抓到全部資料
+$sql = "SELECT * FROM shop WHERE valid=1"; //抓到全部資料
 $result=$conn->query($sql); 
 $total=$result->num_rows;  //用num_rows的方式知道有幾筆資料
 //-----------------------------------------------------------------
@@ -44,7 +44,7 @@ $user_count=$result->num_rows;
 if(isset($_GET["date"])){
   $date=$_GET["date"];
   $sql = "SELECT * FROM shop 
-  WHERE shop.shop_create_time ='$date'
+  WHERE valid=1 AND shop.shop_create_time ='$date'
   ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
   ";  
@@ -54,7 +54,7 @@ if(isset($_GET["date"])){
   $date1=$_GET["date1"];
   $date2=$_GET["date2"];
   $sql = "SELECT * FROM shop 
-  WHERE shop.shop_create_time BETWEEN '$date1' AND '$date2'
+  WHERE valid=1 AND shop.shop_create_time BETWEEN '$date1' AND '$date2'
   ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
   ";
@@ -62,6 +62,7 @@ if(isset($_GET["date"])){
   }
   else{
   $sql = "SELECT * FROM shop 
+  WHERE valid=1
   ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
   ";  
@@ -258,7 +259,7 @@ if(isset($_GET["date"])){
                 <th>商家店名</th>
                 <th>商家帳號</th>
                 <th>商家電話</th>
-                <th>開團數量</th>
+
                 <th>開店時間</th>
                 <th>檢視</th>
               </tr>
@@ -271,7 +272,7 @@ if(isset($_GET["date"])){
                 <td><?=$row["shop_name"]?></td>
                 <td><?=$row["shop_account"]?></td>
                 <td><?=$row["shop_phone"]?></td> 
-                <td>3</td>
+
                 <td><?=$row["shop_create_time"]?></td>
                 <td><a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info text-white">檢視</a></td>
               </tr>

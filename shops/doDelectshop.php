@@ -7,7 +7,7 @@ require_once("../db-connect.php");
 
 $shop_id=$_GET["shop_id"];
 
-require_once("../db_connect.php");
+require_once("../db-connect.php");
 //echo $shop_id;
 
 $sql="UPDATE shop SET valid=0 WHERE shop_id='$shop_id'";
