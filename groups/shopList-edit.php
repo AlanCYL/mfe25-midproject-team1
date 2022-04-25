@@ -181,7 +181,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                                 </tr>
                                 <tr>
                                     <th>商家帳號</th>
-                                    <td><input type="email" name="shop_email" class="form-control" value="<?=$row["shop_email"];?>"></td>
+                                    <td><input type="email" name="shop_account" class="form-control" value="<?=$row["shop_account"];?>"></td>
                                 </tr>
                                 <tr>
                                     <th>商家電話</th>
