@@ -168,8 +168,8 @@ $users_count = $resultGroup->num_rows;
                     </button>
                     <div class="collapse" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">店家清單</a></li>
-                            <li><a href="#" class="link-dark rounded">開團清單</a></li>
+                            <li><a href="../shops/shop_list.php" class="link-dark rounded">店家清單</a></li>
+                            <li><a href="../shops/shop_groups_list.php" class="link-dark rounded">開團清單</a></li>
                         </ul>
                     </div>
                 </li>

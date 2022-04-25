@@ -63,8 +63,8 @@
                     </button>
                     <div class="collapse" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">店家清單</a></li>
-                            <li><a href="#" class="link-dark rounded">開團清單</a></li>
+                            <li><a href="../shops/shop_list.php" class="link-dark rounded">店家清單</a></li>
+                            <li><a href="../shops/shop_groups_list.php" class="link-dark rounded">開團清單</a></li>
                         </ul>
                     </div>
                 </li>
@@ -72,10 +72,10 @@
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="true">
                         會員管理
                     </button>
-                    <div class="collapse show" id="orders-collapse">
+                    <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="user-list.php" class="link-dark rounded">會員清單</a></li>
-                            <li><a href="user-list-coupon.php" class="link-dark rounded">優惠券發送</a></li>
+                            <li><a href="../shop_list.php" class="link-dark rounded">店家清單</a></li>
+                            <li><a href="../shop_groups_list.php" class="link-dark rounded">開團清單</a></li>
                         </ul>
                     </div>
                 </li>
