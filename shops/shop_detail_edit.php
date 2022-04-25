@@ -242,7 +242,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/mid-project/template/sidebars.js">
+        <script src="../template/sidebars.js"></script>
 </body>
 
 </html>
