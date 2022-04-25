@@ -118,6 +118,22 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
       border: 1px solid #ddd;
       background-color: #f8f9fa;
     }
+    .nav-tabs .nav-link{
+            font-weight: 500;
+            color: #495057;
+            background-color: #fff;
+            border-color: #dee2e6 #dee2e6 #fff;
+
+        }
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+            margin-bottom: -1px;
+            background: 0 0;
+            border: 1px solid transparent;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+            font-weight: 900;
+            color:maroon;
+        }
     </style>
 </head>
 
