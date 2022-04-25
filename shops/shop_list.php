@@ -135,12 +135,11 @@ if(isset($_GET["date"])){
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-                <h4>後台管理</h4>
+            <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#home-collapse" aria-expanded="true">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                         商家管理
                     </button>
                     <div class="collapse show" id="home-collapse">
@@ -161,6 +160,16 @@ if(isset($_GET["date"])){
                         </ul>
                     </div>
                 </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cs-collapse" aria-expanded="false">
+                        客服管理
+                    </button>
+                    <div class="collapse" id="cs-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="../QA/QA-list-user.php" class="link-dark rounded">意見反應</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div>
@@ -170,7 +179,7 @@ if(isset($_GET["date"])){
        <div id="content">
             <div class="d-flex justify-content-end mb-4 border-bottom border-secondary container-fluid ">
                 <!-- 可以放header -->
-                <br>
+                <i class="fa-solid fa-user mx-2 py-1"></i>
                 <h4>Admin</h4><a class="mx-3" href="../manager-logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
             </div>
