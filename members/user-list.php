@@ -44,6 +44,9 @@
             background-color: #51A8DD;
             border-color: #51A8DD;
         }
+        .text-info {
+            color: #51A8DD !important;
+        }
     </style>
 
 </head>
