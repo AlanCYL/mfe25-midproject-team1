@@ -237,7 +237,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
             <thead class=" p-3 mb-2 ">
               <tr>
                 <th>開團編號</th>
-                <th>商家名稱</th>
+                <th>開團店家</th>
                 <th>開團時間</th>
                 <th>截止時間</th>
                 <th>用餐時間</th>
@@ -265,7 +265,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
                         }
                     ?>
                 </td>
-                <td><a href="" class="btn btn-info text-white">檢視</a></td>
+                <td><a href="shop_groups_check.php?groups_id=<?=$row["groups_id"]?>" class="btn btn-info text-white">檢視</a></td>
               </tr>
               <?php endforeach; ?>
               <?php else:?>
@@ -277,7 +277,7 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
        <!-- pagination -->
        <div>
         <div class="py-2 text-center">
-        <?php if(!isset($_GET["date1"])): ?>
+        <?php if($type==0): ?>
             第<?=$p?>頁, 共<?=$page_count?>頁, 共<?=$total?>筆
           <?php else:?>
             第1頁, 共1頁
@@ -286,9 +286,9 @@ $groups_count=$result->num_rows; //groups資料庫共幾筆資料
           </div>
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-            <?php if(!isset($_GET["type1"])): ?>
+            <?php if($type==0): ?>
               <?php for($i=1; $i<=$page_count;$i++):?>
-                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_list_group.php?p=<?=$i?>"><?=$i?></a></li>
+                <li class="page-item <?php if($i==$p)echo "active";?>"><a class="page-link " href="shop_groups_list.php?p=<?=$i?>"><?=$i?></a></li>
               <?php endfor;?>
             <?php else:?>
               <li class="page-item"> </a></li>
