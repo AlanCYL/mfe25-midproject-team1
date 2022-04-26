@@ -227,8 +227,8 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                         </div>
                     </div> -->
                     <div class="pt-5 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-info me-2">儲存</button>
-                        <a href="shopList.php?login=<?=$row["shop_id"]?>" class="btn btn-info btn-danger">取消</a>
+                        <button type="submit" class="btn  me-2" style="background-color:#BDC0BA; color:white;">儲存</button>
+                        <a href="shopList.php?login=<?=$row["shop_id"]?>" class="btn" style="background-color:#BDC0BA; color:white;">取消</a>
                     </div>
                 </div>
             </div>

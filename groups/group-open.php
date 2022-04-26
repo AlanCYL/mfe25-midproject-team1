@@ -78,7 +78,7 @@ $row = $result->fetch_assoc();
             </ul>
           </div>
         </li>
-        
+
       </ul>
     </nav>
     <div>
@@ -130,8 +130,8 @@ $row = $result->fetch_assoc();
                     </div>
 
 
-                    <div class="my-4" style="margin-left:600px;">
-                        <button class="btn btn-secondary" type="submit" onclick="addGroup()">送出</button>
+                    <div class="" style="margin-left:600px;">
+                        <button class="btn" style="background-color:#BDC0BA; color:white;" type="submit" onclick="addGroup()">送出</button>
                     </div>
                 </div>
             </div>

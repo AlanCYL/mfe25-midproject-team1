@@ -58,7 +58,7 @@ $shop_id=$_GET["dish"];
             </ul>
           </div>
         </li>
-       
+
       </ul>
     </nav>
     <div>
@@ -103,7 +103,7 @@ $shop_id=$_GET["dish"];
 
                 </div>
                 <div class="" style="margin-top:90px;margin-left: 700px;margin-bottom: 30px">
-                    <button class="btn btn-secondary" style="width:100px;" type="submit" onclick="createDish()">送出</button>
+                    <button class="btn" style="width:100px; background-color:#BDC0BA; color:white;" type="submit" onclick="createDish()">送出</button>
                 </div>
 
 

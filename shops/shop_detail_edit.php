@@ -22,8 +22,8 @@ $row = $result->fetch_assoc();
 // var_dump($row);
 // exit;
 
-$sql2 = "SELECT * FROM shop_type"; 
-$result2=$conn->query($sql2); 
+$sql2 = "SELECT * FROM shop_type";
+$result2=$conn->query($sql2);
 $rows2=$result2->fetch_all(MYSQLI_ASSOC);
 
 //var_dump($rows2);
@@ -151,7 +151,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
             <div>
                 <!-- 可以放content -->
                 <form action="Updateshop.php" method="POST">
-                
+
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
@@ -159,7 +159,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                             <img class="object-cover" src="logo/<?=$row["img"];?>"  alt="">
                             </div>
                         </div>
-                        
+
                         <div class="col-6 d-flex align-items-center">
                             <table class="table table-bordered">
                                 <tr>
@@ -230,7 +230,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                         </div>
                     </div> -->
                     <div class="pt-5 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-info me-2">儲存</button>
+                        <button type="submit" class="btn me-2" style="background-color:#BDC0BA; color:white;">儲存</button>
                         <a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info btn-danger">取消</a>
                     </div>
                 </div>

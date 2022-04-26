@@ -277,7 +277,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <td><?=$row["least_num"]?></td>
                 <td><?=$row["goal_num"]?></td>
                 <td><?=$row["price"]?></td>
-                <td><a href="shop_groupsList_check.php?groups_id=<?=$row["groups_id"]?>" class="btn btn-info text-white"> 檢視</a></td>
+                <td><a href="shop_groupsList_check.php?groups_id=<?=$row["groups_id"]?>" class="btn text-white" style="background-color:#BDC0BA; color:white;"> 檢視</a></td>
 
 
             </tr>
@@ -289,7 +289,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
             </tbody>
           </table>
         </div>
-        <a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info text-white mb-4">返回店家主頁</a>
+        <a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn text-white mb-4" style="background-color:#BDC0BA; color:white;">返回店家主頁</a>
 
 
 

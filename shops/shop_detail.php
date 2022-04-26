@@ -21,8 +21,8 @@ $row = $result->fetch_assoc();
 // var_dump($row);
 // exit;
 
-$sql2 = "SELECT * FROM shop_type"; 
-$result2=$conn->query($sql2); 
+$sql2 = "SELECT * FROM shop_type";
+$result2=$conn->query($sql2);
 $rows2=$result2->fetch_all(MYSQLI_ASSOC);
 
 //var_dump($rows2);
@@ -149,8 +149,8 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
             </div>
             <div>
                 <!-- 可以放content -->
-                 <a href="shop_list.php" class="btn btn-info text-white mb-4">返回店家清單總覽</a>
-                 <a href="eachShop_groupList.php?shop_id=<?=$row["shop_id"];?>" class="btn btn-info text-white mb-4">店家開團紀錄</a>
+                 <a href="shop_list.php" class="btn text-white mb-4" style="background-color:#BDC0BA; color:white;">返回店家清單總覽</a>
+                 <a href="eachShop_groupList.php?shop_id=<?=$row["shop_id"];?>" class="btn text-white mb-4" style="background-color:#BDC0BA; color:white;">店家開團紀錄</a>
                 <div class="container">
                       <div class="row">
                           <div class="col-4">
@@ -163,7 +163,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                                 <tr>
                                     <th>商家編號</th>
                                     <td><?=$row["shop_id"];?></td>
-                                </tr>   
+                                </tr>
                                 <tr>
                                     <th>商家名稱</th>
                                     <td><?=$row["shop_name"];?></td>
@@ -225,7 +225,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                         <a href="" class="btn btn-danger">刪除</a>
                       </div> -->
                       <div class="py-2 d-flex justify-content-end">
-                      <a href="shop_detail_edit.php?shop_id=<?=$row["shop_id"];?>" class="btn btn-info text-white ms-2">編輯</a>
+                      <a href="shop_detail_edit.php?shop_id=<?=$row["shop_id"];?>" class="btn text-white ms-2" style="background-color:#BDC0BA; color:white;">編輯</a>
                       <a href="doDelectshop.php?shop_id=<?=$row["shop_id"];?>" class="btn btn-danger text-white ms-2">刪除</a>
                     </div>
                   </div>

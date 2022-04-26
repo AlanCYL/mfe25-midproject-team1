@@ -220,7 +220,7 @@ $rows2=$result2->fetch_all(MYSQLI_ASSOC);
                         <a href="" class="btn btn-danger">刪除</a>
                       </div> -->
                       <div class="py-2 d-flex justify-content-end">
-                      <a href="shopList-edit.php?login=<?=$row["shop_id"];?>" class="btn btn-info text-white ms-2">編輯</a>
+                      <a href="shopList-edit.php?login=<?=$row["shop_id"];?>" style="background-color:#BDC0BA; color:white;" class="btn text-white ms-2">編輯</a>
                     </div>
                   </div>
 

@@ -23,17 +23,17 @@ switch($type){
 
 //設定分頁 抓共幾筆資料
 $sql = "SELECT * FROM shop WHERE valid=1"; //抓到全部資料
-$result=$conn->query($sql); 
+$result=$conn->query($sql);
 $total=$result->num_rows;  //用num_rows的方式知道有幾筆資料
 //-----------------------------------------------------------------
 
 $per_page=6;  //一頁幾筆帶入變數
 $page_count=CEIL($total/$per_page); //(總共幾筆資料) 除 (一頁要得頁數) 用CEIL去無條件進位(只要有資料就要跳下一頁)
 
-$start=($p-1)*$per_page; 
+$start=($p-1)*$per_page;
 
 
-// $sql = "SELECT * FROM shop 
+// $sql = "SELECT * FROM shop
 // ORDER BY shop.shop_id ASC
 // LIMIT $start,$per_page ";
 
@@ -43,29 +43,29 @@ $user_count=$result->num_rows;
 
 if(isset($_GET["date"])){
   $date=$_GET["date"];
-  $sql = "SELECT * FROM shop 
+  $sql = "SELECT * FROM shop
   WHERE valid=1 AND shop.shop_create_time ='$date'
   ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
-  ";  
-  
+  ";
+
   }
   else if(isset($_GET["date1"]) && isset($_GET["date2"])){
   $date1=$_GET["date1"];
   $date2=$_GET["date2"];
-  $sql = "SELECT * FROM shop 
+  $sql = "SELECT * FROM shop
   WHERE valid=1 AND shop.shop_create_time BETWEEN '$date1' AND '$date2'
   ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
   ";
-  
+
   }
   else{
-  $sql = "SELECT * FROM shop 
+  $sql = "SELECT * FROM shop
   WHERE valid=1
   ORDER BY shop.shop_id $order
   LIMIT $start,$per_page
-  ";  
+  ";
   }
 
   $result = $conn->query($sql);
@@ -73,8 +73,8 @@ if(isset($_GET["date"])){
   $total2=$result->num_rows;
   $per_page=6;  //一頁幾筆帶入變數
   $page_count1=CEIL($total2/$per_page); //(總共幾筆資料) 除 (一頁要得頁數) 用CEIL去無條件進位(只要有資料就要跳下一頁)
-  
-  $start=($p-1)*$per_page; 
+
+  $start=($p-1)*$per_page;
 
 ?>
 
@@ -112,7 +112,7 @@ if(isset($_GET["date"])){
             color: #495057;
             background-color: #fff;
             border-color: #dee2e6 #dee2e6 #fff;
-            
+
         }
         .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
             margin-bottom: -1px;
@@ -123,7 +123,7 @@ if(isset($_GET["date"])){
             font-weight: 900;
             color:maroon;
         }
- 
+
     </style>
 
 
@@ -187,7 +187,7 @@ if(isset($_GET["date"])){
             <div>
                 <!-- 可以放content -->
                 <div class="wrapper">
-     
+
 
       <div id="content">
 
@@ -212,7 +212,7 @@ if(isset($_GET["date"])){
                     <h5 for="" class="form-control-label">註冊時間:</h5>
                   </div>
                   <div class="col-auto">
-                    <input type="date" name="date1" class="form-control" 
+                    <input type="date" name="date1" class="form-control"
                     <?php if(isset($_GET["date1"])):?>
                       value="<?=$_GET["date1"]?>"
 
@@ -230,7 +230,7 @@ if(isset($_GET["date"])){
                     >
                   </div>
                   <div class="col-auto">
-                    <button type="submit" class="btn btn-info">查詢</button>                      
+                    <button type="submit" class="btn" style="background-color:#BDC0BA; color:white;">查詢</button>
                   </div>
                   </div>
                 </div>
@@ -248,7 +248,7 @@ if(isset($_GET["date"])){
             <li class="nav-item">
               <a class="nav-link <?php if($type==2) echo"active"?>" aria-current="page" href="shop_list.php?p=<?=$p?>&type=2">依編號反序</a>
             </li>
-            
+
           </ul>
         </div>
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -271,10 +271,10 @@ if(isset($_GET["date"])){
                 <td><?=$row["shop_id"]?></td>
                 <td><?=$row["shop_name"]?></td>
                 <td><?=$row["shop_account"]?></td>
-                <td><?=$row["shop_phone"]?></td> 
+                <td><?=$row["shop_phone"]?></td>
 
                 <td><?=$row["shop_create_time"]?></td>
-                <td><a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn btn-info text-white">檢視</a></td>
+                <td><a href="shop_detail.php?shop_id=<?=$row["shop_id"]?>" class="btn text-white" style="background-color:#BDC0BA; color:white;">檢視</a></td>
               </tr>
               <?php endforeach; ?>
               <?php else:?>
@@ -303,7 +303,7 @@ if(isset($_GET["date"])){
             <?php endif;?>
             </ul>
           </nav>
-          
+
         </div>
       </div>
     </div>
