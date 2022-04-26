@@ -15,12 +15,23 @@ if($type=='group'||$type=='history'){
     $group_result=$conn->query($group_sql);
     $user_count=$group_result->num_rows;
     $group_rows= $group_result->fetch_all(MYSQLI_ASSOC);
+    $group_row= $group_result->fetch_assoc();
+
+
+}elseif($type=='ungroup'){
+    $group_sql="SELECT * FROM groups JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id JOIN user ON user_and_groups.user_id=user.user_id WHERE user_and_groups.groups_id='$groups_id'";
+    $group_result=$conn->query($group_sql);
+    $user_count=$group_result->num_rows;
+    $group_rows= $group_result->fetch_all(MYSQLI_ASSOC);
+    $group_row= $group_result->fetch_assoc();
 
 }
 
 $sql="SELECT * FROM groups WHERE groups_id='$groups_id'";
 $result=$conn->query($sql);
 $row = $result->fetch_assoc();
+
+
 
 
 
@@ -92,7 +103,7 @@ $row = $result->fetch_assoc();
             </ul>
           </div>
         </li>
-        
+
       </ul>
     </nav>
     <div>
@@ -158,7 +169,7 @@ $row = $result->fetch_assoc();
           <table class="table table-hover border border-1">
           <thead class=" p-3 mb-2 ">
               <tr>
-                <th>會員編號</th>
+              <th>會員編號</th>
                 <th>會員暱稱</th>
                 <th>會員電話</th>
                 <th>會員mail</th>
@@ -186,7 +197,41 @@ $row = $result->fetch_assoc();
         </div>
 
         <?php endif; ?>
+<!-- start -->
+      <?php if($type=='ungroup'): ?>
+          <div class="mx-auto" style="width:700px; margin-top: 26px;">
+           <h4>未成團明細：</h4>
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <table class="table table-hover border border-1">
+          <thead class=" p-3 mb-2 ">
+              <tr>
+              <th>開團編號</th>
+                <th>目標人數</th>
+                <th>截團人數</th>
 
+              </tr>
+            </thead>
+            <tbody>
+            <?php if($type=='ungroup'&$user_count>0): ?>
+
+              <tr>
+                <td><?=$row["groups_id"]?></a></td>
+                <td><?=$row["least_num"]?></td>
+                <td><?=$user_count?></td>
+
+            </tr>
+
+
+                  <?php else: ?>
+                    <?="no data."?>
+                    <?php endif; ?>
+                  </tbody>
+        </table>
+        </div>
+        </div>
+
+        <?php endif; ?>
+<!--  -->
         <div class="py-2 text-end">
                   <a class="btn btn-info text-white" href="group-open-edit.php?login=<?=$shopID?>&type=<?=$type?>&edit=<?=$row["groups_id"]?>">編輯</a>
                   <a class="btn btn-info text-white" href="group-list.php?login=<?=$shopID?>&type=<?=$type?>">返回</a>
