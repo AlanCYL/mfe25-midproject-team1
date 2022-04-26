@@ -169,8 +169,8 @@ $row = $result->fetch_assoc();
           <table class="table table-hover border border-1">
           <thead class=" p-3 mb-2 ">
               <tr>
+                <th>會員編號</th>
                 <th>會員暱稱</th>
-                <th>會員名稱</th>
                 <th>會員電話</th>
                 <th>會員mail</th>
 

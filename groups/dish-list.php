@@ -115,7 +115,7 @@ $shop_id=$_GET["shop"];
               <?php foreach($rows as $row): ?>
           <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
                 <div class="card">
-                <a type="button" class="btn-close btn" aria-label="Close" href="doDeleteDish.php?card=<?=$row["dish_id"]?>"></a>
+                <a type="button" class="btn-close btn" aria-label="Close" href="doDeleteDish.php?login=<?=$shopID?>&card=<?=$row["dish_id"]?>"></a>
                     <figure class="dish-img">
                         <img class="object-cover" src="./image/<?=$row["dish_image"]?>" alt="">
                     </figure>
