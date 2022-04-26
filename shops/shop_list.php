@@ -123,6 +123,15 @@ if(isset($_GET["date"])){
             font-weight: 900;
             color:maroon;
         }
+        .page-item.active .page-link, .btn-info {
+        z-index: 3;
+        color: #fff;
+        background-color: #BDC0BA;
+        border-color: #BDC0BA;
+        }
+        .page-link {
+            color: gray;
+        }
 
     </style>
 
