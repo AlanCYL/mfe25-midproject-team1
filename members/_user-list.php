@@ -129,8 +129,8 @@ $user_count = $resultNew->num_rows;
                         <td><?= $row["identity_card"] ?></td>
                         <td><?= $row["user_phone"] ?></td>
                         <td><?= $row["user_bir"] ?></td>
-                        <td class="text-end"><?= $row["levelName"] ?></td>
-                        <td><a class="btn btn-info text-white" href="user.php?id=<?= $row["user_id"] ?>">檢視</a></td>
+                        <td class=""><?= $row["levelName"] ?></td>
+                        <td class="text-center"><a class="btn btn-info text-white" href="user.php?id=<?= $row["user_id"] ?>">檢視</a></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else : ?>
