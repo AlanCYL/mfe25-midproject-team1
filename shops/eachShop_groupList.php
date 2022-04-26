@@ -44,8 +44,8 @@ else if($type=='history'){
 }
 // 已成團，成團人數超過最小限制
 else if($type=='group'){
-    $sql="SELECT * FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <
-    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'";
+    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <=
+    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'";
 }
 // 未成團
 else if($type=='ungroup'){
@@ -70,7 +70,7 @@ if($type=='all') {
 // 開團中
 else if($type=='start'){
     $sql="SELECT groups.* , shop.shop_name
-FROM groups 
+FROM groups
 JOIN shop ON groups.shop_id=shop.shop_id
     WHERE now() >= `groups_start_time` AND  now() <=`groups_end_time` AND groups.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 }
@@ -80,12 +80,13 @@ else if($type=='history'){
 }
 // 已成團，成團人數超過最小限制
 else if($type=='group'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <
-    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'";
+
+    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <=
+    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID' and now() < `eating_date` ORDER BY groups_id $order";
 }
 // 未成團
 else if($type=='ungroup'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and now() > `eating_date` and groups.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page ";
+    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and now() > `eating_date` and groups.shop_id='$shopID'  and now() < `eating_date` ORDER BY groups_id $order LIMIT $start,$per_page ";
 }else{
     $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM groups JOIN shop ON groups.shop_id=shop.shop_id WHERE shop.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 
@@ -130,7 +131,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
             color: #495057;
             background-color: #fff;
             border-color: #dee2e6 #dee2e6 #fff;
-            
+
         }
         .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
             margin-bottom: -1px;
@@ -226,7 +227,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
 
 
               <date_interval_create_from_date_string>
-          
+
 
               </ㄎ>
             </div>
@@ -250,7 +251,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
               <a class="nav-link <?php if($type=='history') echo "active"?>" href="eachShop_groupList.php?shop_id=<?=$shopID?>&type=history">歷史訂單</a>
             </li>
           </ul>
-         
+
         </div>
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <table class="table table-hover border border-1">
@@ -265,7 +266,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <th>價格</th>
                 <!-- <th>是否成團</th> -->
                 <th>檢視</th>
-           
+
               </tr>
             </thead>
             <tbody>
@@ -280,13 +281,13 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
                 <td><?=$row["goal_num"]?></td>
                 <td><?=$row["price"]?></td>
                 <td><a href="shop_groupsList_check.php?groups_id=<?=$row["groups_id"]?>" class="btn btn-info text-white"> 檢視</a></td>
-              
+
 
             </tr>
 
               <?php endforeach; ?>
                   <?php else: ?>
-       
+
                     <?php endif; ?>
             </tbody>
           </table>
@@ -300,7 +301,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
             <nav aria-label="Page navigation example">
              <ul class="pagination">
                <!-- 動態產生頁碼數字 -->
-             
+
 
 
               </ul>
