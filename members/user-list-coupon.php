@@ -41,12 +41,41 @@
         .btn-info {
             z-index: 3;
             color: #fff;
-            background-color: #51A8DD;
-            border-color: #51A8DD;
+            background-color: #BDC0BA;
+            border-color: #BDC0BA;
         }
 
         .text-info {
-            color: #51A8DD !important;
+            color: #BDC0BA !important;
+        }
+
+        .btn-info:hover {
+            color: #BDC0BA;
+            background-color: gray;
+            border-color: #BDC0BA;
+        }
+
+        .nav-link {
+            color: gray;
+        }
+
+        .page-link {
+            color: gray;
+        }
+
+        .btn-check:focus+.btn-info,
+        .btn-info:focus {
+            color: #BDC0BA;
+            background-color: #BDC0BA;
+            border-color: #BDC0BA;
+            box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
+        }
+        .btn-check:focus-visible{
+            color: #BDC0BA;
+        }
+        .btn-check:focus+.btn,
+        .btn:focus {
+            box-shadow: none!important;
         }
     </style>
 

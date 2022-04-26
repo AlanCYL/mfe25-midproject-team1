@@ -72,7 +72,7 @@ $user_count = $resultNew->num_rows;
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="搜尋會員相關資訊" name="id">
                             </div>
-                            <button class="btn text-info d-inline p-0 mx-1 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="btn text-info d-inline p-0 mx-1 " type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
                     <div class="col-auto py-2 ">
@@ -120,9 +120,9 @@ $user_count = $resultNew->num_rows;
     <form action="doCreateCoupon.php" method="post">
         <div class="row">
             <div class="col-lg-8 mx-auto ">
-                <table class="table table-bordered shadow-sm">
+                <table class="table table-bordered shadow-sm table-hover">
                     <?php if ($user_count > 0) : ?>
-                        <thead>
+                        <thead class="table-light">
                             <tr>
                                 <th>選擇</th>
                                 <th>會員編號</th>

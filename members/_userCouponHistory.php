@@ -53,8 +53,8 @@ $coupon_count = $resultCoupon->num_rows;
     <h2><?= $row["user_name"] ?>擁有的優惠券</h2>
     <div class="row">
         <div class="py-2">
-            <table class="table table-bordered text-nowrap shadow-sm">
-                <thead>
+            <table class="table table-bordered text-nowrap shadow-sm ">
+                <thead class="table-light">
                     <tr class="text-center">
                         <th>會員編號</th>
                         <th>會員姓名</th>
@@ -89,7 +89,7 @@ $coupon_count = $resultCoupon->num_rows;
             </div>
         <?php if($coupon_count > 0):?>
         <table class="table table-bordered text-nowrap shadow-sm">
-            <thead>
+            <thead class="table-light">
                 <tr class="text-center">
                     <th>優惠券編號</th>
                     <th>優惠券原因</th>

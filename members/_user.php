@@ -66,11 +66,11 @@
                 </ul>
             </div>
             <div class="py-2">
-                <table class="table table-bordered text-nowrap shadow-sm">
+                <table class="table table-bordered text-nowrap shadow-sm table-hover">
                     <nav aria-label="Page navigation example">
                     </nav>
                     <?php if ($users_count > 0) : ?>
-                        <thead>
+                        <thead class="table-light">
                             <tr>
                                 <th>參團編號</th>
                                 <th>店家名稱</th>

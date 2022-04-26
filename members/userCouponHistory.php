@@ -41,17 +41,22 @@
         .btn-info {
             z-index: 3;
             color: #fff;
-            background-color: #51A8DD;
-            border-color: #51A8DD;
+            background-color: #BDC0BA;
+            border-color: #BDC0BA;
         }
 
         .nav-pills .nav-link.active,
         .nav-pills .show>.nav-link {
-            background-color: #51A8DD;
+            background-color: #BDC0BA;
         }
 
         .nav-link {
-            color: #51A8DD;
+            color: gray;
+        }
+
+        .nav-link:focus,
+        .nav-link:hover {
+            color: #BDC0BA;
         }
     </style>
 
@@ -63,7 +68,9 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-            <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
+                <a href="../template/sample_admin.php">
+                    <h4>後台管理系統</h4>
+                </a>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">

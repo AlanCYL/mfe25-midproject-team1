@@ -74,7 +74,7 @@ $user_count = $resultNew->num_rows;
 <!-- 可以放content -->
 <div class="container">
     <h2 class="pb-2">會員清單</h2>
-    <table class="table table-bordered shadow-sm">
+    <table class="table table-bordered shadow-sm table-hover">
         <?php if (!isset($_GET["id"]) ||empty($_GET["id"]) ) : ?>
             <div class="row">
                 <div class="col-auto px-0  position-relative">
@@ -108,7 +108,7 @@ $user_count = $resultNew->num_rows;
             </div>
         <?php endif; ?>
         <?php if ($user_count > 0) : ?>
-            <thead>
+            <thead class="table-light">
                 <tr>
                     <th>會員編號</th>
                     <th>會員姓名</th>

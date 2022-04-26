@@ -130,8 +130,8 @@ $users_count = $resultGroup->num_rows;
         .btn-info {
             z-index: 3;
             color: #FCFAF2;
-            background-color: #51A8DD;
-            border-color: #51A8DD;
+            background-color: #BDC0BA;
+            border-color: #BDC0BA;
         }
 
         .btn-danger {
@@ -143,11 +143,21 @@ $users_count = $resultGroup->num_rows;
         .nav-pills .nav-link.active,
         .nav-pills .show>.nav-link {
             color: #fff;
-            background-color: #51A8DD;
+            background-color: #BDC0BA;
         }
 
         .nav-link {
-            color: #51A8DD;
+            color: gray;
+        }
+        .btn-info:hover {
+            color:  #BDC0BA;
+            background-color:  gray;
+            border-color:  #BDC0BA;
+        }
+        .btn-check:focus+.btn,
+        .btn:focus {
+            outline: 0;
+            box-shadow: none!important;
         }
     </style>
 

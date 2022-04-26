@@ -32,10 +32,10 @@ if (!$rowGroup) {
 <div class="container">
     <div class="row">
         <div class="py-2">
-            <table class="table table-bordered text-nowrap shadow-sm">
+            <table class="table table-bordered text-nowrap shadow-sm ">
                 <nav aria-label="Page navigation example">
                 </nav>
-                <thead>
+                <thead class="table-light">
                     <tr class="text-center">
                         <th>會員編號</th>
                         <th>會員姓名</th>

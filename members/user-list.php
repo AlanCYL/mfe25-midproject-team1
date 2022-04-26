@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        .btn-info :hover {
+            color: #BDC0BA;
+            background-color: #BDC0BA;
+            border-color: #BDC0BA;
+        }
+
         .btn-check:focus+.btn,
         .btn:focus {
             outline: 0;
@@ -41,11 +47,37 @@
         .btn-info {
             z-index: 3;
             color: #fff;
-            background-color: #51A8DD;
-            border-color: #51A8DD;
+            background-color: #BDC0BA;
+            border-color: #BDC0BA;
         }
+
         .text-info {
-            color: #51A8DD !important;
+            color: #BDC0BA !important;
+        }
+
+        .page-link {
+            color: gray;
+        }
+
+        a {
+            color: gray;
+        }
+
+        :root {
+            --bs-blue: #0d6efd;
+            --bs-cyan: #BDC0BA;
+            --bs-info: #BDC0BA;
+        }
+
+        .btn-info:hover {
+            color:  #BDC0BA;
+            background-color:  gray;
+            border-color:  #BDC0BA;
+        }
+        .btn-check:focus+.btn,
+        .btn:focus {
+            outline: 0;
+            box-shadow: none!important;
         }
     </style>
 
@@ -57,7 +89,9 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header text-center border border-bottom-1">
-            <a href="../template/sample_admin.php"><h4>後台管理系統</h4></a>
+                <a href="../template/sample_admin.php">
+                    <h4>後台管理系統</h4>
+                </a>
             </div>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
@@ -107,7 +141,7 @@
             </div>
             <div>
                 <!-- 可以放content -->
-                <?php require("_user-list.php")?>
+                <?php require("_user-list.php") ?>
 
 
 
