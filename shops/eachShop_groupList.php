@@ -76,17 +76,17 @@ JOIN shop ON groups.shop_id=shop.shop_id
 }
 // 已用餐，歷史訂單
 else if($type=='history'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM groups JOIN shop ON groups.shop_id=shop.shop_id WHERE now() >`eating_date` AND shop.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
-}
+    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <=
+    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'  and now() > `eating_date`";}
 // 已成團，成團人數超過最小限制
 else if($type=='group'){
 
     $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <=
-    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID' and now() < `eating_date` ORDER BY groups_id $order";
+    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'  and now() <= `eating_date`";
 }
 // 未成團
 else if($type=='ungroup'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and now() > `eating_date` and groups.shop_id='$shopID'  and now() < `eating_date` ORDER BY groups_id $order LIMIT $start,$per_page ";
+    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID' and now() > `eating_date` ";
 }else{
     $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM groups JOIN shop ON groups.shop_id=shop.shop_id WHERE shop.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 
