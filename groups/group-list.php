@@ -77,11 +77,11 @@ else if($type=='history'){
 else if($type=='group'){
     $page_count=1;
     $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <=
-    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'  and now() <= `eating_date` ORDER BY groups_id $order LIMIT $start,$per_page";
+    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'  and now() <= `eating_date` and now() > `groups_end_time` ORDER BY groups_id $order LIMIT $start,$per_page";
 }
 // 未成團
 else if($type=='ungroup'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID' and now() > `eating_date` ORDER BY groups_id $order LIMIT $start,$per_page ";
+    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID' and now() > `groups_end_time` ORDER BY groups_id $order LIMIT $start,$per_page ";
 }else{
     $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM groups JOIN shop ON groups.shop_id=shop.shop_id WHERE shop.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 
