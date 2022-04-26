@@ -209,7 +209,7 @@ if(isset($_GET["date"])){
               <form action="">
               <div class="row justify-content-end">
                   <div class="col-auto">
-                    <h5 for="" class="form-control-label">開店時間:</h5>
+                    <h5 for="" class="form-control-label">註冊時間:</h5>
                   </div>
                   <div class="col-auto">
                     <input type="date" name="date1" class="form-control" 
@@ -260,7 +260,7 @@ if(isset($_GET["date"])){
                 <th>商家帳號</th>
                 <th>商家電話</th>
 
-                <th>開店時間</th>
+                <th>註冊時間</th>
                 <th>檢視</th>
               </tr>
             </thead>
