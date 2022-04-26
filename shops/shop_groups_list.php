@@ -75,7 +75,8 @@ if(!isset($_GET["type"])){
     $sql ="SELECT groups.*, shop.shop_name
     FROM shop
     JOIN groups on groups.shop_id=shop.shop_id
-    WHERE groups.groups_start_time ='$date'";
+    WHERE groups.groups_start_time ='$date'
+    ORDER BY groups.groups_id ASC";
 
   }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
     $date1=$_GET["date1"];
@@ -83,11 +84,13 @@ if(!isset($_GET["type"])){
     $sql ="SELECT groups.*, shop.shop_name
     FROM shop
     JOIN groups on groups.shop_id=shop.shop_id
-    WHERE groups.groups_start_time BETWEEN '$date1' AND '$date2'";
+    WHERE groups.groups_start_time BETWEEN '$date1' AND '$date2'
+    ORDER BY groups.groups_id ASC";
   }else{
     $sql ="SELECT groups.*, shop.shop_name
     FROM shop
-    JOIN groups on groups.shop_id=shop.shop_id";
+    JOIN groups on groups.shop_id=shop.shop_id
+    ORDER BY groups.groups_id ASC";
   }
 
 }elseif($type=='start'){
@@ -97,7 +100,8 @@ if(!isset($_GET["type"])){
     $sql ="SELECT *
     FROM groups
     JOIN shop ON groups.shop_id=shop.shop_id
-    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time ='$date'";
+    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time ='$date'
+    ORDER BY groups.groups_id ASC";
 
   }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
     $date1=$_GET["date1"];
@@ -105,12 +109,14 @@ if(!isset($_GET["type"])){
     $sql ="SELECT *
     FROM groups
     JOIN shop ON groups.shop_id=shop.shop_id
-    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time BETWEEN '$date1' AND '$date2'";
+    WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time BETWEEN '$date1' AND '$date2'
+    ORDER BY groups.groups_id ASC";
   }else{
     $sql ="SELECT *
     FROM groups
     JOIN shop ON groups.shop_id=shop.shop_id
-    WHERE now() > groups_start_time and  now() < groups_end_time";
+    WHERE now() > groups_start_time and  now() < groups_end_time
+    ORDER BY groups.groups_id ASC";
   }
 }elseif($type=='ungroup'){
   //篩選-未開團
@@ -130,7 +136,8 @@ if(!isset($_GET["type"])){
   WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id)
   FROM user_and_groups
   WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
-  AND groups.groups_start_time ='$date'";
+  AND groups.groups_start_time ='$date'
+  ORDER BY groups.groups_id ASC";
 
 }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
   $date1=$_GET["date1"];
@@ -141,7 +148,8 @@ if(!isset($_GET["type"])){
   JOIN shop ON groups.shop_id=shop.shop_id
   WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id)
   FROM user_and_groups
-  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date BETWEEN '$date1' AND '$date2'";
+  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date BETWEEN '$date1' AND '$date2'
+  ORDER BY groups.groups_id ASC";
 }else{
   $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
   FROM groups
@@ -149,7 +157,8 @@ if(!isset($_GET["type"])){
   JOIN shop ON groups.shop_id=shop.shop_id
   WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id)
   FROM user_and_groups
-  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date";
+  WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
+  ORDER BY groups.groups_id ASC";
 }
 }
 
@@ -177,6 +186,7 @@ if(!isset($_GET["type"])){
     FROM shop
     JOIN groups on groups.shop_id=shop.shop_id
     WHERE groups.groups_start_time ='$date'
+    ORDER BY groups.groups_id ASC
     LIMIT $start, $per_page";
 
   }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
@@ -186,11 +196,13 @@ if(!isset($_GET["type"])){
     FROM shop
     JOIN groups on groups.shop_id=shop.shop_id
     WHERE groups.groups_start_time BETWEEN '$date1' AND '$date2'
+    ORDER BY groups.groups_id ASC
     LIMIT $start, $per_page";
   }else{
     $sql ="SELECT groups.*, shop.shop_name
     FROM shop
     JOIN groups on groups.shop_id=shop.shop_id
+    ORDER BY groups.groups_id ASC
     LIMIT $start, $per_page";
   }
   // $sql ="SELECT groups.*, shop.shop_name
@@ -206,6 +218,7 @@ if(!isset($_GET["type"])){
     FROM groups
     JOIN shop ON groups.shop_id=shop.shop_id
     WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time ='$date'
+    ORDER BY groups.groups_id ASC
     LIMIT $start, $per_page";
 
   }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
@@ -215,12 +228,14 @@ if(!isset($_GET["type"])){
     FROM groups
     JOIN shop ON groups.shop_id=shop.shop_id
     WHERE now() > groups_start_time and  now() < groups_end_time AND groups.groups_start_time BETWEEN '$date1' AND '$date2'
+    ORDER BY groups.groups_id ASC
     LIMIT $start, $per_page";
   }else{
     $sql ="SELECT *
     FROM groups
     JOIN shop ON groups.shop_id=shop.shop_id
     WHERE now() > groups_start_time and  now() < groups_end_time
+    ORDER BY groups.groups_id ASC
     LIMIT $start, $per_page";
   }
   // $sql ="SELECT *
@@ -247,7 +262,8 @@ if(!isset($_GET["type"])){
     WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id)
     FROM user_and_groups
     WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
-    AND groups.groups_start_time ='$date'";
+    AND groups.groups_start_time ='$date'
+    ORDER BY groups.groups_id ASC";
 
   }else if(isset($_GET["date1"]) && isset($_GET["date2"])){
     $date1=$_GET["date1"];
@@ -258,7 +274,8 @@ if(!isset($_GET["type"])){
     JOIN shop ON groups.shop_id=shop.shop_id
     WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id)
     FROM user_and_groups
-    WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date BETWEEN '$date1' AND '$date2'";
+    WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date BETWEEN '$date1' AND '$date2'
+    ORDER BY groups.groups_id ASC";
   }else{
     $sql="SELECT DISTINCT groups.groups_id, groups.*, shop.shop_name
     FROM groups
@@ -266,7 +283,8 @@ if(!isset($_GET["type"])){
     JOIN shop ON groups.shop_id=shop.shop_id
     WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id)
     FROM user_and_groups
-    WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date";
+    WHERE groups.groups_id = user_and_groups.groups_id) and now() > eating_date
+    ORDER BY groups.groups_id ASC";
   }
 }
 
