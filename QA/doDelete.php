@@ -9,7 +9,7 @@ $id=$_GET["id"];
 // echo $id;
 
 
-require_once("../QA/db-connect.php");
+require_once("../db-connect.php");
 //DELETE
 //$sql="DELETE FROM users WHERE id='$id'";
 
@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE){
 } else {
     echo "刪除資料錯誤:" . $conn->error;
 }
-
+header("location:QA-list-user.php");
 
 $conn->close();
 
