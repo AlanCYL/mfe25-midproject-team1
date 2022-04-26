@@ -78,18 +78,7 @@ $row = $result->fetch_assoc();
             </ul>
           </div>
         </li>
-        <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-            data-bs-target="#orders-collapse" aria-expanded="false">
-            客服管理
-          </button>
-          <div class="collapse" id="orders-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-dark rounded">商家意見反應</a></li>
-
-            </ul>
-          </div>
-        </li>
+        
       </ul>
     </nav>
     <div>
@@ -102,7 +91,7 @@ $row = $result->fetch_assoc();
                 <div>
                 <h1>上架開團 :</h1>
                 </div>
-               
+
             </div>
 
 
