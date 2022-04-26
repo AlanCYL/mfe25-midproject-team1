@@ -21,7 +21,7 @@ if( $goal_count >=0 ){
 };
 
 
-if( $goal_count >=2 ){
+if( $goal_count >=3 ){
     $sqlLevelUp="UPDATE user SET user_level = 2 WHERE user_id='$levelId'";
     
     if($conn->query($sqlLevelUp) === FALSE){
@@ -30,7 +30,7 @@ if( $goal_count >=2 ){
     };
 };
 
-if( $goal_count >=3 ){
+if( $goal_count >=4 ){
     $sqlLevelUp="UPDATE user SET user_level = 3 WHERE user_id='$levelId'";
     
     if($conn->query($sqlLevelUp) === FALSE){
@@ -39,7 +39,7 @@ if( $goal_count >=3 ){
     };
 };
 
-if( $goal_count >=4 ){
+if( $goal_count >=5){
     $sqlLevelUp="UPDATE user SET user_level = 4 WHERE user_id='$levelId'";
     
     if($conn->query($sqlLevelUp) === FALSE){
