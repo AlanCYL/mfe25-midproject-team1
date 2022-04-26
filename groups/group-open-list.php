@@ -207,7 +207,7 @@ $row = $result->fetch_assoc();
               <tr>
               <th>開團編號</th>
                 <th>目標人數</th>
-                <th>截團人數</th>
+                <th>報名人數</th>
 
               </tr>
             </thead>

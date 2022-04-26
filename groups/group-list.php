@@ -40,7 +40,7 @@ else if($type=='history'){
 }
 // 已成團，成團人數超過最小限制
 else if($type=='group'){
-    $sql="SELECT * FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <
+    $sql="SELECT * FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <=
     (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'";
 }
 // 未成團
@@ -70,16 +70,18 @@ else if($type=='start'){
 }
 // 已用餐，歷史訂單
 else if($type=='history'){
+    $page_count=1;
     $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM groups JOIN shop ON groups.shop_id=shop.shop_id WHERE now() >`eating_date` AND shop.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 }
 // 已成團，成團人數超過最小限制
 else if($type=='group'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <
-    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID'";
+    $page_count=1;
+    $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num <=
+    (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and groups.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 }
 // 未成團
 else if($type=='ungroup'){
-    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and now() > `eating_date` and groups.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page ";
+    $sql="SELECT DISTINCT groups.groups_id, groups.* FROM `groups` JOIN user_and_groups ON groups.groups_id=user_and_groups.groups_id WHERE groups.least_num > (SELECT COUNT(user_and_groups.groups_id) FROM user_and_groups WHERE groups.groups_id = user_and_groups.groups_id) and now() > `eating_date` and groups.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 }else{
     $sql="SELECT DISTINCT groups.groups_id, groups.*  FROM groups JOIN shop ON groups.shop_id=shop.shop_id WHERE shop.shop_id='$shopID' ORDER BY groups_id $order LIMIT $start,$per_page";
 
@@ -173,7 +175,7 @@ $rows=$result->fetch_all(MYSQLI_ASSOC);
             </ul>
           </div>
         </li>
-        
+
       </ul>
     </nav>
     <div>
