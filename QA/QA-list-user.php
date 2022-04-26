@@ -155,16 +155,16 @@ $QA_count = $result->num_rows;
       <div>
         <div class="container">
           <div class="py-4 text-start">
-            <a class="btn btn-info text-white 
+            <a class="btn  text-white" style= "background-color:#BDC0BA; color:white;
                   <?php if ($type == 1) echo "active" ?>
                   " href="QA-list-user.php?p=<?= $p ?>&type=1">依序號正序</a>
-            <a class="btn btn-info text-white 
+            <a class="btn  text-white"style= "background-color:#BDC0BA; color:white;
                   <?php if ($type == 2) echo "active" ?>
                   " href="QA-list-user.php?p=<?= $p ?>&type=2">依序號反序</a>
-            <a class="btn btn-info text-white 
+            <a class="btn  text-white"style= "background-color:#BDC0BA; color:white;
                   <?php if ($type == 1) echo "active" ?>
                   " href="QA-list-user.php?p=<?= $p ?>&type=3">依時間正序</a>
-            <a class="btn btn-info text-white 
+            <a class="btn  text-white"style= "background-color:#BDC0BA; color:white;
                   <?php if ($type == 2) echo "active" ?>
                   " href="QA-list-user.php?p=<?= $p ?>&type=4">依時間反序</a>
           </div>
@@ -189,7 +189,7 @@ $QA_count = $result->num_rows;
                     <td><?= $row["QA_content_create_time"] ?></td>
                     <td><?= $row["QA_type"] ?></td>
                     <td>
-                      <a class="btn btn-info text-white" href="QA-reply-user.php?id=<?= $row["QA_id"] ?>&qa_content_id=<?= $row["QA_content_id"] ?>">回覆訊息</a>
+                      <a class="btn text-white" style= "background-color:#BDC0BA; color:white;" href="QA-reply-user.php?id=<?= $row["QA_id"] ?>&qa_content_id=<?= $row["QA_content_id"] ?>">回覆訊息</a>
 
                       <a class="btn btn-danger" href="doDelete.php?id=<?= $row["id"] ?>">刪除</a>
                     </td>
@@ -204,9 +204,9 @@ $QA_count = $result->num_rows;
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center">
                 <?php for ($i = 1; $i <= $page_count; $i++) : ?>
-                  <li class="page-item <?php
-                                        if ($i == $p) echo "active";
-                                        ?>"><a class="page-link" href="QA-list-user.php?p=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a></li>
+                  <li class="page-item 
+                  <?php if ($i == $p) echo "active";?>">
+                <a class="page-link" href="QA-list-user.php?p=<?= $i ?>&type=<?= $type ?>"><?= $i ?></a></li>
                 <?php endfor; ?>
               </ul>
             </nav>
