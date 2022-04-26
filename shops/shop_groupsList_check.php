@@ -139,7 +139,7 @@ $row = $result->fetch_assoc();
             </div>
             <div>
                 <!-- 可以放content -->
-                
+
                 <div class="container">
             <div class="row justify-content-center mt-5">
               <div class="col-lg-9">
@@ -149,7 +149,7 @@ $row = $result->fetch_assoc();
                     <th>開團編號</th>
                     <td><?=$row["groups_id"]?></td>
                   </tr>
-                 
+
                   <tr>
                     <th>開團時間</th>
                     <td>
@@ -181,10 +181,10 @@ $row = $result->fetch_assoc();
                     <td><?=$row["price"]?></td>
                   </tr>
                 </table>
-                <a href="eachShop_groupList.php?shop_id=<?=$row["shop_id"];?>" class="btn btn-info text-white mb-4">返回開團清單</a>
+                <a href="eachShop_groupList.php?shop_id=<?=$row["shop_id"];?>" class="btn text-white mb-4" style="background-color:#BDC0BA; color:white;">返回開團清單</a>
 
               </div>
-              
+
             </div>
           </div>
 
