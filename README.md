@@ -3,8 +3,8 @@
 ##### The project credits to [Alan](https://github.com/AlanCYL), [Remi](https://github.com/remi06vera) and [Jayna](https://github.com/jayna922).
 
 ### Description
-1.This is a back-end management website of meal vouchers which is team buying related.
-2.The project's main implementation language is PHP and the database is mySQL. (There are HTML, CSS, JS, Bootstrap inside the project.)
-3.The project has three parts of section incluing membership management by Alan, resturant management by Remi and meal voucher buying system by Jayna.
+1.This is a back-end management website of meal vouchers which is team buying related.<br>
+2.The project's main implementation language is PHP and the database is mySQL. (There are HTML, CSS, JS, Bootstrap inside the project.)<br>
+3.The project has three parts of section incluing membership management by Alan, resturant management by Remi and meal voucher buying system by Jayna.<br>
 
 
