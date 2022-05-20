@@ -8,21 +8,21 @@
 * The project has three parts of section incluing membership management by Alan, resturant management by Remi and meal voucher buying system by Jayna.<br>
 
 ### How to use
-* Please install project.sql in MySql database./n
-  $servername = "localhost";/n
-  $username = "mf251";
-  $password = "2525";
-  $dbname = "project";
-  This is the default account information of db-connect.php, 
-  you can change into your own.
+* Please install project.sql in MySql database.<br>
+  $servername = "localhost";<br>
+  $username = "mf251";<br>
+  $password = "2525";<br>
+  $dbname = "project";<br>
+  This is the default account information of db-connect.php,<br> 
+  you can change into your own.<br>
   
-* ( manager-login.php ) This is for login.
-  Here's the login information:
-  for Admin
-  account:123
-  password:123
-  for Resturant User
-  account:villager@test.com
-  password:111
+* ( manager-login.php ) This is for login.<br>
+  Here's the login information:<br>
+  for Admin<br>
+  account:123<br>
+  password:123<br>
+  for Resturant User<br>
+  account:villager@test.com<br>
+  password:111<br>
 
 
