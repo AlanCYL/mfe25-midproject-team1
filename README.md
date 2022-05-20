@@ -18,11 +18,18 @@
   
 * ( manager-login.php ) This is for login.<br>
   Here's the login information:<br>
-  for Admin<br>
+  for Admin =><br>
   account:123<br>
   password:123<br>
-  for Resturant User<br>
+  for Resturant User =><br>
   account:villager@test.com<br>
   password:111<br>
+
+### Content Introduction
+*member management system by [Alan](https://github.com/AlanCYL):
+
+*resturant management system by [Remi](https://github.com/remi06vera):
+
+*meal voucher buying system by [Jayna](https://github.com/jayna922):
 
 
