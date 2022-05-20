@@ -8,8 +8,8 @@
 * The project has three parts of section incluing membership management by Alan, resturant management by Remi and meal voucher buying system by Jayna.<br>
 
 ### How to use
-* Please install project.sql in MySql database.
-  $servername = "localhost";
+* Please install project.sql in MySql database./n
+  $servername = "localhost";/n
   $username = "mf251";
   $password = "2525";
   $dbname = "project";
