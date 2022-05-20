@@ -7,4 +7,22 @@
 * The project's main implementation language is PHP and the database is mySQL. (There are HTML, CSS, JS, Bootstrap inside the project.)<br>
 * The project has three parts of section incluing membership management by Alan, resturant management by Remi and meal voucher buying system by Jayna.<br>
 
+### How to use
+* Please install project.sql in MySql database.
+  $servername = "localhost";
+  $username = "mf251";
+  $password = "2525";
+  $dbname = "project";
+  This is the default account information of db-connect.php, 
+  you can change into your own.
+  
+* ( manager-login.php ) This is for login.
+  Here's the login information:
+  for Admin
+  account:123
+  password:123
+  for Resturant User
+  account:villager@test.com
+  password:111
+
 
