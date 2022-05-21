@@ -9,12 +9,7 @@
 
 ### How to use
 * Please install project.sql in MySql database.<br>
-  $servername = "localhost";<br>
-  $username = "mf251";<br>
-  $password = "2525";<br>
-  $dbname = "project";<br>
-  This is the default account information of db-connect.php,<br> 
-  you can change into your own.<br>
+  and change your own database infromation on db-connect.php<br> 
   
 * ( manager-login.php ) This is for login.<br>
   Here's the login information:<br>
