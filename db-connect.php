@@ -2,8 +2,8 @@
 //與資料庫連結
 
 $servername = "localhost";
-$username = "mf251";
-$password = "2525";
+$username = "";
+$password = "";
 $dbname = "project";
 
 // Create connection
