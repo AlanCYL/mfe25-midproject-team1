@@ -23,22 +23,18 @@
 ### Content Introduction
 *member management system by [Alan](https://github.com/AlanCYL):*
 There are 4 main page:
-###### 1.create-user.php<br>
+###### 1. create-user.php<br>
 You may create new member and add in the database.(It's an individual page outside the system.)<br>
-<br>
-###### 2.user-list.php<br>
+###### 2. user-list.php<br>
 You may check all remaining member list in this page.<br>
 Also can edit or delete the member information.<br>
 There are functions of serching bar and sort of different category for convenient usage.<br>
 This page also contain a member level inspection API which is level.php.<br>
 It may check the membership level automatically by the amounts of the joined group.<br>
-<br>
-###### 3.groupHistoryP.php<br>
+###### 3. groupHistoryP.php<br>
 Inside the user-list.php, each member personal profile includes each joined group history.<br>
 You may also check the status of the team-buying group as well.<br>
-<br>
-
-###### 4.user-list-coupon.php<br>
+###### 4. user-list-coupon.php<br>
 You may use this page for sending out coupon and insert into database.<br>
 Just easily type the discount amount and reason then click.<br>
 The coupon sending task is finished.<br>
