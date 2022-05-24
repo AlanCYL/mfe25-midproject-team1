@@ -42,8 +42,8 @@ The coupon sending task is finished.<br>
 This page also contain sevral category for sorting of and you may easily tick whom you wanna send for the coupon.<br>
 You may also check about the coupon history on individual member page.<br>
 <br>
-*resturant management system by [Remi](https://github.com/remi06vera):*
+* resturant management system by [Remi](https://github.com/remi06vera):*
 
-*meal voucher buying system by [Jayna](https://github.com/jayna922):*
+* meal voucher buying system by [Jayna](https://github.com/jayna922):*
 
 
