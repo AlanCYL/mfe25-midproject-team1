@@ -21,7 +21,7 @@
   password: 111<br>
 
 ### Content Introduction
-*member management system by [Alan](https://github.com/AlanCYL):*
+* member management system by [Alan](https://github.com/AlanCYL):*
 There are 4 main page:
 ###### 1. create-user.php<br>
 You may create new member and add in the database.<br>
