@@ -24,7 +24,8 @@
 *member management system by [Alan](https://github.com/AlanCYL):*
 There are 4 main page:
 ###### 1. create-user.php<br>
-You may create new member and add in the database.(It's an individual page outside the system.)<br>
+You may create new member and add in the database.<br>
+It's an individual page outside the system.<br>
 ###### 2. user-list.php<br>
 You may check all remaining member list in this page.<br>
 Also can edit or delete the member information.<br>
