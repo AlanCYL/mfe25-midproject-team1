@@ -6,7 +6,7 @@
 * This is a back-end management website of meal vouchers which is team buying related.<br>
 * The project's main implementation language is PHP and the database is mySQL. (There are HTML, CSS, JS, Bootstrap inside the project.)<br>
 * The project has three parts of section incluing membership management by Alan, resturant management by Remi and meal voucher buying system by Jayna.<br>
-* [Tutorial of the project](https://www.youtube.com/watch?v=qbb2bZKukow)
+* [Tutorial video of the project](https://www.youtube.com/watch?v=qbb2bZKukow) 
 
 ### How to use
 * Please install project.sql in MySql database.<br>
@@ -22,7 +22,7 @@
   password: 111<br>
 
 ### Content Introduction
-* member management system by [Alan](https://github.com/AlanCYL):*
+* member management system by [Alan](https://github.com/AlanCYL) ,starting from 10:45 of the tutorial video :*
 There are 4 main page:
 ###### 1. create-user.php<br>
 You may create new member and add in the database.<br>
